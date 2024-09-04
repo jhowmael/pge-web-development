@@ -42,14 +42,30 @@
                             <a class="nav-link" href="{{ route('plans') }}">Planos</a>
                         </li>
                     </ul>
+
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="btn btn-light me-2" href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-light" href="{{ route('register') }}">Registrar</a>
-                        </li>
+                        @guest
+                            <!-- Usuário não autenticado -->
+                            <li class="nav-item">
+                                <a class="btn btn-light me-2" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light" href="{{ route('register') }}">Registrar</a>
+                            </li>
+                        @else
+                            <!-- Usuário autenticado -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('welcome') }}">{{ auth()->user()->name }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-light">Logout</button>
+                                </form>
+                            </li>
+                        @endguest
                     </ul>
+
                 </div>
             </div>
         </nav>

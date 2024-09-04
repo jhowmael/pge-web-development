@@ -1,15 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PlansController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WelcomeController;
 
 // TELAS INICIAIS
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
@@ -18,16 +20,27 @@ Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
-
-Route::get('/plans', [PlansController::class, 'index'])->name('plans');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 
-/*
+Route::get('/plans', [PlansController::class, 'plans'])->name('plans');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/'); // Redireciona para a página inicial após o logout
+})->name('logout');
+
 //--------------------------------------------
 
 // TELAS DO CLIENTE
+
+
+Route::get('/welcome', [WelcomeController::class, 'welcome'])->middleware('auth')->name('welcome');
+
+
+
+/*
 
 Route::get('/profile', function () {
     return view('perfil');
