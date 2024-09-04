@@ -23,7 +23,7 @@
                         <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-purple">Enviar</button>
                     </div>
                 </form>
             </div>

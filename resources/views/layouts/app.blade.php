@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PGE-1</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/821b65200f.js" crossorigin="anonymous"></script>
     <style>
         /* Estilo para garantir que o rodapé fique no final da tela */
         html, body {
@@ -20,11 +21,25 @@
         .flex-grow-1 {
             flex: 1;
         }
+
+        .bg-purple {
+            background-color: #6f42c1; /* Código hexadecimal para roxo */
+        }
+
+        .btn-purple {
+            background-color: #6f42c1; /* Cor roxa */
+            color: #fff; /* Cor do texto */
+        }
+
+        .btn-purple:hover {
+            background-color: #5a2c9e; /* Cor roxa mais escura ao passar o mouse */
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <div class="content d-flex flex-column">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-purple">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('home') }}">PGE-1</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,10 +57,8 @@
                             <a class="nav-link" href="{{ route('plans') }}">Planos</a>
                         </li>
                     </ul>
-
                     <ul class="navbar-nav ms-auto">
                         @guest
-                            <!-- Usuário não autenticado -->
                             <li class="nav-item">
                                 <a class="btn btn-light me-2" href="{{ route('login') }}">Login</a>
                             </li>
@@ -53,7 +66,6 @@
                                 <a class="btn btn-outline-light" href="{{ route('register') }}">Registrar</a>
                             </li>
                         @else
-                            <!-- Usuário autenticado -->
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('welcome') }}">{{ auth()->user()->name }}</a>
                             </li>
@@ -65,7 +77,6 @@
                             </li>
                         @endguest
                     </ul>
-
                 </div>
             </div>
         </nav>
@@ -77,7 +88,7 @@
         </div>
 
         <!-- Rodapé -->
-        <footer class="bg-primary text-white text-center py-3 mt-auto">
+        <footer class="bg-purple text-white text-center py-3 mt-auto">
             <div class="container">
                 <p class="mb-0">&copy; {{ date('Y') }} PGE-1. Todos os direitos reservados.</p>
                 <p class="mb-0">

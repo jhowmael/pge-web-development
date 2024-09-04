@@ -19,7 +19,7 @@
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">Entrar</button>
+                        <button type="submit" class="btn btn-purple">Entrar</button>
                     </div>
                 </form>
             </div>
