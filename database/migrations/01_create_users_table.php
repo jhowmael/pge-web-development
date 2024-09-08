@@ -21,11 +21,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
             $table->string('phone', 16)->nullable();
-            $table->string('image', 255)->nullable();
+            $table->string('profile_picture')->nullable();
             $table->boolean('premium')->default(0);
             $table->rememberToken();
             $table->string('status', 16);
             $table->dateTime('registered');
+            $table->date('birthday')->nullable();
             $table->dateTime('deleted')->nullable();
             $table->timestamps(); 
         });

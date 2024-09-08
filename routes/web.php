@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PlansController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\Auth\ProfileController;
 
 // TELAS INICIAIS
 
@@ -40,11 +41,24 @@ Route::get('/welcome', [WelcomeController::class, 'welcome'])->middleware('auth'
 
 
 
-/*
-
 Route::get('/profile', function () {
     return view('perfil');
 });
+
+
+Route::get('/profile-configurations', [ProfileController::class, 'profileConfigurations'])->middleware('auth')->name('profile-configurations');
+Route::post('/profile-update', [ProfileController::class, 'updateProfile'])->middleware('auth')->name('profile.update');
+
+Route::get('/profile-edit-password', [ProfileController::class, 'profileEditPassword'])
+    ->middleware('auth')
+    ->name('profile-edit-password');
+
+Route::post('/profile-update-password', [ProfileController::class, 'updateProfilePassword'])
+    ->middleware('auth')
+    ->name('profile.update-password');
+
+/*
+
 
 Route::get('/signature', function () {
     return view('assinatura');

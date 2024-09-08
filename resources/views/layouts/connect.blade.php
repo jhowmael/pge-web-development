@@ -12,7 +12,7 @@
 
 <style>
     
-    h2{
+    h2, h6, hr{
         color: #6f42c1; /* Cor do texto roxa */
     }
 
@@ -76,17 +76,26 @@
             </div>
         </nav>
     </div>
-
     <div class="row">
         <div class="col-2"> 
             <div class="sidebar bg-light p-3" style="width: 250px; min-height: 100vh;">
                 <div class="text-center mb-4">
                     <!-- User Image -->
-                    <h2>  Foto de Perfil</h2>
+                    @if(auth()->user()->profile_picture)
+                        <img src="{{ asset('storage/' . auth()->user()->profile_picture) }}" alt="Foto de Perfil" class="img-thumbnail">
+                    @endif
+                    @error('profile_picture')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                    <h6>{{ auth()->user()->name }}</h6>
                 </div>
+                <hr>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> <i class="fa-solid fa-user"></i> Perfil</a>
+                        <a class="nav-link" href="{{ route('welcome') }}"> <i class="fa-solid fa-house"></i> Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('profile-configurations') }}"> <i class="fa-solid fa-user"></i> Perfil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-graduation-cap"></i> Simulados</a>
