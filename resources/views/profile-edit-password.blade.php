@@ -14,11 +14,11 @@
 
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile-configurations') }}"> <i class="fa-solid fa-house"></i> Configurações de perfil</a>
+                                <a class="nav-link" href="{{ route('profile-configurations') }}">Configurações de perfil <i class="fa-solid fa-chevron-right"></i></a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile-edit-password') }}"> <i class="fa-solid fa-house"></i> Alterar senha</a>
+                                <a class="nav-link" href="{{ route('profile-edit-password') }}">Alterar senha <i class="fa-solid fa-chevron-right"></i></a>
                             </li>
                         </ul>
                     </div>
