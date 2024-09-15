@@ -18,17 +18,21 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile-edit-password') }}">Alterar senha <i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="nav-link active" href="{{ route('profile-edit-password') }}">Alterar senha <i class="fa-solid fa-chevron-right"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-7">
-                <h4>Escolha uma nova senha</h4>
 
-                <form action="{{ route('profile.update-password') }}" method="POST" class="form">
+            <div class="col-md-7">
+                <div class="card mb-12">
+                    <div class="card-header text-center">
+                        <h4>Escolha uma nova senha</h4>
+                    </div> 
+                    <div class="card-body">
+                    <form action="{{ route('profile.update-password') }}" method="POST" class="form">
                     @csrf
 
                     <div class="form-group">
@@ -60,6 +64,8 @@
                         <button type="submit" class="btn btn-purple">Salvar</button>
                     </div>
                 </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\PlansController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\AdministrativeController;
 
 // TELAS INICIAIS
 
@@ -56,6 +57,27 @@ Route::get('/profile-edit-password', [ProfileController::class, 'profileEditPass
 Route::post('/profile-update-password', [ProfileController::class, 'updateProfilePassword'])
     ->middleware('auth')
     ->name('profile.update-password');
+
+Route::get('/administrative-dashboard', [AdministrativeController::class, 'administrativeDashboard'])->name('administrative-dashboard');
+
+Route::get('/adminstrative-dashboard-simulations', [AdministrativeController::class, 'administrativeDashboardSimulations'])->name('administrative-dashboard-simulations');
+
+Route::get('/adminstrative-add-simulations', [AdministrativeController::class, 'administrativeAddSimulations'])->name('administrative-add-simulations');
+
+Route::get('/administrative-edit-simulations', [AdministrativeController::class, 'administrativeEditSimulations'])->name('administrative-edit-simulations');
+
+Route::get('/administrative-disabled-simulations', [AdministrativeController::class, 'administrativeDisabledSimulations'])->name('administrative-disabled-simulations');
+
+Route::get('/administrative-delete-simulations', [AdministrativeController::class, 'administrativeDeleteSimulations'])->name('adminstrative-disabled-simulations');
+
+Route::get('/administrative-dashboard-users', [AdministrativeController::class, 'administrativeDashboardUsers'])->name('administrative-dashboard-users');
+
+Route::get('/administrative-edit-users', [AdministrativeController::class, 'administrativeEditUsers'])->name('administrative-edit-users');
+
+Route::get('/administrative-view-users', [AdministrativeController::class, 'administrativeViewUsers'])->name('administrative-view-users');
+
+Route::get('/administrative-disable-users', [AdministrativeController::class, 'administrativeDisableUsers'])->name('administrative-disable-users');
+
 
 /*
 

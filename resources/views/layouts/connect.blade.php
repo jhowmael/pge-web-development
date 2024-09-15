@@ -24,6 +24,14 @@
         color: #6f42c1; /* Cor do texto dos links */
     }
 
+    .nav-link:hover {
+        color: #6598ad; /* Cor que aparece quando o mouse passa por cima */
+    }
+
+    .active {
+        color: #428aa3; /* Cor do texto dos links */
+    }
+
     .bg-purple {
         background-color: #6f42c1; /* Código hexadecimal para roxo */
     }
@@ -105,6 +113,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-file-signature"></i> Planos</a>
+                    </li>
+                </ul>
+                <hr>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('administrative-dashboard') }}"><i class="fa-solid fa-sliders"></i> Administrativo</a>
                     </li>
                 </ul>
             </div>

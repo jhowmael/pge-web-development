@@ -20,7 +20,6 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
-
         auth()->login($user);
 
         return redirect()->route('home');
