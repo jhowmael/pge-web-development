@@ -35,7 +35,7 @@
                         <h4>Dashboard</h4>
                     </div> 
                     <div class="card-body">
-                        <p>txttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxt</p>
+                        <p>Nesta seção, você pode acompanhar alguns dados estatísticos e administrativos.</p>
                     </div>
                 </div>
             </div>

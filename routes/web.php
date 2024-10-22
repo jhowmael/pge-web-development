@@ -62,13 +62,21 @@ Route::get('/administrative-dashboard', [AdministrativeController::class, 'admin
 
 Route::get('/adminstrative-dashboard-simulations', [AdministrativeController::class, 'administrativeDashboardSimulations'])->name('administrative-dashboard-simulations');
 
-Route::get('/adminstrative-add-simulations', [AdministrativeController::class, 'administrativeAddSimulations'])->name('administrative-add-simulations');
+Route::get('/adminstrative-add-simulations', action: [AdministrativeController::class, 'administrativeAddSimulations'])->name('administrative-add-simulations');
 
-Route::get('/administrative-edit-simulations', [AdministrativeController::class, 'administrativeEditSimulations'])->name('administrative-edit-simulations');
+Route::post('/administrative-store-simulations', [AdministrativeController::class, 'administrativeStoreSimulations'])->name('administrative-store-simulations');
 
-Route::get('/administrative-disabled-simulations', [AdministrativeController::class, 'administrativeDisabledSimulations'])->name('administrative-disabled-simulations');
+Route::get('/administrative-view-simulations/{id}', [AdministrativeController::class, 'administrativeViewSimulations'])->name('administrative-view-simulations');
 
-Route::get('/administrative-delete-simulations', [AdministrativeController::class, 'administrativeDeleteSimulations'])->name('adminstrative-disabled-simulations');
+Route::get('/administrative-edit-simulations/{id}', [AdministrativeController::class, 'administrativeEditSimulations'])->name('administrative-edit-simulations');
+
+Route::post('/administrative-update-simulations/{id}', [AdministrativeController::class, 'administrativeUpdateSimulations'])->name('administrative-update-simulations');
+
+Route::post('/administrative-disable-simulations/{id}', [AdministrativeController::class, 'administrativeDisableSimulations'])->name('administrative-disable-simulations');
+
+Route::post('/administrative-enable-simulations/{id}', [AdministrativeController::class, 'administrativeEnableSimulations'])->name('administrative-enable-simulations');
+
+Route::get('/administrative-filter-simulations', [AdministrativeController::class, 'administrativeFilterSimulations'])->name('administrative-filter-simulations');
 
 Route::get('/administrative-dashboard-users', [AdministrativeController::class, 'administrativeDashboardUsers'])->name('administrative-dashboard-users');
 

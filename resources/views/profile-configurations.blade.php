@@ -14,11 +14,11 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('profile-configurations') }}">Configurações de perfil <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link active" href="{{ route('profile-configurations') }}">Configurações de Perfil <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profile-edit-password') }}">Alterar senha <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('profile-edit-password') }}">Alterar Senha <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -29,7 +29,7 @@
         <div class="col-md-7">
             <div class="card mb-12">
                 <div class="card-header text-center">
-                    <h4>Configurações de perfil</h4>
+                    <h4>Configurações de Perfil</h4>
                 </div>
                 <div class="card-body">
                     <p>Você pode alterar as inforamações básicas da sua conta</p>

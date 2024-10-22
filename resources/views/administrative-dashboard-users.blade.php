@@ -18,7 +18,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard-simulations') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative-dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
 
                         <li class="nav-item">
@@ -35,7 +35,7 @@
                     <h4>Dashboard Usuários</h4>
                 </div>
                 <div class="card-body">
-                    <p>txttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxttxt</p>
+                    <p>Nesta seção, você pode pesquisar, editar, deletar ou adicionar um novo usuário.</p>
                 </div>
 
                 <div class="row">
