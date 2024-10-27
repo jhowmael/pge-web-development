@@ -48,7 +48,6 @@
                     <!-- Formulário para adicionar um novo simulado -->
                     <form action="{{ route('administrative-store-simulations') }}" method="POST">
                         @csrf <!-- Proteção contra CSRF -->
-
                         <div class="mb-3">
                             <label for="type" class="form-label">Tipo / Modelo</label>
                             <select class="form-select" id="type" name="type" required>

@@ -78,6 +78,12 @@ Route::post('/administrative-enable-simulations/{id}', [AdministrativeController
 
 Route::get('/administrative-filter-simulations', [AdministrativeController::class, 'administrativeFilterSimulations'])->name('administrative-filter-simulations');
 
+Route::get('/administrative-view-questions/{id}', [AdministrativeController::class, 'administrativeViewQuestions'])->name('administrative-view-questions');
+
+Route::get('/administrative-edit-questions/{id}', [AdministrativeController::class, 'administrativeEditQuestions'])->name('administrative-edit-questions');
+
+Route::post('/administrative-update-questions/{id}', [AdministrativeController::class, 'administrativeUpdateQuestions'])->name('administrative-update-questions');
+
 Route::get('/administrative-dashboard-users', [AdministrativeController::class, 'administrativeDashboardUsers'])->name('administrative-dashboard-users');
 
 Route::get('/administrative-edit-users', [AdministrativeController::class, 'administrativeEditUsers'])->name('administrative-edit-users');

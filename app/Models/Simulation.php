@@ -9,6 +9,11 @@ class Simulation extends Model
 {
     use HasFactory; // Usar as factories para o modelo, se necessário
 
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'simulation_id');
+    }
+
     // Define os campos que podem ser preenchidos em massa
     protected $fillable = [
         'name',
