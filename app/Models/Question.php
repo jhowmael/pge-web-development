@@ -11,7 +11,7 @@ class Question extends Model
 
     public function questions()
     {
-        return $this->hasMany(Question::class, 'simulation_id');
+        return $this->hasMany(Question::class)->orderBy('number');
     }
 
     protected $fillable = [

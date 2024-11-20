@@ -214,7 +214,7 @@ class AdministrativeController extends Controller
     
         $question->update($validatedData);
     
-        return redirect()->route('administrative-view-simulations')->with('success', 'Questão atualizado com sucesso!');
+        return redirect()->route('administrative-view-simulations', [$question->simulation_id])->with('success', 'Questão atualizado com sucesso!');
     }
     
 }

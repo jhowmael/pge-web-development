@@ -106,7 +106,7 @@
                         <a class="nav-link" href="{{ route('profile-configurations') }}"> <i class="fa-solid fa-user"></i> Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-graduation-cap"></i> Simulados</a>
+                        <a class="nav-link" href="{{ route('simulations-dashboard') }}"><i class="fa-solid fa-graduation-cap"></i> Simulados</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-pen"></i> Redações</a>

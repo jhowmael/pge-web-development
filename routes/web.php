@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\AdministrativeController;
+use App\Http\Controllers\SimulationController;
 
 // TELAS INICIAIS
 
@@ -92,6 +93,22 @@ Route::get('/administrative-view-users', [AdministrativeController::class, 'admi
 
 Route::get('/administrative-disable-users', [AdministrativeController::class, 'administrativeDisableUsers'])->name('administrative-disable-users');
 
+Route::get('/simulations-dashboard', [SimulationController::class, 'simulationsDashboard'])->name('simulations-dashboard');
+
+Route::get('/simulations-start/{id}', [SimulationController::class, 'simulationsStart'])->name('simulations-start');
+
+Route::get('/simulation-in-progress/{simulation}/{userSimulation}', [SimulationController::class, 'simulationInProgress'])
+    ->name('simulation-in-progress');
+
+Route::get('/simulations/{simulation}/questions/{questionNumber}', [SimulationController::class, 'getQuestion'])
+    ->middleware('auth')
+    ->name('simulations.getQuestion');
+
+Route::post('/simulations/{userSimulation}/questions/{question}/response', [SimulationController::class, 'saveResponse'])
+    ->middleware('auth')
+    ->name('simulations.saveResponse');
+
+    
 
 /*
 
