@@ -68,7 +68,7 @@
 
         function loadQuestion(questionNumber) {
             $.ajax({
-                url: `/simulations/${simulationId}/questions/${questionNumber}`,
+                url: `/userSimulations/${simulationId}/questions/${questionNumber}`,
                 method: 'GET',
                 success: function(data) {
                     $('#simulation-name').text("<?= $simulation->name ?>");
@@ -143,7 +143,7 @@
                 }
 
                 $.ajax({
-                    url: `/simulations/${userSimulationId}/questions/${currentQuestion}/response`,
+                    url: `/userSimulations/${userSimulationId}/questions/${currentQuestion}/response`,
                     method: 'POST',
                     data: {
                         _token: '<?= csrf_token() ?>',

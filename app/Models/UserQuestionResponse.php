@@ -25,4 +25,13 @@ class UserQuestionResponse extends Model
         'created_at',
         'updated_at'
     ];
+
+    protected static function booted()
+    {
+        static::saved(function ($model) {
+
+            $userSimulation = UserSimulation::find($model->user_simulation_id);
+            $userSimulation->save();  
+        }); 
+    }
 }

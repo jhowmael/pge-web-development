@@ -7,7 +7,7 @@ return [
         'Natural Sciences and their Technologies' => 'Ciências da Natureza e suas Tecnologias',
         'Mathematics and its Technologies' => 'Matemática e suas Tecnologias'
     ],
-
+    
     'correct_alternatives' => [
         'a' => 'A',
         'b' => 'B',

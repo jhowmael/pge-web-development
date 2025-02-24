@@ -132,23 +132,83 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label"><strong>Alternativa B:</strong></label>
-                                    <input type="text" class="form-control" name="alternative_b" value="{{ old('alternative_b', $simulation->alternative_b) }}" required>
-                                </div>
+                    <label for="alternative_a_image" class="form-label"><strong>Imagem da Alternativa A</strong></label>
+                    <input type="file" id="alternative_a_image" name="alternative_a_image" class="form-control">
+                    @if($question->alternative_a_image)
+                        <p class="text-muted">Imagem Atual:</p>
+                        <img src="{{ asset('storage/' . $question->alternative_a_image) }}" alt="Imagem Alternativa A" class="img-thumbnail">
+                    @endif
+                    @error('alternative_a_image')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label"><strong>Alternativa C:</strong></label>
-                                    <input type="text" class="form-control" name="alternative_c" value="{{ old('alternative_c', $simulation->alternative_c) }}" required>
-                                </div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Alternativa B:</strong></label>
+                        <input type="text" class="form-control" name="alternative_b" value="{{ old('alternative_b', $simulation->alternative_b) }}" required>
+                    </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label"><strong>Alternativa D:</strong></label>
-                                    <input type="text" class="form-control" name="alternative_d" value="{{ old('alternative_d', $simulation->alternative_d) }}" required>
-                                </div>
+                    <div class="mb-3">
+                        <label for="alternative_b_image" class="form-label"><strong>Imagem da Alternativa B</strong></label>
+                        <input type="file" id="alternative_b_image" name="alternative_b_image" class="form-control">
+                        @if($question->alternative_b_image)
+                            <p class="text-muted">Imagem Atual:</p>
+                            <img src="{{ asset('storage/' . $question->alternative_b_image) }}" alt="Imagem Alternativa B" class="img-thumbnail">
+                        @endif
+                        @error('alternative_b_image')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Alternativa C:</strong></label>
+                        <input type="text" class="form-control" name="alternative_c" value="{{ old('alternative_c', $simulation->alternative_c) }}" required>
+                    </div>
+
+                                                <div class="mb-3">
+                    <label for="alternative_c_image" class="form-label"><strong>Imagem da Alternativa C</strong></label>
+                    <input type="file" id="alternative_c_image" name="alternative_c_image" class="form-control">
+                    @if($question->alternative_c_image)
+                        <p class="text-muted">Imagem Atual:</p>
+                        <img src="{{ asset('storage/' . $question->alternative_c_image) }}" alt="Imagem Alternativa C" class="img-thumbnail">
+                    @endif
+                    @error('alternative_c_image')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Alternativa D:</strong></label>
+                    <input type="text" class="form-control" name="alternative_d" value="{{ old('alternative_d', $simulation->alternative_d) }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="alternative_d_image" class="form-label"><strong>Imagem da Alternativa D</strong></label>
+                    <input type="file" id="alternative_d_image" name="alternative_d_image" class="form-control">
+                    @if($question->alternative_d_image)
+                        <p class="text-muted">Imagem Atual:</p>
+                        <img src="{{ asset('storage/' . $question->alternative_d_image) }}" alt="Imagem Alternativa D" class="img-thumbnail">
+                    @endif
+                    @error('alternative_d_image')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
 
                                 <div class="mb-3">
                                     <label class="form-label"><strong>Alternativa E:</strong></label>
                                     <input type="text" class="form-control" name="alternative_e" value="{{ old('alternative_e', $simulation->alternative_e) }}" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="alternative_e_image" class="form-label"><strong>Imagem da Alternativa E</strong></label>
+                                    <input type="file" id="alternative_e_image" name="alternative_e_image" class="form-control">
+                                    @if($question->alternative_e_image)
+                                        <p class="text-muted">Imagem Atual:</p>
+                                        <img src="{{ asset('storage/' . $question->alternative_e_image) }}" alt="Imagem Alternativa E" class="img-thumbnail">
+                                    @endif
+                                    @error('alternative_e_image')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3">
@@ -163,9 +223,6 @@
                             </form>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
             <br>

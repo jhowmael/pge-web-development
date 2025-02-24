@@ -11,6 +11,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\AdministrativeController;
 use App\Http\Controllers\SimulationController;
+use App\Http\Controllers\UserSimulationController;
 
 // TELAS INICIAIS
 
@@ -97,16 +98,16 @@ Route::get('/simulations-dashboard', [SimulationController::class, 'simulationsD
 
 Route::get('/simulations-start/{id}', [SimulationController::class, 'simulationsStart'])->name('simulations-start');
 
-Route::get('/simulation-in-progress/{simulation}/{userSimulation}', [SimulationController::class, 'simulationInProgress'])
-    ->name('simulation-in-progress');
+Route::get('/in-progress/{simulation}/{userSimulation}', [UserSimulationController::class, 'inProgress'])
+    ->name('in-progress');
 
-Route::get('/simulations/{simulation}/questions/{questionNumber}', [SimulationController::class, 'getQuestion'])
+Route::get('/userSimulations/{simulation}/questions/{questionNumber}', [UserSimulationController::class, 'getQuestion'])
     ->middleware('auth')
-    ->name('simulations.getQuestion');
+    ->name('userSimulations.getQuestion');
 
-Route::post('/simulations/{userSimulation}/questions/{question}/response', [SimulationController::class, 'saveResponse'])
+Route::post('/userSimulations/{userSimulation}/questions/{question}/response', [UserSimulationController::class, 'saveResponse'])
     ->middleware('auth')
-    ->name('simulations.saveResponse');
+    ->name('userSimulations.saveResponse');
 
     
 

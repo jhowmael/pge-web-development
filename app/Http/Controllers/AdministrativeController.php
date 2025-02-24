@@ -201,6 +201,11 @@ class AdministrativeController extends Controller
             'alternative_c' => 'required|string',
             'alternative_d' => 'required|string',
             'alternative_e' => 'required|string',
+            'alternative_a_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'alternative_b_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'alternative_c_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'alternative_d_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'alternative_e_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'resolution' => 'required|string',
         ]);
     
@@ -208,10 +213,35 @@ class AdministrativeController extends Controller
     
         // Salvar a imagem, se existir
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('images', 'public');
+            $path = $request->file('image')->store('', 'public');
             $validatedData['image'] = $path;
         }
-    
+
+        if ($request->hasFile('alternative_a_image')) {
+            $path = $request->file('alternative_a_image')->store('', 'public');
+            $validatedData['alternative_a_image'] = $path;
+        }
+
+        if ($request->hasFile('alternative_b_image')) {
+            $path = $request->file('alternative_b_image')->store('', 'public');
+            $validatedData['alternative_b_image'] = $path;
+        }
+
+        if ($request->hasFile('alternative_c_image')) {
+            $path = $request->file('alternative_c_image')->store('', 'public');
+            $validatedData['alternative_c_image'] = $path;
+        }
+
+        if ($request->hasFile('alternative_d_image')) {
+            $path = $request->file('alternative_d_image')->store('', 'public');
+            $validatedData['alternative_d_image'] = $path;
+        }
+
+        if ($request->hasFile('alternative_e_image')) {
+            $path = $request->file('alternative_d_image')->store('', 'public');
+            $validatedData['alternative_e_image'] = $path;
+        }
+
         $question->update($validatedData);
     
         return redirect()->route('administrative-view-simulations', [$question->simulation_id])->with('success', 'Questão atualizado com sucesso!');
