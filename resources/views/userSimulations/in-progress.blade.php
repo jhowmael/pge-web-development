@@ -1,4 +1,8 @@
-    <div id="simulation" style="max-width: 800px; margin: auto; padding: 20px;">
+@extends('layouts.connect')
+
+@section('content')
+
+<div id="simulation" style="max-width: 800px; margin: auto; padding: 20px;">
         <center>
             <h1 id="simulation-name" style="font-size: 2.5em; color: #449d5b; font-weight: bold;"></h1>
             <h3 id="simulation-duration" style="font-size: 1.2em; color: #777;"></h3>
@@ -16,6 +20,16 @@
             <button id="next-question" style="background-color: #449d5b; color: white; border: 1px solid #449d5b; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1.1em; margin-left: 10px;">
                 Próxima
             </button>
+            <form action="{{ route('finish', $userSimulation->id) }}" method="POST">
+                @csrf
+                <button type="submit" 
+                        style="background-color: rgb(119, 0, 231); color: white; border: 1px solid #449d5b; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1.1em; margin-left: 10px;">
+                    Finalizar
+                </button>
+            </form>
+
+
+
         </div>
     </div>
 
@@ -63,6 +77,17 @@
             }
         }
 
+        function getThemeText(theme) {
+            const themes = {
+                'languages_codes_technologies': 'Linguagens, Códigos e suas Tecnologias',
+                'human_sciences_technologies': 'Ciências Humanas e suas Tecnologias',
+                'natural_sciences_technologies': 'Ciências da Natureza e suas Tecnologias',
+                'mathematics_technologies': 'Matemática e suas Tecnologias'
+            };
+
+            return themes[theme] || 'Tema não encontrado';
+        };
+
         // Atualizar o cronômetro a cada segundo
         const timerInterval = setInterval(updateTimer, 1000);
 
@@ -83,8 +108,9 @@
 
                     $('#question-container').html(`
                         <center>
-                            <h2 style="font-size: 1.8em; color: #444;">Questão: ${question.number} / Disciplina: ${question.theme}</h2>
+                            <h2 style="font-size: 1.8em; color: #444;">Questão: ${question.number} / Disciplina: ${getThemeText(question.theme)} </h2>
                         </center>
+
                         <p style="font-size: 1.2em; color: #555;">Enunciado: ${question.enunciation}</p>
                         <center>${imageHtml}</center>
                         <form id="response-form" style="margin-top: 20px; text-align: left;">
@@ -165,3 +191,5 @@
             });
         });
     </script>
+
+@endsection

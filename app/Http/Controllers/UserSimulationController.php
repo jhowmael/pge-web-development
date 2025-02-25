@@ -6,8 +6,10 @@ use App\Models\Simulation;
 use App\Models\UserSimulation;
 use App\Models\UserQuestionResponse;
 use App\Models\Question;
+use App\Models\Redaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class UserSimulationController extends Controller
 {
@@ -62,5 +64,21 @@ class UserSimulationController extends Controller
 
     return response()->json(['message' => 'Resposta salva com sucesso!', 'data' => $userQuestionResponse]);
 }
+
+public function finish($userSimulationId)
+{
+    $userSimulation = UserSimulation::findOrFail($userSimulationId);
+    
+    if(empty($userSimulation->finished)){
+        $userSimulation->finished = Carbon::now()->format('Y-m-d H:i:s');
+        $userSimulation->save();
+    }
+
+    $redaction = Redaction::where('user_simulation_id', $userSimulation->id)->first();
+
+    return redirect()->route('redaction-in-progress', [
+        'redaction' => $redaction->id,
+    ]);}
+
 
 }

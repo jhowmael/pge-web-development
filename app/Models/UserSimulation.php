@@ -31,7 +31,6 @@ class UserSimulation extends Model
     protected static function booted()
     {
         static::saving(function ($model) {
-            //$model->createRedaction($model); 
             $model->updateScores($model);
             $model->status = $model->updateStatus($model);
 

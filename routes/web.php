@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\AdministrativeController;
 use App\Http\Controllers\SimulationController;
 use App\Http\Controllers\UserSimulationController;
+use App\Http\Controllers\RedactionController;
 
 // TELAS INICIAIS
 
@@ -109,7 +110,12 @@ Route::post('/userSimulations/{userSimulation}/questions/{question}/response', [
     ->middleware('auth')
     ->name('userSimulations.saveResponse');
 
-    
+Route::post('/finish/{userSimulation}', [UserSimulationController::class, 'finish'])
+    ->name('finish');
+
+Route::get('/redaction-in-progress/{redaction}', [RedactionController::class, 'inProgress'])
+    ->name('redaction-in-progress');
+
 
 /*
 

@@ -2,10 +2,10 @@
 
 return [
     'themes' => [
-        'Languages, Codes and their Technologies' => 'Linguagens, Códigos e suas Tecnologias',
-        'Human Sciences and their Technologies' => 'Ciências Humanas e suas Tecnologias',
-        'Natural Sciences and their Technologies' => 'Ciências da Natureza e suas Tecnologias',
-        'Mathematics and its Technologies' => 'Matemática e suas Tecnologias'
+        'languages_codes_technologies' => 'Linguagens, Códigos e suas Tecnologias',
+        'human_sciences_technologies' => 'Ciências Humanas e suas Tecnologias',
+        'natural_sciences_technologies' => 'Ciências da Natureza e suas Tecnologias',
+        'mathematics_technologies' => 'Matemática e suas Tecnologias'
     ],
     
     'correct_alternatives' => [
