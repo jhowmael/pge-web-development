@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Simulation;
+use App\Models\Redaction;
 use App\Models\Question;
 use App\Models\UserSimulation;
 use App\Models\UserQuestionResponse;
@@ -46,6 +47,15 @@ class SimulationController extends Controller
         ];
 
         $userSimulation = UserSimulation::create($userSimulationData);
+        $redactionData = [
+            'user_id' => Auth::id(),
+            'simulation_id' => $simulation->id,
+            'user_simulation_id' => $userSimulation->id,
+            'theme' => $simulation->redaction_theme,
+            'type' => $simulation->type,
+        ];
+
+        $redaction = Redaction::create($redactionData);
 
         foreach ($simulation->questions as $question) {
             UserQuestionResponse::create([

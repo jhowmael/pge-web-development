@@ -22,14 +22,25 @@ class Redaction extends Model
         'text',
         'image',
         'correction',
+        'created',
         'status',
     ];
 
     protected static function booted()
     {
-        static::saving(function ($model) { 
+        static::saving(function ($model) {
+            $model->status = $model->getStatus($model);
         });
 
+    }
+
+    public function getStatus($entity)
+    {
+        if(!empty($entity->corrected)){
+            return 'corrected';
+        }
+
+        return 'in-progress';
     }
 }
 

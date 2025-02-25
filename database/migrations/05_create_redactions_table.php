@@ -18,12 +18,13 @@ return new class extends Migration
             $table->foreignId('simulation_id')->constrained('simulations')->onDelete('cascade');
             $table->string('type', 16);
             $table->string('theme', 255);
-            $table->integer('total_points');
-            $table->integer('score');
-            $table->text('text');
-            $table->string('image', 255)->nullable();
-            $table->text('correction');
+            $table->integer('total_points')->nullable();
+            $table->integer('score')->nullable();
+            $table->text('text')->nullable();
+            $table->string('image', 255)->nullable()->nullable();
+            $table->text('correction')->nullable();
             $table->string('status', 16);
+            $table->datetime('corrected')->nullable();
             $table->timestamps();
 
             // Add index if necessary
