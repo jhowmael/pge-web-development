@@ -81,4 +81,11 @@ public function finish($userSimulationId)
     ]);}
 
 
+    public function userSimulationView($userSimulationId, $redactionId){
+        $userSimulation = UserSimulation::findOrFail($userSimulationId);
+        $redaction = Redaction::findOrFail($redactionId);
+        
+        return view('userSimulations.user-simulation-view', compact('userSimulation', 'redaction'));
+    }
+
 }

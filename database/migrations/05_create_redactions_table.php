@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('simulation_id')->constrained('simulations')->onDelete('cascade');
             $table->string('type', 16);
             $table->string('theme', 255);
+            $table->text('introduction');
             $table->integer('total_points')->nullable();
             $table->integer('score')->nullable();
             $table->text('text')->nullable();

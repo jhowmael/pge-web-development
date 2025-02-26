@@ -17,6 +17,7 @@ class Redaction extends Model
         'user_simulation_id',
         'type',
         'theme',
+        'introduction',
         'total_points',
         'score',
         'text',
@@ -30,6 +31,9 @@ class Redaction extends Model
     {
         static::saving(function ($model) {
             $model->status = $model->getStatus($model);
+
+            $userSimulation = UserSimulation::find($model->user_simulation_id);
+            $userSimulation->save();  
         });
 
     }
@@ -43,5 +47,3 @@ class Redaction extends Model
         return 'in-progress';
     }
 }
-
-

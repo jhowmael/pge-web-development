@@ -22,7 +22,8 @@ return new class extends Migration
             $table->integer('minimum_minute');
             $table->integer('total_duration')->nullable();
             $table->integer('quantity_questions');
-            $table->string('redaction_theme', 255)->nullable();
+            $table->string('redaction_theme', 255);
+            $table->text('redaction_introduction');
             $table->integer('total_points');
             $table->text('description')->nullable();
             $table->string('status', 16);

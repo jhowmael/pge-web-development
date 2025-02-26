@@ -24,6 +24,7 @@ class Simulation extends Model
         'total_duration',
         'quantity_questions',
         'redaction_theme',
+        'redaction_introduction',
         'total_points',
         'description',
         'status',

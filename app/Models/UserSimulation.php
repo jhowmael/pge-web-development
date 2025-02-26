@@ -33,8 +33,6 @@ class UserSimulation extends Model
         static::saving(function ($model) {
             $model->updateScores($model);
             $model->status = $model->updateStatus($model);
-
-            
         });
 
     }
@@ -43,7 +41,7 @@ class UserSimulation extends Model
     {
         if($entity->redaction_score != $entity->updateRedactionScore($entity)){
             $entity->redaction_score = $entity->updateRedactionScore($entity);
-        }
+        }   
 
         if($entity->languages_codes_technologies != $entity->updateDisciplineScore($entity, 'languages_codes_technologies')){
             $entity->languages_codes_technologies = $entity->updateDisciplineScore($entity, 'languages_codes_technologies');

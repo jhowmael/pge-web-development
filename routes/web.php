@@ -113,10 +113,16 @@ Route::post('/userSimulations/{userSimulation}/questions/{question}/response', [
 Route::post('/finish/{userSimulation}', [UserSimulationController::class, 'finish'])
     ->name('finish');
 
+Route::get('/user-simulation-view/{userSimulationId}/{redactionId}', [UserSimulationController::class, 'userSimulationView'])
+    ->name('user-simulation-view');
+
 Route::get('/redaction-in-progress/{redaction}', [RedactionController::class, 'inProgress'])
     ->name('redaction-in-progress');
 
+Route::post('/redaction-finish/{redaction}', [RedactionController::class, 'finish'])
+    ->name('redaction-finish');
 
+    
 /*
 
 

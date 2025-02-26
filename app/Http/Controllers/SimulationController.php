@@ -52,6 +52,7 @@ class SimulationController extends Controller
             'simulation_id' => $simulation->id,
             'user_simulation_id' => $userSimulation->id,
             'theme' => $simulation->redaction_theme,
+            'introduction' => $simulation->redaction_introduction,
             'type' => $simulation->type,
         ];
 
