@@ -14,15 +14,15 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('administrative-dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i> Novo Simulado</a>
+                            <a class="nav-link active" href="{{ route('administrative.dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i> Novo Simulado</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -46,7 +46,7 @@
                     @endif
 
                     <!-- Formulário para adicionar um novo simulado -->
-                    <form action="{{ route('administrative-store-simulations') }}" method="POST">
+                    <form action="{{ route('administrative.store-simulations') }}" method="POST">
                         @csrf <!-- Proteção contra CSRF -->
                         <div class="mb-3">
                             <label for="type" class="form-label">Tipo / Modelo</label>

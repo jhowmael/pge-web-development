@@ -14,13 +14,13 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('administrative-dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i> Editar Simulado</a>
+                            <a class="nav-link active" href="{{ route('administrative.dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i> Editar Simulado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -33,7 +33,7 @@
                     <h4>Editar Simulado</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrative-update-simulations', $simulation->id) }}" method="POST">
+                    <form action="{{ route('administrative.update-simulations', $simulation->id) }}" method="POST">
                         @csrf
                         <!-- Tipo -->
                         <div class="mb-3">
