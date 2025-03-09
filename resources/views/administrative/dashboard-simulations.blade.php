@@ -13,13 +13,13 @@
                     <p>Painel onde é possível cadastrar simulados e gerenciar usuários de forma prática e centralizada.</p>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('administrative-dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link active" href="{{ route('administrative.dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -46,7 +46,7 @@
                     <div class="col-md-4">
                         <div class="card mx-3 mb-4">
                             <div class="card-header bg-primary text-white text-center">
-                                <h4><i class="fa-solid fa-magnifying-glass"></i> <a class="text-white text-decoration-none" href="{{ route('administrative-filter-simulations') }}"> Pesquisar </a></h4>
+                                <h4><i class="fa-solid fa-magnifying-glass"></i> <a class="text-white text-decoration-none" href="{{ route('administrative.filter-simulations') }}"> Pesquisar </a></h4>
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         <div class="card mx-3 mb-4">
                             <div class="card-header bg-success text-white text-center">
                                 <h4><i class="fa-solid fa-plus"></i>
-                                    <a class="text-white text-decoration-none" href="{{ route('administrative-add-simulations') }}"> Novo Simulado </a>
+                                    <a class="text-white text-decoration-none" href="{{ route('administrative.add-simulations') }}"> Novo Simulado </a>
                                 </h4>
                             </div>
                         </div>
@@ -87,25 +87,25 @@
                             <td>{{ $simulation->edition ?? 'n/a' }}</td>
                             <td>{{ $simulation->status }}</td>
                             <td>
-                                <form action="{{ route('administrative-view-simulations', $simulation->id) }}" method="GET" style="display:inline-block;">
+                                <form action="{{ route('administrative.view-simulations', $simulation->id) }}" method="GET" style="display:inline-block;">
                                     <button type="submit" class="btn btn-info" title="Visualizar">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
                                 </form>
-                                <form action="{{ route('administrative-edit-simulations', $simulation->id) }}" method="GET" style="display:inline-block;">
+                                <form action="{{ route('administrative.edit-simulations', $simulation->id) }}" method="GET" style="display:inline-block;">
                                     <button type="submit" class="btn btn-warning" title="Editar">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
                                 </form>
                                 @if($simulation->status == 'disabled')
-                                    <form action="{{ route('administrative-enable-simulations', $simulation->id) }}" method="POST" style="display:inline-block;">
+                                    <form action="{{ route('administrative.enable-simulations', $simulation->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-success" title="Habilitar">
                                             <i class="fa-solid fa-check"></i>
                                         </button>
                                     </form>
                                 @else
-                                    <form action="{{ route('administrative-disable-simulations', $simulation->id) }}" method="POST" style="display:inline-block;">
+                                    <form action="{{ route('administrative.disable-simulations', $simulation->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-danger" title="Desabilitar">
                                             <i class="fa-solid fa-delete-left"></i>

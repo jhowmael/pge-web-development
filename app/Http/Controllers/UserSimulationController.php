@@ -13,18 +13,23 @@ use Carbon\Carbon;
 
 class UserSimulationController extends Controller
 {
-    public function inProgress(Simulation $simulation, UserSimulation $userSimulation)
+    public function inProgress($simulationId, $userSimulationId)
     {
-        $questions = Question::where('simulation_id', $simulation->id)->get();
+
+        $simulation = Simulation::find($simulationId);
+        $userSimulation = UserSimulation::find($userSimulationId);
+        
+
+        $questions = Question::where('simulation_id', $simulationId)->get();
         
         foreach ($questions as $question) {
             $question->userQuestionResponse = UserQuestionResponse::where('question_id', $question->id)
                 ->where('user_id', auth()->id())
-                ->where('user_simulation_id', $userSimulation->id)
+                ->where('user_simulation_id', $userSimulationId)
                 ->first();
         }
 
-        return view('userSimulations.in-progress', compact('simulation', 'userSimulation', 'questions'));
+        return view('userSimulation.in-progress', compact('simulation', 'userSimulation', 'questions'));
     }
 
     public function getQuestion($simulationId, $questionNumber)
@@ -76,16 +81,16 @@ public function finish($userSimulationId)
 
     $redaction = Redaction::where('user_simulation_id', $userSimulation->id)->first();
 
-    return redirect()->route('redaction-in-progress', [
-        'redaction' => $redaction->id,
+    return redirect()->route('redaction.in-progress', [
+        'redactionId' => $redaction->id,
     ]);}
 
 
-    public function userSimulationView($userSimulationId, $redactionId){
+    public function view($userSimulationId, $redactionId){
         $userSimulation = UserSimulation::findOrFail($userSimulationId);
         $redaction = Redaction::findOrFail($redactionId);
         
-        return view('userSimulations.user-simulation-view', compact('userSimulation', 'redaction'));
+        return view('userSimulation.view', compact('userSimulation', 'redaction'));
     }
 
 }

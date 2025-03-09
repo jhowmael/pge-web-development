@@ -103,10 +103,10 @@
                         <a class="nav-link" href="{{ route('welcome') }}"> <i class="fa-solid fa-house"></i> Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile-configurations') }}"> <i class="fa-solid fa-user"></i> Perfil</a>
+                        <a class="nav-link" href="{{ route('user.configurations') }}"> <i class="fa-solid fa-user"></i> Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('simulations-dashboard') }}"><i class="fa-solid fa-graduation-cap"></i> Simulados</a>
+                        <a class="nav-link" href="{{ route('simulation.index') }}"><i class="fa-solid fa-graduation-cap"></i> Simulados</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-pen"></i> Redações</a>
@@ -118,7 +118,7 @@
                 <hr>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('administrative-dashboard') }}"><i class="fa-solid fa-sliders"></i> Administrativo</a>
+                        <a class="nav-link" href="{{ route('administrative.dashboard') }}"><i class="fa-solid fa-sliders"></i> Administrativo</a>
                     </li>
                 </ul>
             </div>

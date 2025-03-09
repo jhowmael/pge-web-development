@@ -24,7 +24,7 @@
         </ul>
     </div>  
 
-    <form action="{{ route('redaction-finish', $redaction->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('redaction.finish', $redaction->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
 

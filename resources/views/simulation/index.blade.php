@@ -76,7 +76,7 @@
                                 <td>{{ $simulation->year }}</td>
                                 <td>{{ $simulation->edition ?? 'n/a' }}</td>
                                 <td>
-                                    <form action="{{ route('simulations-start', $simulation->id) }}" method="GET" style="display:inline-block;">
+                                    <form action="{{ route('simulation.start', $simulation->id) }}" method="GET" style="display:inline-block;">
                                         <button type="submit" class="btn btn-success" title="Iniciar">
                                             <i class="fa-solid fa-forward"></i>
                                         </button>

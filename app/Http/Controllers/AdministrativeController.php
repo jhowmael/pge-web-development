@@ -9,27 +9,25 @@ use App\Models\Question;
 class AdministrativeController extends Controller
 {
 
-    public function administrativeDashboard()
+    public function dashboard()
     {
-        return view('administrative-dashboard');
+        return view('administrative.dashboard');
     }
 
-    public function administrativeDashboardSimulations()
+    public function dashboardSimulations()
     {
         $simulations = Simulation::orderBy('updated_at', 'desc')->take(20)->get();
 
-        return view('administrative-dashboard-simulations', compact('simulations'));
+        return view('administrative.dashboard-simulations', compact('simulations'));
     }
 
-    public function administrativeAddSimulations()
+    public function addSimulations()
     {
-        return view('administrative-add-simulations');
+        return view('administrative.add-simulations');
     }
 
-    public function administrativeStoreSimulations(Request $request)
+    public function storeSimulations(Request $request)
     {
-
-        // Validação dos dados
         $validatedData = $request->validate([
             'type' => 'required|string',
             'year' => 'required|integer',
@@ -45,7 +43,6 @@ class AdministrativeController extends Controller
         $validatedData['name'] = config('simulations.types.' . $validatedData['type']) . ' - ' .  $validatedData['year'];
         $validatedData['status'] = config('simulations.autoStatusRegister');
 
-        // Cria o novo simulado e salva no banco de dados
         $simulation = Simulation::create($validatedData);
         for($i = 1; $i <= $simulation->quantity_questions; $i++){
             $questionData = array(
@@ -57,29 +54,26 @@ class AdministrativeController extends Controller
             Question::create($questionData);
         }
 
-        // Redireciona o usuário com uma mensagem de sucesso
-        return redirect()->route('administrative-add-simulations')->with('success', 'Simulado adicionado com sucesso!');
+        return redirect()->route('administrative.add-simulations')->with('success', 'Simulado adicionado com sucesso!');
     }
 
-    public function administrativeViewSimulations($id)
+    public function viewSimulations($id)
     {
         $simulation = Simulation::with('questions')->where('id', $id)->first();
-        $questions = $simulation->questions()->paginate(10); // Aqui você especifica a quantidade de perguntas por página
-        return view('administrative-view-simulations', compact('simulation', 'questions'));
+        $questions = $simulation->questions()->paginate(10);
+
+        return view('administrative.view-simulations', compact('simulation', 'questions'));
     }
 
-    public function administrativeEditSimulations($id)
+    public function editSimulations($id)
     {
-        // Busca o simulado pelo ID
         $simulation = Simulation::findOrFail($id);
 
-        // Retorna a view com o simulado
-        return view('administrative-edit-simulations', compact('simulation'));
+        return view('administrative.edit-simulations', compact('simulation'));
     }
 
-    public function administrativeUpdateSimulations(Request $request, $id)
+    public function updateSimulations(Request $request, $id)
     {
-        // Validação dos dados
         $validatedData = $request->validate([
             'type' => 'required|string',
             'edition' => 'nullable|string',
@@ -93,44 +87,36 @@ class AdministrativeController extends Controller
         ]);
 
         $validatedData['name'] = config('simulations.types.' . $validatedData['type']) . ' - ' .  $validatedData['year'];
-
-        // Atualiza o simulado no banco de dados
         $simulation = Simulation::findOrFail($id);
         $simulation->update($validatedData);
 
-        // Redireciona para a tela de simulados com mensagem de sucesso
-        return redirect()->route('administrative-dashboard-simulations')->with('success', 'Simulado atualizado com sucesso!');
+        return redirect()->route('administrative.dashboard-simulations')->with('success', 'Simulado atualizado com sucesso!');
     }
 
-    public function administrativeDisableSimulations($id)
+    public function disableSimulations($id)
     {
         $validatedData['status'] = 'disabled';
-
         $simulation = Simulation::findOrFail($id);
-
         $simulation->update($validatedData);
 
-        return redirect()->route('administrative-dashboard-simulations')->with('success', 'Simulado desabilitado com sucesso!');
+        return redirect()->route('administrative.dashboard-simulations')->with('success', 'Simulado desabilitado com sucesso!');
     }
 
-    public function administrativeEnableSimulations($id)
+    public function enableSimulations($id)
     {
         $validatedData['status'] = 'enabled';
-
         $simulation = Simulation::findOrFail($id);
-
         $simulation->update($validatedData);
 
-        return redirect()->route('administrative-dashboard-simulations')->with('success', 'Simulado habilitado com sucesso!');
+        return redirect()->route('administrative.dashboard-simulations')->with('success', 'Simulado habilitado com sucesso!');
     }
 
-    public function administrativeDeleteSimulations()
+    public function deleteSimulations()
     {
-        return view('administrative-delete-simulations');
+        return view('administrative.delete-simulations');
     }
 
-    // Método para filtrar os simulados
-    public function administrativeFilterSimulations(Request $request)
+    public function filterSimulations(Request $request)
     {
         $query = Simulation::query();
 
@@ -146,50 +132,48 @@ class AdministrativeController extends Controller
             $query->where('status', 'like', '%' . $request->status . '%');
         }
 
-        // Adicione mais filtros conforme necessário
-
         $simulations = $query->get();
-        return view('administrative-filter-simulations', compact('simulations'));
+
+        return view('administrative.filter-simulations', compact('simulations'));
     }
 
-    public function administrativeDashboardUsers()
+    public function dashboardUsers()
     {
-        return view('administrative-dashboard-users');
+        return view('administrative.dashboard-users');
     }
 
-    public function administrativeEditUsers()
+    public function editUsers()
     {
-        return view('administrative-edit-users');
+        return view('administrative.edit-users');
     }
 
-    public function administrativeViewUsers()
+    public function viewUsers()
     {
-        return view('administrative-view-users');
+        return view('administrative.view-users');
     }
 
-    public function administrativeDisableUsers()
+    public function disableUsers()
     {
-        return view('administrative-disable-users');
+        return view('administrative.disable-users');
     }
 
-
-    public function administrativeViewQuestions($id)
+    public function viewQuestions($id)
     {
         $question = Question::where('id', $id)->first();
         $simulation = Simulation::where('id', $question->simulation_id)->first();
 
-        return view('administrative-view-questions', compact('question', 'simulation'));
+        return view('administrative.view-questions', compact('question', 'simulation'));
     }
 
-    public function administrativeEditQuestions($id)
+    public function editQuestions($id)
     {
         $question = Question::findOrFail($id);
         $simulation = Simulation::where('id', $question->simulation_id)->first();
 
-        return view('administrative-edit-questions', compact('question', 'simulation'));
+        return view('administrative.edit-questions', compact('question', 'simulation'));
     }
     
-    public function administrativeUpdateQuestions(Request $request, $id)
+    public function updateQuestions(Request $request, $id)
     {
         $validatedData = $request->validate([
             'theme' => 'required|string',
@@ -244,7 +228,6 @@ class AdministrativeController extends Controller
 
         $question->update($validatedData);
     
-        return redirect()->route('administrative-view-simulations', [$question->simulation_id])->with('success', 'Questão atualizado com sucesso!');
+        return redirect()->route('administrative.view-simulations', [$question->simulation_id])->with('success', 'Questão atualizado com sucesso!');
     }
-    
 }

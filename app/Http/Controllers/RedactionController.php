@@ -14,7 +14,7 @@ class RedactionController extends Controller
     {
         $redaction = Redaction::findOrFail($redactionId);
 
-        return view('redactions.in-progress', compact('redaction'));
+        return view('redaction.in-progress', compact('redaction'));
     }
 
     public function finish(Request $request, $redactionId)
@@ -34,7 +34,7 @@ class RedactionController extends Controller
             $redaction->save();
         }
 
-        return redirect()->route('user-simulation-view', [
+        return redirect()->route('userSimulation.view', [
             'userSimulationId' => $redaction->user_simulation_id,
             'redactionId' => $redaction->id,
         ]);
@@ -52,7 +52,7 @@ class RedactionController extends Controller
                 [
                     'parts' => [
                         [
-                            'text' => 'lista e corrija os erros de uma redação do tema: ' . $redactioTheme . 'seguindo o modelo enem de forma simplificada e sem reescrever o texto inteiro, este é a redação a ser corrigida: ' . $redactionText
+                            'text' => 'Você é um avaliador de provas, Não fale mais nada que não seja correção ou sujestão, seja direto, agora lista e corrija os erros de uma redação do tema: ' . $redactioTheme . 'seguindo o modelo de prova de vestibular, sem reescrever o texto inteiro, este é a redação a ser corrigida: ' . $redactionText
                         ]
                     ]
                 ]
