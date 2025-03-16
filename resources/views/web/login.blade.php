@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.web') 
 
 @section('content')
 <!DOCTYPE html>
@@ -7,71 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .login-container {
-            max-width: 800px;
-            margin: auto;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .left-panel {
-            background-color: #FFD700;
-            padding: 80px;
-            color: white;
-            text-align: center;
-        }
-
-        .left-panel h2 {
-            font-weight: bold;
-        }
-
-        .btn-custom {
-            border: 2px solid white;
-            color: white;
-            background: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .btn-custom:hover {
-            background: white;
-            color: #FFD700;
-        }
-
-        .right-panel {
-            background-color: white;
-            padding: 80px;
-        }
-
-        .form-control {
-            border-radius: 50px;
-        }
-
-        .btn-yellow {
-            background-color: #FFD700;
-            border: none;
-            border-radius: 25px;
-            padding: 10px;
-            color: white;
-            font-weight: bold;
-            width: 100%;
-        }
-
-        .btn-yellow:hover {
-            background-color: #FFD700;
-        }
-    </style>
 </head>
 <body>
 

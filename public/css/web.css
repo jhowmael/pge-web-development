@@ -1,27 +1,61 @@
-       /* Estilo para garantir que o rodapé fique no final da tela */
-       html, body {
-        height: 100%;
-        margin: 0;
-    }
-    .content {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-    .flex-grow-1 {
-        flex: 1;
-    }
+body {
+    background-color: #f8f9fa;
+}
 
-    .bg-purple {
-        background-color: #6f42c1; /* Código hexadecimal para roxo */
-    }
+.login-container {
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+}
 
-    .btn-purple {
-        background-color: #6f42c1; /* Cor roxa */
-        color: #fff; /* Cor do texto */
-    }
+.left-panel {
+    background-color: #FFD700;
+    padding: 80px;
+    color: white;
+    text-align: center;
+}
 
-    .btn-purple:hover {
-        background-color: #5a2c9e; /* Cor roxa mais escura ao passar o mouse */
-        color: #fff;
-    }
+.left-panel h2 {
+    font-weight: bold;
+}
+
+.btn-custom {
+    border: 2px solid white;
+    color: white;
+    background: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-custom:hover {
+    background: white;
+    color: #FFD700;
+}
+
+.right-panel {
+    background-color: white;
+    padding: 80px;
+}
+
+.form-control {
+    border-radius: 50px;
+}
+
+.btn-yellow {
+    background-color: #FFD700;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+}
+
+.btn-yellow:hover {
+    background-color: #FFD700;
+}
