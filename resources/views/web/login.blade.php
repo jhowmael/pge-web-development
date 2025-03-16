@@ -72,7 +72,7 @@
 </style>
                     
                 <div class="text-end">
-                    <a href="#" class="text-muted">Esqueci minha senha</a>
+                    <a href="{{ route('forgot-password') }}" class="text-muted">Esqueci minha senha</a>
                 </div>
                     
                     <button type="submit" class="btn btn-yellow mt-3">ENTRAR</button>

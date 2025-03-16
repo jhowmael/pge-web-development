@@ -2,17 +2,41 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller
+class AccessController extends Controller
 {
+    public function showLoginForm()
+    {
+        return view('web.login');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/welcome');
+        }
+
+        return redirect()->back()->withErrors([
+            'email' => 'As credenciais não correspondem aos nossos registros.',
+        ]);
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        return view('web.forgot-password');
+    }
+
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('web.register');
     }
 
     public function register(Request $request)

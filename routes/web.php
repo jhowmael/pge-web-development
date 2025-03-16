@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\AppController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\AccessController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\AdministrativeController;
 use App\Http\Controllers\SimulationController;
@@ -17,10 +16,11 @@ Route::get('/contact', [WebController::class, 'showContactForm'])->name('contact
 Route::post('/contact', [WebController::class, 'submitContactForm'])->name('contact.submit');
 Route::get('/plans', [WebController::class, 'plans'])->name('plans');
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
+Route::get('/login', [AccessController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AccessController::class, 'login']);
+Route::get('/forgot-password', [AccessController::class, 'forgotPassword'])->name('forgot-password');
+Route::get('/register', [AccessController::class, 'showRegistrationForm'])->name('register.form');
+Route::post('/register', [AccessController::class, 'register'])->name('register');
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/'); 
