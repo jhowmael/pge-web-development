@@ -6,60 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PGE-1</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="https://kit.fontawesome.com/821b65200f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<style>
-    
-    h2, h6, hr{
-        color: #6f42c1; /* Cor do texto roxa */
-    }
-
-    .navbar-brand {
-        margin-left: 20px; /* Adjust the value to your desired margin */
-    }
-
-    .nav-link {
-        color: #6f42c1; /* Cor do texto dos links */
-    }
-
-    .nav-link:hover {
-        color: #6598ad; /* Cor que aparece quando o mouse passa por cima */
-    }
-
-    .active {
-        color: #428aa3; /* Cor do texto dos links */
-    }
-
-    .bg-purple {
-        background-color: #6f42c1; /* Código hexadecimal para roxo */
-    }
-
-    .btn-purple {
-        background-color: #6f42c1; /* Cor roxa */
-        color: #fff; /* Cor do texto */
-    }
-
-    .btn-purple:hover {
-        background-color: #5a2c9e; /* Cor roxa mais escura ao passar o mouse */
-        color: #fff;
-    }
-
-    html, body {
-        height: 100%;
-        margin: 0;
-    }
-    .content {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-    .flex-grow-1 {
-        flex: 1;
-    }
-
-</style>
 <div class="row">
     <div class="col-12"> 
         <nav class="navbar navbar-expand-lg navbar-dark bg-purple shadow-lg custom-navbar">

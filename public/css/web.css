@@ -1,0 +1,27 @@
+       /* Estilo para garantir que o rodapé fique no final da tela */
+       html, body {
+        height: 100%;
+        margin: 0;
+    }
+    .content {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .flex-grow-1 {
+        flex: 1;
+    }
+
+    .bg-purple {
+        background-color: #6f42c1; /* Código hexadecimal para roxo */
+    }
+
+    .btn-purple {
+        background-color: #6f42c1; /* Cor roxa */
+        color: #fff; /* Cor do texto */
+    }
+
+    .btn-purple:hover {
+        background-color: #5a2c9e; /* Cor roxa mais escura ao passar o mouse */
+        color: #fff;
+    }
