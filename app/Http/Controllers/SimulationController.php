@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SimulationController extends Controller
 {
-    public function simulationsDashboard(Request $request)
+    public function index(Request $request)
     {
         $query = Simulation::query();
 
@@ -30,10 +30,10 @@ class SimulationController extends Controller
 
         $simulations = $query->get();
 
-        return view('simulations-dashboard', compact('simulations'));
+        return view('simulation.index', compact('simulations'));
     }
 
-    public function simulationsStart($id)
+    public function start($id)
     {
         $simulation = Simulation::with('questions')->find($id);
 
@@ -58,6 +58,9 @@ class SimulationController extends Controller
 
         $redaction = Redaction::create($redactionData);
 
+        $userSimulation->redaction_id = $redaction->id;
+        $userSimulation->save();
+
         foreach ($simulation->questions as $question) {
             UserQuestionResponse::create([
                 'user_id' => Auth::id(),
@@ -65,19 +68,10 @@ class SimulationController extends Controller
                 'question_id' => $question->id,
                 'status' => 'não respondido', // Exemplo, altere conforme necessário
             ]);
-        }
-
-        return redirect()->route('in-progress', [
-            'simulation' => $simulation->id,
-            'userSimulation' => $userSimulation->id,
+        }   
+        return redirect()->route('userSimulation.in-progress', [
+            'simulationId' => $simulation->id,
+            'userSimulationId' => $userSimulation->id,
         ]);
-    }
-
-
-
-
-    
-
-
-    
+    }    
 }

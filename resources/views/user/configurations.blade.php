@@ -1,4 +1,4 @@
-@extends('layouts.connect')
+@extends('layouts.app')
 
 @section('content')
 
@@ -14,11 +14,11 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('profile-configurations') }}">Configurações de Perfil <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link active" href="{{ route('user.configurations') }}">Configurações de Perfil <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profile-edit-password') }}">Alterar Senha <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('user.edit-password') }}">Alterar Senha <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -41,7 +41,7 @@
                     <p style="color: red;">{{ session('error') }}</p>
                     @endif
 
-                    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="form">
+                    <form action="{{ route('user.update') }}" method="POST" enctype="multipart/form-data" class="form">
                         @csrf
 
                         <div class="form-group">

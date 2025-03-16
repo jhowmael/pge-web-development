@@ -1,4 +1,4 @@
-@extends('layouts.connect')
+@extends('layouts.app')
 
 @section('content')
 
@@ -14,13 +14,13 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('administrative-dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i> Editar Questão</a>
+                            <a class="nav-link active" href="{{ route('administrative.dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i> Editar Questão</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -59,21 +59,21 @@
                     <!-- Botões de ação -->
                     <div class="text-center">
                         <!-- Botão Visualizar mais claro, indicando que você está na tela atual -->
-                         <a href="{{ route('administrative-view-simulations', $simulation->id) }}" class="btn btn-primary">
+                         <a href="{{ route('administrative.view-simulations', $simulation->id) }}" class="btn btn-primary">
                             <i class="fa-solid fa-magnifying-glass"></i> Visualizar
                         </a>
-                        <a href="{{ route('administrative-edit-questions', $question->id) }}" class="btn btn-warning">
+                        <a href="{{ route('administrative.edit-questions', $question->id) }}" class="btn btn-warning">
                             <i class="fa-solid fa-pencil"></i> Editar
                         </a>
                         @if ($simulation->status == 'disabled')
-                        <form action="{{ route('administrative-enable-questions', $question->id) }}" method="POST" style="display: inline-block;">
+                        <form action="{{ route('administrative.enable-questions', $question->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             <button type="submit" class="btn btn-success">
                                 <i class="fa-solid fa-check"></i> Habilitar
                             </button>
                         </form>
                         @else
-                        <form action="{{ route('administrative-disable-simulations', $simulation->id) }}" method="POST" style="display: inline-block;">
+                        <form action="{{ route('administrative.disable-simulations', $simulation->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             <input type="hidden" name="_method" value="POST">
                             <button type="submit" class="btn btn-danger">
@@ -88,7 +88,7 @@
                             <h4>Editar Questão {{$question->number}} </h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('administrative-update-questions', $question->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('administrative.update-questions', $question->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                   
                                 <div class="mb-3">

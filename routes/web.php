@@ -2,166 +2,81 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\WebController;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\PlansController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\AdministrativeController;
 use App\Http\Controllers\SimulationController;
 use App\Http\Controllers\UserSimulationController;
 use App\Http\Controllers\RedactionController;
 
-// TELAS INICIAIS
-
-Route::get('/', [HomeController::class, 'home'])->name('home');
-
-Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact');
-Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
-
+Route::get('/', [WebController::class, 'home'])->name('home');
+Route::get('/contact', [WebController::class, 'showContactForm'])->name('contact');
+Route::post('/contact', [WebController::class, 'submitContactForm'])->name('contact.submit');
+Route::get('/plans', [WebController::class, 'plans'])->name('plans');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
-
-
-Route::get('/plans', [PlansController::class, 'plans'])->name('plans');
-
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/'); // Redireciona para a página inicial após o logout
+    return redirect('/'); 
 })->name('logout');
 
-//--------------------------------------------
 
-// TELAS DO CLIENTE
+Route::get('/welcome', [AppController::class, 'welcome'])->middleware('auth')->name('welcome');
+Route::get('/learn', [AppController::class, 'learn'])->middleware('auth')->name('learn');
 
+Route::prefix('user')->group(function () {
+    Route::get('/configurations', [UserController::class, 'configurations'])->middleware('auth')->name('user.configurations');
+    Route::post('/profile-update', [UserController::class, 'update'])->middleware('auth')->name('user.update');
+    Route::get('/edit-password', [UserController::class, 'editPassword'])->middleware('auth')->name('user.edit-password');
+    Route::post('/update-password', [UserController::class, 'updatePassword'])->middleware('auth')->name('user.update-password');
+});
 
-Route::get('/welcome', [WelcomeController::class, 'welcome'])->middleware('auth')->name('welcome');
+Route::prefix('administrative')->group(function () {
+    Route::get('/dashboard', [AdministrativeController::class, 'dashboard'])->middleware('auth')->name('administrative.dashboard');
+    Route::get('/dashboard-simulations', [AdministrativeController::class, 'dashboardSimulations'])->middleware('auth')->name('administrative.dashboard-simulations');
+    Route::get('/add-simulations', action: [AdministrativeController::class, 'addSimulations'])->name('administrative.add-simulations');
+    Route::post('/store-simulations', [AdministrativeController::class, 'storeSimulations'])->name('administrative.store-simulations');
+    Route::get('/view-simulations/{id}', [AdministrativeController::class, 'viewSimulations'])->name('administrative.view-simulations');
+    Route::get('/edit-simulations/{id}', [AdministrativeController::class, 'editSimulations'])->name('administrative.edit-simulations');
+    Route::post('/update-simulations/{id}', [AdministrativeController::class, 'updateSimulations'])->name('administrative.update-simulations');
+    Route::post('/disable-simulations/{id}', [AdministrativeController::class, 'disableSimulations'])->name('administrative.disable-simulations');
+    Route::post('/enable-simulations/{id}', [AdministrativeController::class, 'enableSimulations'])->name('administrative.enable-simulations');
+    Route::get('/filter-simulations', [AdministrativeController::class, 'filterSimulations'])->name('administrative.filter-simulations');
+    Route::get('/view-questions/{id}', [AdministrativeController::class, 'viewQuestions'])->name('administrative.view-questions');
+    Route::get('/edit-questions/{id}', [AdministrativeController::class, 'editQuestions'])->name('administrative.edit-questions');
+    Route::post('/update-questions/{id}', [AdministrativeController::class, 'updateQuestions'])->name('administrative.update-questions');
+    Route::get('/dashboard-users', [AdministrativeController::class, 'dashboardUsers'])->name('administrative.dashboard-users');
+    Route::get('/edit-users', [AdministrativeController::class, 'editUsers'])->name('administrative.edit-users');
+    Route::get('/view-users', [AdministrativeController::class, 'viewUsers'])->name('administrative.view-users');
+    Route::get('/disable-users', [AdministrativeController::class, 'disableUsers'])->name('administrative.disable-users');
+});
 
+Route::prefix('simulation')->group(function () {
+    Route::get('/', [SimulationController::class, 'index'])->middleware('auth')->name('simulation.index');
+    Route::get('/start/{id}', [SimulationController::class, 'start'])->middleware('auth')->name('simulation.start');
+});
 
+Route::prefix('userSimulation')->group(function () {
+    Route::get('/', [UserSimulationController::class, 'index'])->middleware('auth')->name('userSimulation.index');
+    Route::get('/in-progress/{simulationId}/{userSimulationId}', [UserSimulationController::class, 'inProgress'])->middleware('auth')->name('userSimulation.in-progress');
+    Route::post('/finish/{userSimulationId}', [UserSimulationController::class, 'finish'])->middleware('auth')->name('userSimulation.finish');
+    Route::get('/view/{id}', [UserSimulationController::class, 'view'])->middleware('auth')->name('userSimulation.view');
+});
+Route::get('/userSimulations/{simulation}/questions/{questionNumber}', [UserSimulationController::class, 'getQuestion'])->middleware('auth')->name('userSimulations.getQuestion');
+Route::post('/userSimulations/{userSimulation}/questions/{question}/response', [UserSimulationController::class, 'saveResponse'])->name('userSimulations.saveResponse');
 
-Route::get('/profile', function () {
-    return view('perfil');
+Route::prefix('redaction')->group(function () {
+    Route::get('/', [RedactionController::class, 'index'])->middleware('auth')->name('redaction.index');
+    Route::get('/view{id}', [RedactionController::class, 'view'])->middleware('auth')->name('redaction.view');
+    Route::get('/in-progress/{redactionId}', [RedactionController::class, 'inProgress'])->middleware('auth')->name('redaction.in-progress');
+    Route::post('/finish/{redactionId}', [RedactionController::class, 'finish'])->middleware('auth')->name('redaction.finish');
 });
 
 
-Route::get('/profile-configurations', [ProfileController::class, 'profileConfigurations'])->middleware('auth')->name('profile-configurations');
-Route::post('/profile-update', [ProfileController::class, 'updateProfile'])->middleware('auth')->name('profile.update');
 
-Route::get('/profile-edit-password', [ProfileController::class, 'profileEditPassword'])
-    ->middleware('auth')
-    ->name('profile-edit-password');
-
-Route::post('/profile-update-password', [ProfileController::class, 'updateProfilePassword'])
-    ->middleware('auth')
-    ->name('profile.update-password');
-
-Route::get('/administrative-dashboard', [AdministrativeController::class, 'administrativeDashboard'])->name('administrative-dashboard');
-
-Route::get('/adminstrative-dashboard-simulations', [AdministrativeController::class, 'administrativeDashboardSimulations'])->name('administrative-dashboard-simulations');
-
-Route::get('/adminstrative-add-simulations', action: [AdministrativeController::class, 'administrativeAddSimulations'])->name('administrative-add-simulations');
-
-Route::post('/administrative-store-simulations', [AdministrativeController::class, 'administrativeStoreSimulations'])->name('administrative-store-simulations');
-
-Route::get('/administrative-view-simulations/{id}', [AdministrativeController::class, 'administrativeViewSimulations'])->name('administrative-view-simulations');
-
-Route::get('/administrative-edit-simulations/{id}', [AdministrativeController::class, 'administrativeEditSimulations'])->name('administrative-edit-simulations');
-
-Route::post('/administrative-update-simulations/{id}', [AdministrativeController::class, 'administrativeUpdateSimulations'])->name('administrative-update-simulations');
-
-Route::post('/administrative-disable-simulations/{id}', [AdministrativeController::class, 'administrativeDisableSimulations'])->name('administrative-disable-simulations');
-
-Route::post('/administrative-enable-simulations/{id}', [AdministrativeController::class, 'administrativeEnableSimulations'])->name('administrative-enable-simulations');
-
-Route::get('/administrative-filter-simulations', [AdministrativeController::class, 'administrativeFilterSimulations'])->name('administrative-filter-simulations');
-
-Route::get('/administrative-view-questions/{id}', [AdministrativeController::class, 'administrativeViewQuestions'])->name('administrative-view-questions');
-
-Route::get('/administrative-edit-questions/{id}', [AdministrativeController::class, 'administrativeEditQuestions'])->name('administrative-edit-questions');
-
-Route::post('/administrative-update-questions/{id}', [AdministrativeController::class, 'administrativeUpdateQuestions'])->name('administrative-update-questions');
-
-Route::get('/administrative-dashboard-users', [AdministrativeController::class, 'administrativeDashboardUsers'])->name('administrative-dashboard-users');
-
-Route::get('/administrative-edit-users', [AdministrativeController::class, 'administrativeEditUsers'])->name('administrative-edit-users');
-
-Route::get('/administrative-view-users', [AdministrativeController::class, 'administrativeViewUsers'])->name('administrative-view-users');
-
-Route::get('/administrative-disable-users', [AdministrativeController::class, 'administrativeDisableUsers'])->name('administrative-disable-users');
-
-Route::get('/simulations-dashboard', [SimulationController::class, 'simulationsDashboard'])->name('simulations-dashboard');
-
-Route::get('/simulations-start/{id}', [SimulationController::class, 'simulationsStart'])->name('simulations-start');
-
-Route::get('/in-progress/{simulation}/{userSimulation}', [UserSimulationController::class, 'inProgress'])
-    ->name('in-progress');
-
-Route::get('/userSimulations/{simulation}/questions/{questionNumber}', [UserSimulationController::class, 'getQuestion'])
-    ->middleware('auth')
-    ->name('userSimulations.getQuestion');
-
-Route::post('/userSimulations/{userSimulation}/questions/{question}/response', [UserSimulationController::class, 'saveResponse'])
-    ->middleware('auth')
-    ->name('userSimulations.saveResponse');
-
-Route::post('/finish/{userSimulation}', [UserSimulationController::class, 'finish'])
-    ->name('finish');
-
-Route::get('/user-simulation-view/{userSimulationId}/{redactionId}', [UserSimulationController::class, 'userSimulationView'])
-    ->name('user-simulation-view');
-
-Route::get('/redaction-in-progress/{redaction}', [RedactionController::class, 'inProgress'])
-    ->name('redaction-in-progress');
-
-Route::post('/redaction-finish/{redaction}', [RedactionController::class, 'finish'])
-    ->name('redaction-finish');
-
-    
-/*
-
-
-Route::get('/signature', function () {
-    return view('assinatura');
-});
-
-Route::get('/simulations', function () {
-    return view('simulados');
-});
-
-Route::get('/historic-simulations', function () {
-    return view('historico-simulados');
-});
-
-Route::get('/redactions', function () {
-    return view('redacoes');
-});
-
-Route::get('/historic-redactions', function () {
-    return view('historico-redacoes');
-});
-
-//--------------------------------------------
-
-// TELAS DOS COLABORADORES
-
-Route::get('/simulations', function () {
-    return view('simulados');
-});
-
-Route::get('/redactions', function () {
-    return view('redacoes');
-});
-
-Route::get('/students', function () {
-    return view('estudantes');
-});
-
-//--------------------------------------------
-
-*/

@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
-class ProfileController extends Controller
+class UserController extends Controller
 {
-    public function profileConfigurations()
+    public function configurations()
     {
         $user = Auth::user();
         // Renderiza a view para configuração de perfil
-        return view('profile-configurations', compact('user'));
+        return view('user.configurations', compact('user'));
     }
 
-    public function updateProfile(Request $request)
+    public function update(Request $request)
     {
         \Log::info('Updating profile...');
 
@@ -42,15 +42,15 @@ class ProfileController extends Controller
 
         \Log::info('Profile updated successfully.');
 
-        return redirect()->route('profile-configurations')->with('success', 'Perfil atualizado com sucesso!');
+        return redirect()->route('user.configurations')->with('success', 'Perfil atualizado com sucesso!');
     }
 
-    public function profileEditPassword()
+    public function editPassword()
     {
-        return view('profile-edit-password');
+        return view('user.edit-password');
     }
 
-    public function updateProfilePassword(Request $request)
+    public function updatePassword(Request $request)
     {
         $request->validate([
             'current_password' => 'required|string',
@@ -62,13 +62,13 @@ class ProfileController extends Controller
 
         // Verificar se a senha atual está correta
         if (!Hash::check($request->input('current_password'), $user->password)) {
-            return redirect()->route('profile-edit-password')->withErrors(['current_password' => 'A senha atual está incorreta.']);
+            return redirect()->route('user.edit-password')->withErrors(['current_password' => 'A senha atual está incorreta.']);
         }
 
         // Atualizar a senha
         $user->password = Hash::make($request->input('new_password'));
         $user->save();
 
-        return redirect()->route('profile-edit-password')->with('success', 'Senha atualizada com sucesso!');
+        return redirect()->route('user.edit-password')->with('success', 'Senha atualizada com sucesso!');
     }
 }

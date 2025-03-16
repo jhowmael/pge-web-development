@@ -1,4 +1,4 @@
-@extends('layouts.connect')
+@extends('layouts.app')
 
 @section('content')
 
@@ -14,15 +14,15 @@
 
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative-dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link" href="{{ route('administrative.dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('administrative-dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="nav-link active" href="{{ route('administrative.dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
                         </li>
                     </ul>
                 </div>

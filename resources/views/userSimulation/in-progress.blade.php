@@ -1,4 +1,4 @@
-@extends('layouts.connect')
+@extends('layouts.app')
 
 @section('content')
 
@@ -20,7 +20,7 @@
             <button id="next-question" style="background-color: #449d5b; color: white; border: 1px solid #449d5b; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1.1em; margin-left: 10px;">
                 Próxima
             </button>
-            <form action="{{ route('finish', $userSimulation->id) }}" method="POST">
+            <form action="{{ route('userSimulation.finish', $userSimulation->id) }}" method="POST">
                 @csrf
                 <button type="submit" 
                         style="background-color: rgb(119, 0, 231); color: white; border: 1px solid #449d5b; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1.1em; margin-left: 10px;">
