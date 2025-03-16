@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="content d-flex flex-column">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-purple">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('home') }}">PGE-1</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Rodapé -->
-        <footer class="bg-purple text-white text-center py-3 mt-auto">
+        <footer class="bg-warning text-white text-center py-3 mt-auto">
             <div class="container">
                 <p class="mb-0">&copy; {{ date('Y') }} PGE-1. Todos os direitos reservados.</p>
                 <p class="mb-0">

@@ -18,20 +18,6 @@ h2, h6, hr{
     color: #428aa3; /* Cor do texto dos links */
 }
 
-.bg-purple {
-    background-color: #6f42c1; /* Código hexadecimal para roxo */
-}
-
-.btn-purple {
-    background-color: #6f42c1; /* Cor roxa */
-    color: #fff; /* Cor do texto */
-}
-
-.btn-purple:hover {
-    background-color: #5a2c9e; /* Cor roxa mais escura ao passar o mouse */
-    color: #fff;
-}
-
 html, body {
     height: 100%;
     margin: 0;
