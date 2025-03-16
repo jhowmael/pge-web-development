@@ -58,6 +58,9 @@ class SimulationController extends Controller
 
         $redaction = Redaction::create($redactionData);
 
+        $userSimulation->redaction_id = $redaction->id;
+        $userSimulation->save();
+
         foreach ($simulation->questions as $question) {
             UserQuestionResponse::create([
                 'user_id' => Auth::id(),

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -6,11 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-class ContactController extends Controller
+class WebController extends Controller
 {
+    public function plans()
+    {
+        return view('web.plans');
+    }
+
+    public function home()
+    {
+        return view('web.home');
+    }
+
     public function showContactForm()
     {
-        return view('contact');
+        return view('web.contact');
     }
 
     public function submitContactForm(Request $request)
@@ -28,6 +38,6 @@ class ContactController extends Controller
                     ->from($request->email);
         });
 
-        return redirect()->route('contact')->with('success', 'Mensagem enviada com sucesso!');
+        return redirect()->route('web.contact')->with('success', 'Mensagem enviada com sucesso!');
     }
 }

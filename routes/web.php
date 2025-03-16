@@ -2,33 +2,33 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\WebController;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\PlansController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\AdministrativeController;
 use App\Http\Controllers\SimulationController;
 use App\Http\Controllers\UserSimulationController;
 use App\Http\Controllers\RedactionController;
 
-Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact');
-Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
+Route::get('/', [WebController::class, 'home'])->name('home');
+Route::get('/contact', [WebController::class, 'showContactForm'])->name('contact');
+Route::post('/contact', [WebController::class, 'submitContactForm'])->name('contact.submit');
+Route::get('/plans', [WebController::class, 'plans'])->name('plans');
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
-Route::get('/plans', [PlansController::class, 'plans'])->name('plans');
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/'); 
 })->name('logout');
 
 
-Route::get('/welcome', [WelcomeController::class, 'welcome'])->middleware('auth')->name('welcome');
+Route::get('/welcome', [AppController::class, 'welcome'])->middleware('auth')->name('welcome');
+Route::get('/learn', [AppController::class, 'learn'])->middleware('auth')->name('learn');
 
 Route::prefix('user')->group(function () {
     Route::get('/configurations', [UserController::class, 'configurations'])->middleware('auth')->name('user.configurations');
@@ -63,57 +63,20 @@ Route::prefix('simulation')->group(function () {
 });
 
 Route::prefix('userSimulation')->group(function () {
+    Route::get('/', [UserSimulationController::class, 'index'])->middleware('auth')->name('userSimulation.index');
     Route::get('/in-progress/{simulationId}/{userSimulationId}', [UserSimulationController::class, 'inProgress'])->middleware('auth')->name('userSimulation.in-progress');
     Route::post('/finish/{userSimulationId}', [UserSimulationController::class, 'finish'])->middleware('auth')->name('userSimulation.finish');
-    Route::get('/view/{userSimulationId}/{redactionId}', [UserSimulationController::class, 'view'])->middleware('auth')->name('userSimulation.view');
+    Route::get('/view/{id}', [UserSimulationController::class, 'view'])->middleware('auth')->name('userSimulation.view');
 });
 Route::get('/userSimulations/{simulation}/questions/{questionNumber}', [UserSimulationController::class, 'getQuestion'])->middleware('auth')->name('userSimulations.getQuestion');
 Route::post('/userSimulations/{userSimulation}/questions/{question}/response', [UserSimulationController::class, 'saveResponse'])->name('userSimulations.saveResponse');
 
 Route::prefix('redaction')->group(function () {
+    Route::get('/', [RedactionController::class, 'index'])->middleware('auth')->name('redaction.index');
+    Route::get('/view{id}', [RedactionController::class, 'view'])->middleware('auth')->name('redaction.view');
     Route::get('/in-progress/{redactionId}', [RedactionController::class, 'inProgress'])->middleware('auth')->name('redaction.in-progress');
     Route::post('/finish/{redactionId}', [RedactionController::class, 'finish'])->middleware('auth')->name('redaction.finish');
 });
 
-/*
 
 
-Route::get('/signature', function () {
-    return view('assinatura');
-});
-
-Route::get('/simulations', function () {
-    return view('simulados');
-});
-
-Route::get('/historic-simulations', function () {
-    return view('historico-simulados');
-});
-
-Route::get('/redactions', function () {
-    return view('redacoes');
-});
-
-Route::get('/historic-redactions', function () {
-    return view('historico-redacoes');
-});
-
-//--------------------------------------------
-
-// TELAS DOS COLABORADORES
-
-Route::get('/simulations', function () {
-    return view('simulados');
-});
-
-Route::get('/redactions', function () {
-    return view('redacoes');
-});
-
-Route::get('/students', function () {
-    return view('estudantes');
-});
-
-//--------------------------------------------
-
-*/

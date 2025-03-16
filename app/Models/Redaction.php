@@ -8,7 +8,12 @@ use Carbon\Carbon;
 
 class Redaction extends Model
 {
-    use HasFactory; 
+    use HasFactory;
+
+    public function simulation()
+    {
+        return $this->belongsTo(Simulation::class);  // Assumindo que `simulation_id` é a chave estrangeira
+    }
 
     protected $fillable = [
         'id',
@@ -33,14 +38,13 @@ class Redaction extends Model
             $model->status = $model->getStatus($model);
 
             $userSimulation = UserSimulation::find($model->user_simulation_id);
-            $userSimulation->save();  
+            $userSimulation->save();
         });
-
     }
 
     public function getStatus($entity)
     {
-        if(!empty($entity->corrected)){
+        if (!empty($entity->corrected)) {
             return 'corrected';
         }
 

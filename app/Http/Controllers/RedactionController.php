@@ -10,6 +10,25 @@ use Illuminate\Support\Facades\Log;
 
 class RedactionController extends Controller
 {
+    public function index(Request $request)
+    {
+        $userId = auth()->id();
+
+        $redactions = Redaction::where('user_id', $userId)
+            ->with('simulation')  // Carrega a relação `simulation`
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
+
+        return view('redaction.index', compact('redactions'));
+    }
+
+    public function view($id)
+    {
+        $redaction = Redaction::find($id);
+
+        return view('redaction.view', compact('redaction'));
+    }
+
     public function inProgress($redactionId)
     {
         $redaction = Redaction::findOrFail($redactionId);
@@ -36,10 +55,8 @@ class RedactionController extends Controller
 
         return redirect()->route('userSimulation.view', [
             'userSimulationId' => $redaction->user_simulation_id,
-            'redactionId' => $redaction->id,
         ]);
     }
-
 
     public function getCorrectRedaction($redactionText, $redactioTheme)
     {

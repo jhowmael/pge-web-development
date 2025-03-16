@@ -10,10 +10,21 @@ class UserSimulation extends Model
 {
     use HasFactory; 
 
+    public function simulation()
+    {
+        return $this->belongsTo(Simulation::class);  // Assumindo que `simulation_id` é a chave estrangeira
+    }
+
+    public function redaction()
+    {
+        return $this->belongsTo(Redaction::class);  // Assumindo que `simulation_id` é a chave estrangeira
+    }
+
     protected $fillable = [
         'id',
         'user_id',
         'simulation_id',
+        'redaction_id',
         'languages_codes_technologies',
         'human_sciences_technologies',
         'natural_sciences_technologies',
