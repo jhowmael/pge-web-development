@@ -42,11 +42,10 @@ class AccessController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
         $user = $this->create($request->all());
         auth()->login($user);
 
-        return redirect()->route('web.home');
+        return view('web.home');
     }
 
     protected function validator(array $data)

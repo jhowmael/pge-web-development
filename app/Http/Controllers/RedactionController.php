@@ -54,7 +54,7 @@ class RedactionController extends Controller
         }
 
         return redirect()->route('userSimulation.view', [
-            'userSimulationId' => $redaction->user_simulation_id,
+            'id' => $redaction->user_simulation_id,
         ]);
     }
 

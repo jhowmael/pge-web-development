@@ -59,3 +59,13 @@ body {
 .btn-yellow:hover {
     background-color: #FFD700;
 }
+
+.transparent-icon {
+    opacity: 0.5; /* Ajuste a opacidade conforme necessário */
+}
+
+.custom-password-box {
+    border-radius: 0; /* Remove bordas arredondadas, deixando retangular */
+    height: 40px; /* Define uma altura para tornar a caixa mais retangular */
+}
+
