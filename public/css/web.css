@@ -69,3 +69,9 @@ body {
     height: 40px; /* Define uma altura para tornar a caixa mais retangular */
 }
 
+.bg-light-yellow {
+    background-color: #f1ecb4; /* Cor amarela personalizada (exemplo de dourado) */
+}
+.footer-shadow {
+    box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+}

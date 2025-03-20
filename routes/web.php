@@ -14,6 +14,8 @@ use App\Http\Controllers\RedactionController;
 Route::get('/', [WebController::class, 'home'])->name('home');
 Route::get('/contact', [WebController::class, 'showContactForm'])->name('contact');
 Route::post('/contact', [WebController::class, 'submitContactForm'])->name('contact.submit');
+Route::get('/help', [WebController::class, 'help'])->name('help');
+Route::get('/portal', [WebController::class, 'portal'])->name('portal');
 Route::get('/plans', [WebController::class, 'plans'])->name('plans');
 
 Route::get('/login', [AccessController::class, 'showLoginForm'])->name('login');

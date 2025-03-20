@@ -8,14 +8,25 @@ use Illuminate\Support\Facades\Mail;
 
 class WebController extends Controller
 {
-    public function plans()
-    {
-        return view('web.plans');
-    }
 
     public function home()
     {
         return view('web.home');
+    }
+
+    public function help()
+    {
+        return view('web.help');
+    }
+
+    public function portal()
+    {
+        return view('web.portal');
+    }
+
+    public function plans()
+    {
+        return view('web.plans');
     }
 
     public function showContactForm()

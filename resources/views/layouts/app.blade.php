@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PGE-1</title>
+    <title>APROVAME</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/821b65200f.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -18,7 +19,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <a class="navbar-brand" href="{{ route('home') }}"><i class="fa-solid fa-backward"></i> PGE-1</a>
+                    <a class="navbar-brand" href="{{ route('home') }}"><i class="fa-solid fa-backward"></i> APROVAME </a>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('welcome') }}">{{ auth()->user()->name }}</a>
@@ -87,7 +88,7 @@
 
     <footer class="bg-purple text-white text-center py-3 mt-auto">
         <div class="container">
-            <p class="mb-0">&copy; {{ date('Y') }} PGE-1. Todos os direitos reservados.</p>
+            <p class="mb-0">&copy; {{ date('Y') }} APROVAME. Todos os direitos reservados.</p>
             <p class="mb-0">
                 <a href="{{ route('contact') }}" class="text-white">Contato</a> |
                 <a href="{{ route('plans') }}" class="text-white">Planos</a>
