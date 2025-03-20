@@ -78,5 +78,5 @@ body {
 
 .navbar-padding {
     padding-top: auto; /* Diminui o padding superior do link */
-    padding-bottom: 0px; /* Diminui o padding inferior do link */
+    padding-bottom: auto; /* Diminui o padding inferior do link */
 }
