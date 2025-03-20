@@ -25,7 +25,6 @@ body {
 
 .left-panel {
     background-color: #F5F3CB;
-    padding: 80px;
     color: black;
     text-align: center;
 }
@@ -52,7 +51,7 @@ body {
 }
 
 .right-panel {
-    padding: 92px;
+    background: white;
 }
 
 .form-control {

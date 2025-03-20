@@ -15,7 +15,7 @@
         <div class="login-container row">
 
             <!-- Painel Esquerdo -->
-            <div class="col-md-5 left-panel d-flex flex-column justify-content-start text-start">
+            <div class="col-md-5 left-panel d-flex flex-column justify-content-start text-start" style="padding: 90px;">
                 <img src="http://localhost/pge-web-development/public/images/logo-aprovame.png" alt="Logo Aprovame" class="img-fluid">
                 <br>
                 <h3>
@@ -26,7 +26,7 @@
             </div>
 
             <!-- Painel Direito -->
-            <div class="col-md-7 right-panel bg-white">
+            <div class="col-md-7 right-panel bg-white" style="padding: 48px;">
                 <h3 class="text-center text-warning fw-bold">Crie sua conta</h3>
                 <p class="text-center text-muted">Preencha os dados abaixo para se cadastrar</p>
 
