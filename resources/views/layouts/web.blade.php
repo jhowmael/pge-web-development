@@ -14,33 +14,39 @@
 <body style="height: 100%; margin: 0;">
     <div class="content d-flex flex-column" style="min-height: 100vh;">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-light-yellow text-dark shadow">
+        <nav class="navbar navbar-expand-lg bg-light-yellow text-dark shadow navbar-padding">
             <div class="container-fluid">
+                <!-- Logo e botão de menu colapsado no mobile -->
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" style="height: 40px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <!-- Itens da navbar -->
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" href="{{ route('home') }}">Quem somos</a>
+                    <!-- Itens à esquerda -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center align-items-center">
+                        <li class="nav-item me-3">
+                            <a class="nav-link fw-semibold {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Quem somos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" href="{{ route('plans') }}">Planos</a>
+                        <li class="nav-item me-3">
+                            <a class="nav-link fw-semibold {{ request()->routeIs('plans') ? 'active' : '' }}" href="{{ route('plans') }}">Planos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" href="{{ route('contact') }}">Contato</a>
+                        <li class="nav-item me-3">
+                            <a class="nav-link fw-semibold {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contato</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" href="{{ route('help') }}">Ajuda</a>
+                        <li class="nav-item me-3">
+                            <a class="nav-link fw-semibold {{ request()->routeIs('help') ? 'active' : '' }}" href="{{ route('help') }}">Ajuda</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-semibold" href="{{ route('portal') }}">Portal</a>
+                        <li class="nav-item me-3">
+                            <a class="nav-link fw-semibold {{ request()->routeIs('portal') ? 'active' : '' }}" href="{{ route('portal') }}">Portal</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto">
+
+                    <!-- Itens à direita (botões) -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="btn btn-warning me-2 btn-outline-dark fw-bold" href="{{ route('login') }}">Seja Premium</a>
                         </li>
@@ -62,11 +68,9 @@
                                 <i class="fas fa-chevron-down"></i> <!-- Ícone de seta para baixo -->
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <!-- Opção Área do Estudante -->
                                 <li>
                                     <a class="dropdown-item" href="{{ route('welcome') }}">Área do Estudante</a>
                                 </li>
-                                <!-- Opção Logout -->
                                 <li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
                                         @csrf
@@ -80,6 +84,8 @@
                 </div>
             </div>
         </nav>
+
+
 
         <!-- Conteúdo Principal -->
         <div class="flex-grow-1">

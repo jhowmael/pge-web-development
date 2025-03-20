@@ -75,3 +75,8 @@ body {
 .footer-shadow {
     box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
 }
+
+.navbar-padding {
+    padding-top: auto; /* Diminui o padding superior do link */
+    padding-bottom: 0px; /* Diminui o padding inferior do link */
+}
