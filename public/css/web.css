@@ -11,9 +11,9 @@ body {
 }
 
 .left-panel {
-    background-color: #FFD700;
+    background-color: #F5F3CB;
     padding: 80px;
-    color: white;
+    color: black;
     text-align: center;
 }
 
@@ -22,14 +22,15 @@ body {
 }
 
 .btn-custom {
-    border: 2px solid white;
-    color: white;
-    background: none;
+    border: 2px solid black;
+    color: black;
+    background: #FFD700;
     padding: 10px 20px;
     border-radius: 25px;
     text-decoration: none;
     display: inline-block;
     margin-top: 20px;
+    font-weight: bold;
 }
 
 .btn-custom:hover {
@@ -48,10 +49,10 @@ body {
 
 .btn-yellow {
     background-color: #FFD700;
-    border: none;
+    border: 2px solid black;
     border-radius: 25px;
     padding: 10px;
-    color: white;
+    color: Black;
     font-weight: bold;
     width: 100%;
 }

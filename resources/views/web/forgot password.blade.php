@@ -1,4 +1,4 @@
-@extends('layouts.web') 
+@extends('layouts.app') 
 
 @section('content')
 <!DOCTYPE html>
@@ -100,7 +100,7 @@
             
             <!-- Painel Esquerdo -->
             <div class="col-md-5 left-panel d-flex flex-column justify-content-center">
-                <a href="{{ route('login')}}" class="back-arrow">&larr;</a>
+                <a href="#" class="back-arrow">&larr;</a>
                 <h2>APROVAME</h2>
                 <p>Não possui cadastro?</p>
                 <p>Cadastre-se agora mesmo.</p>
@@ -126,7 +126,7 @@
                     </div>
                     
                     <div class="text-center">
-                        <a href="C:\xampp\htdocs\pge-web-development\resources\views\Recuperação.blade.php" class="link-muted">Reenviar Código de Recuperação</a>
+                        <a href="" class="link-muted">Reenviar Código de Recuperação</a>
                     </div>
                     
                     <button type="submit" class="btn btn-yellow mt-3">CONFIRMAR</button>
