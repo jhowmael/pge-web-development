@@ -19,11 +19,6 @@ class WebController extends Controller
         return view('web.help');
     }
 
-    public function portal()
-    {
-        return view('web.portal');
-    }
-
     public function plans()
     {
         return view('web.plans');

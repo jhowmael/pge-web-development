@@ -35,9 +35,6 @@
                         <li class="nav-item me-3">
                             <a class="nav-link fw-semibold {{ request()->routeIs('help') ? 'active' : '' }}" href="{{ route('help') }}">Ajuda</a>
                         </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold {{ request()->routeIs('portal') ? 'active' : '' }}" href="{{ route('portal') }}">Portal</a>
-                        </li>
                     </ul>
 
                     <ul class="navbar-nav "> <!-- Navbar itens à direita -->
