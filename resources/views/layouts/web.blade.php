@@ -16,18 +16,13 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg bg-light-yellow text-dark shadow navbar-padding">
             <div class="container-fluid">
-                <!-- Logo e botão de menu colapsado no mobile -->
-                <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" style="height: 40px;">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Itens da navbar -->
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <!-- Itens à esquerda -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center align-items-center">
+                    <ul class="navbar-nav me-auto justify-content-center d-flex align-items-center"> <!-- Navbar itens à esquerda -->
+                        <li class="nav-item me-1">
+                            <a class="navbar-brand" href="{{ route('home') }}">
+                                <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" style="height: 40px;">
+                            </a>
+                        </li>
                         <li class="nav-item me-3">
                             <a class="nav-link fw-semibold {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Quem somos</a>
                         </li>
@@ -45,8 +40,7 @@
                         </li>
                     </ul>
 
-                    <!-- Itens à direita (botões) -->
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav "> <!-- Navbar itens à direita -->
                         <li class="nav-item">
                             <a class="btn btn-warning me-2 btn-outline-dark fw-bold" href="{{ route('login') }}">Seja Premium</a>
                         </li>
@@ -68,9 +62,11 @@
                                 <i class="fas fa-chevron-down"></i> <!-- Ícone de seta para baixo -->
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <!-- Opção Área do Estudante -->
                                 <li>
                                     <a class="dropdown-item" href="{{ route('welcome') }}">Área do Estudante</a>
                                 </li>
+                                <!-- Opção Logout -->
                                 <li>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
                                         @csrf
@@ -86,14 +82,15 @@
         </nav>
 
 
-
         <!-- Conteúdo Principal -->
         <div class="flex-grow-1">
             <div class="container">
                 @yield('content')
             </div>
         </div>
-
+        <a href="https://wa.me/seunumerodetelefone" target="_blank" class="whatsapp-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
         <!-- Rodapé -->
         <footer class="bg-light-yellow text-dark text-center py-3 mt-auto fw-semibold footer-shadow">
             <div class="container">

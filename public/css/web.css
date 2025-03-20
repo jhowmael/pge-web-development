@@ -1,5 +1,18 @@
+/* Remover margens e paddings padrões */
+html,
 body {
-    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /* Impede o scroll horizontal */
+}
+
+/* Banner - Ajuste a imagem de fundo */
+
+body {
+    background-color: #e2f0fd;
 }
 
 .login-container {
@@ -61,22 +74,237 @@ body {
 }
 
 .transparent-icon {
-    opacity: 0.5; /* Ajuste a opacidade conforme necessário */
+    opacity: 0.5;
+    /* Ajuste a opacidade conforme necessário */
 }
 
 .custom-password-box {
-    border-radius: 0; /* Remove bordas arredondadas, deixando retangular */
-    height: 40px; /* Define uma altura para tornar a caixa mais retangular */
+    border-radius: 0;
+    /* Remove bordas arredondadas, deixando retangular */
+    height: 40px;
+    /* Define uma altura para tornar a caixa mais retangular */
 }
 
 .bg-light-yellow {
-    background-color: #f1ecb4; /* Cor amarela personalizada (exemplo de dourado) */
+    background-color: #f1ecb4;
+    /* Cor amarela personalizada (exemplo de dourado) */
 }
+
 .footer-shadow {
-    box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+    box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.2);
+    /* Sombra mais forte */
 }
 
 .navbar-padding {
-    padding-top: auto; /* Diminui o padding superior do link */
-    padding-bottom: auto; /* Diminui o padding inferior do link */
+    padding-top: auto;
+    padding-bottom: auto;
+}
+
+/* Efeito de transição suave no botão */
+.btn-hover {
+    transition: all 0.3s ease;
+    /* Transição suave */
+}
+
+/* Efeito de hover no botão */
+.btn-hover:hover {
+    background-color: #e5a800;
+    /* Cor mais intensa de fundo */
+    transform: scale(1.05);
+    /* Aumento no tamanho do botão */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    /* Sombra mais forte */
+}
+
+.whatsapp-icon {
+    position: fixed;
+    /* Fixa o ícone no canto inferior direito */
+    bottom: 20px;
+    /* Distância do fundo da tela */
+    right: 20px;
+    /* Distância da lateral direita */
+    background-color: #25D366;
+    /* Cor de fundo do WhatsApp */
+    color: white;
+    /* Cor do ícone */
+    padding: 15px;
+    width: 60px;
+    /* Tamanho fixo do ícone */
+    height: 60px;
+    /* Tamanho fixo do ícone */
+    border-radius: 50%;
+    /* Torna o ícone redondo */
+    font-size: 30px;
+    /* Tamanho do ícone */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Sombra para dar destaque */
+    transition: transform 0.3s ease;
+    /* Efeito suave ao passar o mouse */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Centraliza o ícone dentro do círculo */
+    text-decoration: none;
+    /* Remove qualquer sublinhado */
+    border: none;
+    /* Garante que não haja borda no ícone */
+}
+
+/* Efeito de hover (efeito de aumento ao passar o mouse) */
+.whatsapp-icon:hover {
+    transform: scale(1.1);
+    /* Aumenta o tamanho do ícone ao passar o mouse */
+}
+
+.whatsapp-icon i {
+    margin: 0;
+    /* Remove qualquer margem interna */
+}
+
+.testimonial-item {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    /* Bordas arredondadas */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-8px);
+    /* Levanta o item quando passa o mouse */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}
+
+.carousel-indicators button {
+    background-color: #007bff;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-indicators .active {
+    background-color: #0056b3;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #007bff;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustes para tornar o layout mais responsivo e adaptável */
+@media (max-width: 767px) {
+    .testimonial-item {
+        padding: 20px;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+
+    .testimonial-author {
+        font-size: 1.1rem;
+    }
+
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Ajustes para deixar a imagem e o bloco mais próximos e centralizados */
+.row {
+    margin-top: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-md-4 {
+    margin-bottom: 0;
+    /* Remover espaçamento inferior */
+}
+
+.col-md-8 {
+    margin-top: 0;
+}
+
+.carousel-indicators {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Ajuste de espaçamento entre a imagem e os testemunhos */
+.col-md-4,
+.col-md-8 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+
+/* --------------------------------------------------- */
+
+/* Efeito de hover para os cards */
+.hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: translateY(-10px); /* Eleva o card para cima */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra mais intensa no hover */
+}
+
+.card {
+    border-radius: 12px; /* Bordas mais arredondadas */
+}
+
+.home-card-text {
+    color: #007561;
+}
+
+/* Garantir que todos os cards tenham a mesma altura */
+.card-body {
+    min-height: 200px; /* Altura mínima para os cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Alinha verticalmente o conteúdo */
+    align-items: center;      /* Alinha horizontalmente o conteúdo */
+    text-align: center;       /* Garante que o texto dentro do card também seja centralizado */
+}
+
+/* Centralizar o título e o texto dentro do card */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Ajustar a altura mínima para dispositivos menores */
+@media (max-width: 768px) {
+    .card-body {
+        min-height: 250px; /* Reduzir altura dos cards em dispositivos menores */
+    }
+}
+
 }
