@@ -37,8 +37,8 @@
                     <div class="input-group mb-4">
                         <span class="input-group-text">
                             <i class="fa fa-user transparent-icon"></i> <!-- Ícone de usuário -->
-                        </span>
-                        <input type="text" class="form-control custom-input-box" name="name" placeholder="Nome Completo" value="{{ old('name') }}">
+                         </span>
+                          <input type="text" class="form-control custom-input-box custom-rectangular-box" name="name" placeholder="Nome Completo" value="{{ old('name') }}">
                     </div>
 
                     <!-- Campo de E-mail -->

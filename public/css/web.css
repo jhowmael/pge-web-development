@@ -325,3 +325,26 @@ body {
     border-radius: 0; /* Remove bordas arredondadas, deixando retangular */
     height: 40px; /* Define uma altura para tornar a caixa mais retangular */
 }
+
+.custom-rectangular-box {
+    border-radius: 0; /* Remove bordas arredondadas */
+    height: 40px; /* Mantém um tamanho consistente */
+}
+
+.input-lg {
+    height: 55px; /* Aumenta a altura dos inputs */
+    font-size: 1.2rem; /* Aumenta o tamanho do texto dentro do campo */
+}
+
+textarea.input-lg {
+    height: auto; /* Permite que o textarea cresça conforme o conteúdo */
+}
+.bg-blue {
+    background-color: #007bff !important; /* Azul */
+}
+.bg-green {
+    background-color: #28a745 !important; /* Verde */
+}
+.bg-red {
+    background-color: #dc3545 !important; /* Vermelho */
+}

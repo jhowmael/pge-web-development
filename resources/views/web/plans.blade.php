@@ -1,69 +1,56 @@
 @extends('layouts.web')
 
 @section('content')
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h1>Nossos Planos</h1>
-            <p class="lead">Escolha o plano que melhor se adapta às suas necessidades.</p>
-        </div>
-    </div>
-
-    <div class="row justify-content-center">
+<div class="container py-5">
+    <div class="row g-4 text-center">
         <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white text-center">
-                    <h4>Plano Básico</h4>
+            <div class="card p-3 hover-effect" style="height: 100%; min-height: 350px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)">
+                <div class="bg-light-yellow p-3 rounded">
+                    <h5 class="fw-bold">Grátis</h5>
+                    <h2 class="p-3 rounded">R$ 0,00 <span class="fs-6">/vitalício</span></h2>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">R$ 29,90 / mês</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Funcionalidade A</li>
-                        <li class="list-group-item">Funcionalidade B</li>
-                        <li class="list-group-item">Funcionalidade C</li>
-                    </ul>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="#" class="btn btn-primary">Assinar</a>
-                </div>
+                <ul class="list-unstyled mt-3">
+                    <li class="text-start">✔ Banco de Questões</li>
+                    <li class="text-start">✔ 1 Revisão de Redação IA/dia</li>
+                    <li class="text-start">✔ Análise de Desempenho</li>
+                    <li class="text-start">✔ Anúncios</li>
+                    <li class="text-start">­</li>
+                </ul>
+                <a href="#" class="btn btn-yellow">GRÁTIS</a>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-header bg-success text-white text-center">
-                    <h4>Plano Intermediário</h4>
+            <div class="card p-3 hover-effect" style="height: 100%; min-height: 350px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)">
+                <div class="bg-light-yellow p-3 rounded">
+                    <h5 class="fw-bold">Mensal</h5>
+                    <h2 class="p-3 rounded" id="price-monthly">R$ 28,90 <span class="fs-6">/mês</span></h2>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">R$ 49,90 / mês</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Funcionalidade D</li>
-                        <li class="list-group-item">Funcionalidade E</li>
-                        <li class="list-group-item">Funcionalidade F</li>
-                    </ul>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="#" class="btn btn-success">Assinar</a>
-                </div>
+                <ul class="list-unstyled mt-3">
+                    <li class="text-start">✔ Banco de Questões</li>
+                    <li class="text-start">✔ Revisões Redação ilimitadas</li>
+                    <li class="text-start">✔ Análise de Desempenho</li>
+                    <li class="text-start">✔ SEM Anúncios</li>
+                    <li class="text-start">✔ Guia de Estudos</li>
+                </ul>
+                <a href="#" class="btn btn-yellow" id="btn-monthly">COMPRE JÁ</a>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-header bg-danger text-white text-center">
-                    <h4>Plano Premium</h4>
+            <div class="card p-3 hover-effect" style="height: 100%; min-height: 350px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)">
+                <div class="bg-light-yellow p-3 rounded">
+                    <h5 class="fw-bold">Semestral</h5>
+                    <h2 class="p-3 rounded" id="price-semester">R$ 144,50 <span class="fs-6">/6 meses</span></h2>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">R$ 79,90 / mês</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Funcionalidade G</li>
-                        <li class="list-group-item">Funcionalidade H</li>
-                        <li class="list-group-item">Funcionalidade I</li>
-                    </ul>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="#" class="btn btn-danger">Assinar</a>
-                </div>
+                <ul class="list-unstyled mt-3">
+                    <li class="text-start">✔ Banco de Questões</li>
+                    <li class="text-start">✔ Revisões Redação ilimitadas</li>
+                    <li class="text-start">✔ Análise de Desempenho</li>
+                    <li class="text-start">✔ SEM Anúncios</li>
+                    <li class="text-start">✔ Guia de Estudos</li>
+                </ul>
+                <a href="#" class="btn btn-yellow" id="btn-semester">COMPRE JÁ</a>
             </div>
         </div>
     </div>
-</div>
+    
 @endsection
