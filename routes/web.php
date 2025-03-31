@@ -39,7 +39,7 @@ Route::prefix('user')->group(function () {
 });
 
 Route::prefix('administrative')->group(function () {
-    Route::get('/dashboard', [AdministrativeController::class, 'dashboard'])->middleware('auth')->name('administrative.dashboard');
+    Route::get('/', [AdministrativeController::class, 'dashboard'])->middleware('auth')->name('administrative.dashboard');
     Route::get('/dashboard-simulations', [AdministrativeController::class, 'dashboardSimulations'])->middleware('auth')->name('administrative.dashboard-simulations');
     Route::get('/add-simulations', action: [AdministrativeController::class, 'addSimulations'])->name('administrative.add-simulations');
     Route::post('/store-simulations', [AdministrativeController::class, 'storeSimulations'])->name('administrative.store-simulations');

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('redactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('simulation_id')->constrained('simulations')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('type', 16);
             $table->string('theme', 255);
             $table->text('introduction');

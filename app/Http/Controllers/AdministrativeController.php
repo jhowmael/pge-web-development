@@ -36,6 +36,7 @@ class AdministrativeController extends Controller
             'total_duration' => 'required|integer',
             'quantity_questions' => 'required|integer',
             'redaction_theme' => 'required|string',
+            'redaction_introduction' => 'required|string',
             'total_points' => 'required|integer',
             'description' => 'nullable|string',
         ]);

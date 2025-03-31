@@ -1,32 +1,24 @@
-h2, h6, hr{
-    color: #6f42c1; /* Cor do texto roxa */
+.bg-light-yellow {
+    background-color: #f1ecb4;
+    /* Cor amarela personalizada (exemplo de dourado) */
 }
 
-.navbar-brand {
-    margin-left: 20px; /* Adjust the value to your desired margin */
+body {
+    background-color: #e2f0fd;
 }
 
 .nav-link {
-    color: #6f42c1; /* Cor do texto dos links */
+    color: black;               /* Cor normal do texto */
+    text-decoration: none;      /* Remove o sublinhado */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Suaviza as transições */
+    font-weight: 600 !important;    /* Aplica um negrito leve */
 }
 
-.nav-link:hover {
-    color: #6598ad; /* Cor que aparece quando o mouse passa por cima */
-}
-
-.active {
-    color: #428aa3; /* Cor do texto dos links */
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-}
-.content {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-.flex-grow-1 {
-    flex: 1;
+/* Estilo no hover */
+/* Efeito no hover */
+.nav-link:hover, 
+.nav-link.active {
+    color: #007561;            /* Cor do texto */
+    background-color: #f0f0f0; /* Cor de fundo */
+    text-decoration: none;      /* Remove sublinhado */
 }

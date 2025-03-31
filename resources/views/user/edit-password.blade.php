@@ -5,34 +5,19 @@
 <div class="main-content">
     <div class="row">
         <div class="col-md-3">
-            <div class="card mb-4">
-                <div class="card-header text-center">
-                    <h4><i class="fa-regular fa-user"></i> Minha conta</h4>
-                </div>
-                <div class="card-body">
-                    <p>Altere as configurações e confira suas notificações</p>
-
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.configurations') }}">Configurações de Perfil <i class="fa-solid fa-chevron-right"></i></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('user.edit-password') }}">Alterar Senha <i class="fa-solid fa-chevron-right"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <x-sidebars.user-sidebar />
         </div>
 
 
-        <div class="col-md-7">
+        <div class="col-md-8">
             <div class="card mb-12">
                 <div class="card-header text-center">
                     <h4>Alterar Senha</h4>
                 </div>
                 <div class="card-body">
-                    <p>Você pode a senha da sua conta</p>
+                    <center>
+                        <p>Você pode a senha da sua conta</p>
+                    </center>
                     <form action="{{ route('user.update-password') }}" method="POST" class="form">
                         @csrf
 
@@ -61,8 +46,9 @@
                         </div>
 
                         <br>
+
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-purple">Salvar</button>
+                            <x-buttons.submit />
                         </div>
                     </form>
                 </div>

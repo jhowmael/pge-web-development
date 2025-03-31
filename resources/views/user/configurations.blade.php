@@ -5,34 +5,19 @@
 <div class="main-content">
     <div class="row">
         <div class="col-md-3">
-            <div class="card mb-4">
-                <div class="card-header text-center">
-                    <h4><i class="fa-regular fa-user"></i> Minha conta</h4>
-                </div>
-                <div class="card-body">
-                    <p>Altere as configurações e confira suas notificações</p>
-
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('user.configurations') }}">Configurações de Perfil <i class="fa-solid fa-chevron-right"></i></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.edit-password') }}">Alterar Senha <i class="fa-solid fa-chevron-right"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <x-sidebars.user-sidebar />
         </div>
 
 
-        <div class="col-md-7">
-            <div class="card mb-12">
+        <div class="col-md-9">
+            <div class="card mb-12" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); border-radius: 12px;">
                 <div class="card-header text-center">
                     <h4>Configurações de Perfil</h4>
                 </div>
                 <div class="card-body">
-                    <p>Você pode alterar as inforamações básicas da sua conta</p>
+                    <center>
+                        <p>Você pode alterar as inforamações básicas da sua conta</p>
+                    </center>
 
                     @if(session('success'))
                     <p style="color: green;">{{ session('success') }}</p>
@@ -49,7 +34,9 @@
                             <input type="file" id="profile_picture" name="profile_picture" class="form-control">
                             @if($user->profile_picture)
                             <p class="text-muted">Foto atual:</p>
-                            <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Foto de Perfil" class="img-thumbnail">
+                            <center>
+                                <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Foto de Perfil" class="img-thumbnail" style="width: 300px">
+                            </center>
                             @endif
                             @error('profile_picture')
                             <p class="text-danger">{{ $message }}</p>
@@ -82,7 +69,7 @@
 
                         <br>
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-purple">Salvar</button>
+                            <x-buttons.submit />
                         </div>
                     </form>
                 </div>

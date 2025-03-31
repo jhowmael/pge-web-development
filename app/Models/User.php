@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Models;
 
@@ -13,11 +13,19 @@ class User extends Authenticatable
         'type',
         'name',
         'email',
+        'email_verified_at',
         'password',
+        'phone',
+        'profile_picture',
+        'premium',
+        'remember_token',
         'status',
         'registered',
-        'profile_picture',
         'birthday',
+        'deleted',
+        'created_at',
+        'updated_at',
+        'total_points'
     ];
 
     protected $hidden = [

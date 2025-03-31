@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('phone', 16)->nullable();
             $table->string('profile_picture')->nullable();
             $table->boolean('premium')->default(0);
+            $table->integer('total_points')->nullable();
             $table->rememberToken();
             $table->string('status', 16);
             $table->dateTime('registered');

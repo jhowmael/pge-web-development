@@ -5,28 +5,7 @@
 <div class="main-content">
     <div class="row">
         <div class="col-md-3">
-            <div class="card mb-4">
-                <div class="card-header text-center">
-                    <h4><i class="fa-solid fa-sliders"></i> Painel Administrativo </h4>
-                </div>
-                <div class="card-body">
-                    <p>Painel onde é possível cadastrar simulados e gerenciar usuários de forma prática e centralizada.</p>
-
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative.dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('administrative.dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i> Novo Simulado</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative.dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <x-sidebars.administrative-sidebar />
         </div>
 
 
@@ -88,6 +67,11 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="redaction_introduction" class="form-label">Texto Introdutório</label>
+                            <textarea class="form-control" id="redaction_introduction" name="redaction_introduction" rows="3"></textarea>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="total_points" class="form-label">Total de Pontos</label>
                             <input type="number" class="form-control" id="total_points" name="total_points" required>
                         </div>
@@ -96,6 +80,7 @@
                             <label for="description" class="form-label">Descrição</label>
                             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                         </div>
+
                         <center>
                             <button type="submit" class="btn btn-success">Adicionar Simulado</button>
                         </center>
