@@ -65,7 +65,7 @@ Route::prefix('simulation')->group(function () {
 
 Route::prefix('userSimulation')->group(function () {
     Route::get('/', [UserSimulationController::class, 'index'])->middleware('auth')->name('userSimulation.index');
-    Route::get('/in-progress/{simulationId}/{id}', [UserSimulationController::class, 'inProgress'])->middleware('auth')->name('userSimulation.in-progress');
+    Route::get('/in-progress/{simulationId}/{userSimulationId}', [UserSimulationController::class, 'inProgress'])->middleware('auth')->name('userSimulation.in-progress');
     Route::post('/finish/{userSimulationId}', [UserSimulationController::class, 'finish'])->middleware('auth')->name('userSimulation.finish');
     Route::get('/view/{id}', [UserSimulationController::class, 'view'])->middleware('auth')->name('userSimulation.view');
 });

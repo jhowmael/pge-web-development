@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-md-9">
-            <div class="card mb-12">
+            <div class="card mb-12" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); border-radius: 12px;">
                 <div class="card-header text-center">
                     <h4>Filtrar Simulados</h4>
                 </div>
@@ -31,44 +31,45 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                            <x-buttons.submit text="Filtrar" />
                         </div>
                     </form>
 
                     <h5 class="mt-4">Resultados da Busca:</h5>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr style="text-align: center">
-                                <th scope="col">Id</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Ano</th>
-                                <th scope="col">Edição</th>
-                                <th scope="col">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($simulations as $simulation)
-                            <tr style="text-align: center">
-                                <th scope="row">{{ $simulation->id }}</th>
-                                <td>{{ $simulation->name }}</td>
-                                <td>{{ $simulation->year }}</td>
-                                <td>{{ $simulation->edition ?? 'n/a' }}</td>
-                                <td>
-                                    <form action="{{ route('simulation.start', $simulation->id) }}" method="GET" style="display:inline-block;">
-                                        <button type="submit" class="btn btn-success" title="Iniciar">
-                                            <i class="fa-solid fa-forward"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        @foreach($simulations as $simulation)
+                        <div class="col-md-4 mb-4">
+                            <div class="card" style="border: 2px solid #000; border-radius: 5px; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);"
+                                onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 20px rgba(0, 0, 0, 0.3)';"
+                                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.2)';">
+
+                                <!-- Card Header (com fundo verde claro) -->
+                                <div class="card-header text-center bg-warning text-dark" style="border-bottom: 2px solid #000; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <h5 class="card-title" style="font-size: 1.2rem; font-weight: bold;">{{ $simulation->name }}</h5>
+                                </div>
+
+                                <!-- Corpo do Card (com fundo branco) -->
+                                <div class="card-body" style="background-color: #fff; padding: 1.25rem;">
+                                    <p class="card-text text-center"><strong>Ano:</strong> {{ $simulation->year }}</p>
+                                    <p class="card-text text-center"><strong>Duração Total:</strong> {{ $simulation->total_duration }}</p>
+                                    <p class="card-text text-center"><strong>Questões:</strong> {{ $simulation->quantity_questions }}</p>
+
+                                    <!-- Botão Centralizado -->
+                                    <div class="mt-3 w-100 d-flex justify-content-center">
+                                        <x-buttons.start route="simulation.start" :id="$simulation->id" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <x-buttons.pagination :entities="$simulations" />
                 </div>
             </div>
-            <br>
         </div>
+        <br>
     </div>
+</div>
 </div>
 
 @endsection

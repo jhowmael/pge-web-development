@@ -6,8 +6,11 @@ body {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+
     /* Impede o scroll horizontal */
 }
+
 
 /* Banner - Ajuste a imagem de fundo */
 
@@ -98,6 +101,11 @@ body {
     padding-top: auto;
     padding-bottom: auto;
 }
+
+.nav-link {
+    font-size: 15px;
+}
+
 
 /* Efeito de transição suave no botão */
 .btn-hover {
@@ -264,6 +272,7 @@ body {
 
 
 /* --------------------------------------------------- */
+
 
 /* Efeito de hover para os cards */
 .hover-effect {

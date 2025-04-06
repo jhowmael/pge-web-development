@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('simulation_id')->constrained('simulations')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_simulation_id')->constrained('user_simulation_id')->onDelete('user_simulation_id');
             $table->string('type', 16);
             $table->string('theme', 255);
             $table->text('introduction');

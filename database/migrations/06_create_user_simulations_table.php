@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('simulation_id')->constrained('simulations')->onDelete('cascade');
-            $table->foreignId('redaction_id')->constrained('redactions')->onDelete('cascade');
+            $table->foreignId('redaction_id')->nullable()->constrained('redactions')->onDelete('cascade');
             $table->float('languages_codes_technologies')->default(0);
             $table->float('human_sciences_technologies')->default(0);
             $table->float('natural_sciences_technologies')->default(0);

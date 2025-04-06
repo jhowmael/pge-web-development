@@ -1,3 +1,7 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .bg-light-yellow {
     background-color: #f1ecb4;
     /* Cor amarela personalizada (exemplo de dourado) */
@@ -7,11 +11,16 @@ body {
     background-color: #e2f0fd;
 }
 
+a{
+    font-size: 9px;
+}
+
 .nav-link {
     color: black;               /* Cor normal do texto */
     text-decoration: none;      /* Remove o sublinhado */
     transition: color 0.3s ease, background-color 0.3s ease; /* Suaviza as transições */
     font-weight: 600 !important;    /* Aplica um negrito leve */
+    font-size: 15px;
 }
 
 /* Estilo no hover */
@@ -21,4 +30,32 @@ body {
     color: #007561;            /* Cor do texto */
     background-color: #f0f0f0; /* Cor de fundo */
     text-decoration: none;      /* Remove sublinhado */
+}
+
+.scale-icon {
+    transition: transform 0.3s ease;
+}
+
+.btn:hover .scale-icon {
+    transform: scale(1.2); /* Aumenta o ícone em 20% */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ffd700 !important;
+    border-color: #000000 !important;
+}
+
+.pagination .page-link {
+    color: black; /* Cor do texto da paginação */
+    border-color: rgb(0, 0, 0); /* Cor da borda da paginação */
+}
+
+.pagination .page-link:hover {
+    background-color: #f7f3de; /* Cor de fundo ao passar o mouse */
+    color: black;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc; /* Cor dos itens desabilitados */
+    background-color: #f8f9fa;
 }

@@ -10,7 +10,7 @@
 
 
         <div class="col-md-7">
-            <div class="card mb-12">
+            <div class="card mb-12" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); border-radius: 12px;">
                 <div class="card-header text-center">
                     <h4>Adicionar Novo Simulado</h4>
                 </div>
@@ -82,7 +82,7 @@
                         </div>
 
                         <center>
-                            <button type="submit" class="btn btn-success">Adicionar Simulado</button>
+                            <x-buttons.submit />
                         </center>
                     </form>
                 </div>

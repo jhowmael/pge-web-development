@@ -17,7 +17,7 @@ class RedactionController extends Controller
         $redactions = Redaction::where('user_id', $userId)
             ->with('simulation')  // Carrega a relação `simulation`
             ->orderBy('created_at', 'desc')
-            ->paginate(20);
+            ->paginate(10);
 
         return view('redaction.index', compact('redactions'));
     }

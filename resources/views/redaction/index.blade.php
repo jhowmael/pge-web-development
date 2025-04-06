@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-md-9">
-            <div class="card mb-12">
+            <div class="card mb-12" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); border-radius: 12px;">
                 <div class="card-header text-center">
                     <h4>Histórico de redações</h4>
                 </div>
@@ -34,23 +34,13 @@
                                 <td>{{ $redaction->created_at }}</td>
                                 <td>{{ $redaction->status }}</td>
                                 <td>
-                                    <form action="{{ route('redaction.view', $redaction->id) }}" method="GET" style="display:inline-block;">
-                                        <button type="submit" class="btn btn-info" title="Visualizar">
-                                            <i class="fa-solid fa-magnifying-glass"></i>
-                                        </button>
-                                    </form>
+                                    <x-buttons.view route="redaction.view" :id="$redaction->id" />
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-center">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                {{ $redactions->links('vendor.pagination.bootstrap-4') }}
-                            </ul>
-                        </nav>
-                    </div>
+                    <x-buttons.pagination :entities="$redactions" />
                 </div>
             </div>
             <br>

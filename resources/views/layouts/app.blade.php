@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/821b65200f.js" crossorigin="anonymous"></script>
 </head>
 
@@ -121,7 +122,8 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('user.configurations') || request()->routeIs('user.edit-password') ? 'active' : '' }}"
+                                <a class="nav-link {{ request()->routeIs('user.configurations') ||
+                                     request()->routeIs('user.edit-password') ? 'active' : '' }}"
                                     href="{{ route('user.configurations') }}">
                                     <i class="fa-solid fa-user"></i> Perfil
                                 </a>
@@ -144,7 +146,9 @@
                             
                                 <a class="nav-link {{ request()->routeIs('administrative.dashboard') ||
                                     request()->routeIs('administrative.dashboard-simulations') ||
-                                    request()->routeIs('administrative.dashboard-users') ? 'active' : '' }}"
+                                    request()->routeIs('administrative.dashboard-users') || 
+                                    request()->routeIs('administrative.add-simulations')
+                                    ? 'active' : '' }}"
                                     href="{{ route('administrative.dashboard') }}">
                                     <i class="fa-solid fa-sliders"></i> Administrativo
                                 </a>

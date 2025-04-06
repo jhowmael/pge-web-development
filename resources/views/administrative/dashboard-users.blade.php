@@ -7,7 +7,7 @@
         <div class="col-md-3">
             <div class="card mb-4">
                 <div class="card-header text-center">
-                    <h4><i class="fa-solid fa-sliders"></i> Painel Administrativo </h4>
+                    <h4><i class="fa-solid fa-sliders"></i> Administrativo </h4>
                 </div>
                 <div class="card-body">
                     <p>Painel onde é possível cadastrar simulados e gerenciar usuários de forma prática e centralizada.</p>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="col-md-7">
-            <div class="card mb-12">
+            <div class="card mb-12" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); border-radius: 12px;">
                 <div class="card-header text-center">
                     <h4>Dashboard Usuários</h4>
                 </div>

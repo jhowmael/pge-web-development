@@ -91,7 +91,7 @@ class UserSimulation extends Model
     public function updateRedactionScore($entity)
     {
         $redaction = Redaction::where('user_simulation_id', $entity->id)->first();
-        
+
         if(!empty($redaction)){
             return $redaction->score;
         }

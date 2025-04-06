@@ -5,7 +5,7 @@
 <div class="main-content">
     <div class="row">
         <div class="col-md-12">
-            <div class="card mb-12">
+            <div class="card mb-12" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); border-radius: 12px;">
                 <div class="card-header text-center">
                     <h4>Início</h4>
                 </div>
@@ -19,7 +19,8 @@
                         <h5>Sobre seu desempenho:</h5>
                         <p>
                             As suas últimas pontuações nas 10 últimas matérias estão representadas no gráfico abaixo.
-                            Ele mostra sua evolução ao longo do tempo e te ajuda a visualizar em quais matérias você está se saindo melhor.
+                            Ele mostra sua evolução ao longo do tempo e te ajuda a visualizar em quais matérias você
+                            está se saindo melhor.
                             Lembre-se, a prática constante é fundamental para alcançar o seu objetivo no vestibular!
                         </p>
                     </div>
@@ -27,7 +28,8 @@
                     <h5>Gráfico de Barras (Pontuação por Matéria)</h5>
                     <p>
                         "As suas últimas pontuações nas 10 últimas matérias estão representadas no gráfico abaixo.
-                        Ele mostra sua evolução ao longo do tempo e te ajuda a visualizar em quais matérias você está se saindo melhor.
+                        Ele mostra sua evolução ao longo do tempo e te ajuda a visualizar em quais matérias você está se
+                        saindo melhor.
                         Lembre-se, a prática constante é fundamental para alcançar o seu objetivo no vestibular!"
                     </p>
 
@@ -61,62 +63,65 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Dados fictícios para o gráfico de barras
-    var labels = ['Linguagens', 'Ciências Humanas', 'Ciências da Natureza', 'Matemática'];
-    var scores = [80, 75, 90, 85];
+// Dados fictícios para o gráfico de barras
+var labels = ['Linguagens', 'Ciências Humanas', 'Ciências da Natureza', 'Matemática'];
+var scores = [80, 75, 90, 85];
 
-    var ctx = document.getElementById('scoreChart').getContext('2d');
-    var scoreChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Pontuação por Matéria',
-                data: scores,
-                backgroundColor: 'rgba(0, 117, 97, 0.5)',
-                borderColor: 'rgba(0, 117, 97, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+var ctx = document.getElementById('scoreChart').getContext('2d');
+var scoreChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Pontuação por Matéria',
+            data: scores,
+            backgroundColor: 'rgba(22, 136, 212, 0.5)',
+            borderColor: 'rgb(0, 0, 0)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
             }
         }
-    });
+    }
+});
 
-    // Dados fictícios para o gráfico Radar de Redação
-    var radarLabels = ['Clareza', 'Argumentação', 'Coesão', 'Estrutura', 'Ortografia'];
-    var radarScores = [80, 70, 90, 85, 75];
+// Dados fictícios para o gráfico Radar de Redação
+var radarLabels = ['Clareza', 'Argumentação', 'Coesão', 'Estrutura', 'Ortografia'];
+var radarScores = [80, 70, 90, 85, 75];
 
-    var radarCtx = document.getElementById('radarChart').getContext('2d');
-    var radarChart = new Chart(radarCtx, {
-        type: 'radar',
-        data: {
-            labels: radarLabels,
-            datasets: [{
-                label: 'Desempenho em Redação',
-                data: radarScores,
-                backgroundColor: 'rgba(0, 117, 97, 0.3)',
-                borderColor: 'rgba(0, 117, 97, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                r: {
-                    beginAtZero: true,
-                    max: 100
-                }
+var radarCtx = document.getElementById('radarChart').getContext('2d');
+var radarChart = new Chart(radarCtx, {
+    type: 'radar',
+    data: {
+        labels: radarLabels,
+        datasets: [{
+            label: 'Desempenho em Redação',
+            data: radarScores,
+            backgroundColor: 'rgba(36, 180, 36, 0.3)',
+            borderColor: 'rgb(0, 0, 0)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            r: {
+                beginAtZero: true,
+                max: 100
             }
         }
-    });
+    }
+});
 </script>
+
+
+
 
 @endsection
