@@ -77,7 +77,7 @@
                     <div class="sidebar bg-light p-3" style="width: 250px; min-height: 170vh; display: flex; flex-direction: column; overflow-y: auto; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);">
                         <div class="text-center mb-4">
                             <!-- User Image -->
-                            <h6 class="font-weight-bold" style="font-size: 20px; color: #333;"> {{ implode(' ', array_slice(explode(' ', auth()->user()->name), 0, 2)) }}
+                            <h6 class="font-weight-bold" style="font-size: 20px; color: #333;"> {{auth()->user()->name }}
                             </h6>
                             @if(auth()->user()->profile_picture)
                             <img src="{{ asset('storage/' . auth()->user()->profile_picture) }}"

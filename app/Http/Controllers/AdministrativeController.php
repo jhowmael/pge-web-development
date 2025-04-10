@@ -142,7 +142,7 @@ class AdministrativeController extends Controller
     public function dashboardUsers()
     {
 
-        $users = User::orderBy('updated_at', 'desc')->take(20)->get();
+        $users = User::orderBy('updated_at', 'desc')->paginate(10);
 
         return view('administrative.dashboard-users', compact('users'));
     }
@@ -170,12 +170,6 @@ class AdministrativeController extends Controller
         $users = $query->paginate(10);
 
         return view('administrative.filter-users', compact('users'));
-    }
-
-
-    public function editUsers()
-    {
-        return view('administrative.edit-users');
     }
 
     public function viewUsers($id)

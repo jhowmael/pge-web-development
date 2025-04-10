@@ -69,6 +69,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <x-buttons.pagination :entities="$users" />
                 </div>
             </div>
         </div>

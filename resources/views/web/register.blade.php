@@ -16,6 +16,8 @@
 
             <!-- Painel Esquerdo -->
             <div class="col-md-5 left-panel d-flex flex-column justify-content-start text-start" style="padding: 90px;">
+                <br>
+                <br>
                 <img src="http://localhost/pge-web-development/public/images/logo-aprovame.png" alt="Logo Aprovame" class="img-fluid">
                 <br>
                 <h3>
@@ -23,16 +25,19 @@
                 </h3>
                 <p><strong>Faça login para acessar sua conta.</strong></p>
                 <a href="{{ route('login') }}" class="btn-custom d-flex justify-content-center">FAZER LOGIN</a>
+                <br>
+                <br>
+                <br>
+                <br>
             </div>
 
             <!-- Painel Direito -->
-            <div class="col-md-7 right-panel bg-white" style="padding: 48px;">
+            <div class="col-md-7 right-panel bg-white" style="padding: 25px;">
                 <h3 class="text-center text-warning fw-bold">Crie sua conta</h3>
                 <p class="text-center text-muted">Preencha os dados abaixo para se cadastrar</p>
 
-                <form action="{{ route('register') }}" method="POST">
-                    @csrf
-
+                <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                     <!-- Campo de Nome -->
                     <div class="input-group mb-4">
                         <span class="input-group-text">
@@ -49,6 +54,28 @@
                         <input type="email" class="form-control custom-email-box" name="email" placeholder="E-mail" value="{{ old('email') }}">
                     </div>
 
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <i class="fa fa-phone transparent-icon"></i> <!-- Ícone de envelope -->
+                        </span>
+                        <input type="text" class="form-control custom-phone-box" name="phone" placeholder="Telefone" value="{{ old('phone') }}">
+                    </div>
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <i class="fa fa-cake-candles transparent-icon"></i> <!-- Ícone de envelope -->
+                        </span>
+                        <input type="date" class="form-control custom-birthday-box" name="birthday" placeholder="Data de nascimento" value="{{ old('birthday') }}">
+                    </div>
+
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">
+                            <i class="fa fa-camera-retro transparent-icon"></i> <!-- Ícone de envelope -->
+                        </span>
+                        <input type="file" class="form-control custom-birthday-box" name="profile_picture" placeholder="Foto de Perfil">
+                    </div>
+                       
                     <!-- Campo de Senha -->
                     <div class="input-group mb-4">
                         <span class="input-group-text">
