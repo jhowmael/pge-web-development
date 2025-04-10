@@ -52,7 +52,7 @@
                 @if(request()->routeIs('administrative.edit-questions'))
                 <a class="nav-link d-inline-block"
                     style="color: #007561; font-weight: bold; font-size: 0.9em; margin-left: 10px;">
-                    Editar Questão <i class="fa-solid fa-chevron-right"></i>
+                    Editar Questão <i class="faf-solid fa-chevron-right"></i>
                 </a>
                 @endif
 
@@ -71,6 +71,20 @@
                     Dashboard Usuários
                     @if(request()->routeIs('administrative.dashboard-users'))
                     <i class="fa-solid fa-chevron-right"></i>
+                    @endif
+
+                    @if(request()->routeIs('administrative.filter-users'))
+                    <a class="nav-link d-inline-block"
+                        style="color: #007561; font-weight: bold; font-size: 0.9em; margin-left: 10px;">
+                        Filtrar Usuários <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                    @endif
+
+                    @if(request()->routeIs('administrative.view-users'))
+                    <a class="nav-link d-inline-block"
+                        style="color: #007561; font-weight: bold; font-size: 0.9em; margin-left: 10px;">
+                        Visualizar Usuários <i class="fa-solid fa-chevron-right"></i>
+                    </a>
                     @endif
                 </a>
             </li>

@@ -65,21 +65,21 @@
                     <table class="table table-hover">
                         <thead>
                             <tr style="text-align: center">
-                                <th>Numero</th>
-                                <th>Disciplina</th>
-                                <th>Ações</th>
+                                <th class="text-center">Numero</th>
+                                <th class="text-center">Disciplina</th>
+                                <th class="text-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($questions as $question)
                             <tr style="text-align: center">
-                                <td>
+                                <td class="text-center">
                                     {{$question->number}}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     {{ __('translate.' . $question->theme) }}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <div class="d-flex justify-content-center gap-2">
                                         <x-buttons.view route="administrative.view-questions" :id="$question->id" />
                                         <x-buttons.edit route="administrative.edit-questions" :id="$question->id" />

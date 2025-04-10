@@ -17,23 +17,23 @@
                     <table class="table table-hover">
                         <thead >
                             <tr style="text-align: center">
-                                <th scope="col">Edição</th>
-                                <th scope="col">Tema</th>
-                                <th scope="col">Pontuação</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Visualizar</th>
+                                <th class="text-center">Edição</th>
+                                <th class="text-center">Tema</th>
+                                <th class="text-center">Pontuação</th>
+                                <th class="text-center">Data</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Visualizar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($redactions as $redaction)
                             <tr style="text-align: center">
-                                <td>{{ $redaction->simulation->name }}</td>
-                                <td>{{ $redaction->theme }}</td>
-                                <td>{{ $redaction->score }}</td>
-                                <td>{{ $redaction->created_at }}</td>
-                                <td>{{ __('translate.' . $redaction->status) }}</td>
-                                <td>
+                                <td class="text-center">{{ $redaction->simulation->name }}</td>
+                                <td class="text-center">{{ $redaction->theme }}</td>
+                                <td class="text-center">{{ $redaction->score }}</td>
+                                <td class="text-center">{{ $redaction->created_at }}</td>
+                                <td class="text-center">{{ __('translate.' . $redaction->status) }}</td>
+                                <td class="text-center">
                                     <x-buttons.view route="redaction.view" :id="$redaction->id" />
                                 </td>
                             </tr>

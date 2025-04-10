@@ -53,9 +53,9 @@ Route::prefix('administrative')->group(function () {
     Route::get('/edit-questions/{id}', [AdministrativeController::class, 'editQuestions'])->name('administrative.edit-questions');
     Route::post('/update-questions/{id}', [AdministrativeController::class, 'updateQuestions'])->name('administrative.update-questions');
     Route::get('/dashboard-users', [AdministrativeController::class, 'dashboardUsers'])->name('administrative.dashboard-users');
-    Route::get('/edit-users', [AdministrativeController::class, 'editUsers'])->name('administrative.edit-users');
-    Route::get('/view-users', [AdministrativeController::class, 'viewUsers'])->name('administrative.view-users');
-    Route::get('/disable-users', [AdministrativeController::class, 'disableUsers'])->name('administrative.disable-users');
+    Route::get('/filter-users', [AdministrativeController::class, 'filterUsers'])->name('administrative.filter-users');
+    Route::get('/view-users{id}', [AdministrativeController::class, 'viewUsers'])->name('administrative.view-users');
+    Route::get('/disable-users{id}', [AdministrativeController::class, 'disableUsers'])->name('administrative.disable-users');
 });
 
 Route::prefix('simulation')->group(function () {

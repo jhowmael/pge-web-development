@@ -17,21 +17,21 @@
                     <table class="table table-hover">
                         <thead>
                             <tr style="text-align: center">
-                                <th scope="col">Edição</th>
-                                <th scope="col">Pontuação</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Visualizar</th>
+                                <th class="text-center">Edição</th>
+                                <th class="text-center">Pontuação</th>
+                                <th class="text-center">Data</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Visualizar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($userSimulations as $userSimulation)
                             <tr style="text-align: center">
-                                <td>{{ $userSimulation->simulation->name }}</td>
-                                <td>{{ $userSimulation->total_score }}</td>
-                                <td>{{ $userSimulation->created_at }}</td>
-                                <td> {{ __('translate.' . $userSimulation->status) }}</td>
-                                <td>
+                                <td class="text-center">{{ $userSimulation->simulation->name }}</td>
+                                <td class="text-center">{{ $userSimulation->total_score }}</td>
+                                <td class="text-center">{{ $userSimulation->created_at }}</td>
+                                <td class="text-center"> {{ __('translate.' . $userSimulation->status) }}</td>
+                                <td class="text-center">
                                     <x-buttons.view route="userSimulation.view" :id="$userSimulation->id" />
                                 </td>
                             </tr>

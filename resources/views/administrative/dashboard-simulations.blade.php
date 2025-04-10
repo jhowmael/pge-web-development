@@ -45,23 +45,23 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="text-center">
-                                <th scope="col">ID</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Ano</th>
-                                <th scope="col">Edição</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Ações</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Ano</th>
+                                <th class="text-center">Edição</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($simulations as $simulation)
                             <tr class="text-center">
-                                <th scope="row">{{ $simulation->id }}</th>
-                                <td>{{ $simulation->name }}</td>
-                                <td>{{ $simulation->year }}</td>
-                                <td>{{ $simulation->edition ?? 'n/a' }}</td>
-                                <td>{{ __('translate.' . $simulation->status) }}</td>
-                                <td>
+                                <th class="text-center">{{ $simulation->id }}</th>
+                                <td class="text-center">{{ $simulation->name }}</td>
+                                <td class="text-center">{{ $simulation->year }}</td>
+                                <td class="text-center">{{ $simulation->edition ?? 'n/a' }}</td>
+                                <td class="text-center">{{ __('translate.' . $simulation->status) }}</td>
+                                <td class="text-center">
                                     <div class="d-flex justify-content-center gap-2">
                                         <x-buttons.view route="administrative.view-simulations" :id="$simulation->id" />
                                         <x-buttons.edit route="administrative.edit-simulations" :id="$simulation->id" />

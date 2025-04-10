@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Simulation;
+use App\Models\User;
 use App\Models\Question;
 
 class AdministrativeController extends Controller
@@ -140,17 +141,48 @@ class AdministrativeController extends Controller
 
     public function dashboardUsers()
     {
-        return view('administrative.dashboard-users');
+
+        $users = User::orderBy('updated_at', 'desc')->take(20)->get();
+
+        return view('administrative.dashboard-users', compact('users'));
     }
+
+    public function filterUsers(Request $request)
+    {
+        $query = User::query();
+
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->filled('email')) {
+            $query->where('email', 'like', '%' . $request->email . '%');
+        }
+
+        if ($request->filled('phone')) {
+            $query->where('phone', 'like', '%' . $request->phone . '%');
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', 'like', '%' . $request->status . '%');
+        }
+
+        $users = $query->paginate(10);
+
+        return view('administrative.filter-users', compact('users'));
+    }
+
 
     public function editUsers()
     {
         return view('administrative.edit-users');
     }
 
-    public function viewUsers()
+    public function viewUsers($id)
     {
-        return view('administrative.view-users');
+        $user = User::where('id', $id)->first();
+
+        return view('administrative.view-users', compact('user'));    
     }
 
     public function disableUsers()

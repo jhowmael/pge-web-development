@@ -49,5 +49,9 @@ return [
         'univali' => 'Univali',
         'unioeste' => 'Unioeste',
         'utfpr' => 'UTFPR',
-        'ufpel' => 'UFPel'
+        'ufpel' => 'UFPel',
+
+        'student' => 'Estudante',
+        'administrative' => 'Adiministrativo'
+
 ];
