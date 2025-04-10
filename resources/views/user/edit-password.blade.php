@@ -22,7 +22,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="current_password" class="form-label">Senha Atual:</label>
+                            <strong>Senha Atual:</strong>
                             <input type="password" id="current_password" name="current_password" class="form-control" required>
                             @error('current_password')
                             <p class="text-danger">{{ $message }}</p>
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="new_password" class="form-label">Nova Senha:</label>
+                            <strong>Nova Senha:</strong>
                             <input type="password" id="new_password" name="new_password" class="form-control" required>
                             @error('new_password')
                             <p class="text-danger">{{ $message }}</p>
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="new_password_confirmation" class="form-label">Confirmar Nova Senha:</label>
+                            <strong>Confirmar Nova Senha:</strong>
                             <input type="password" id="new_password_confirmation" name="new_password_confirmation" class="form-control" required>
                             @error('new_password_confirmation')
                             <p class="text-danger">{{ $message }}</p>

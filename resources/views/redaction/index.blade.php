@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <table class="table table-hover">
-                        <thead>
+                        <thead >
                             <tr style="text-align: center">
                                 <th scope="col">Edição</th>
                                 <th scope="col">Tema</th>
@@ -32,7 +32,7 @@
                                 <td>{{ $redaction->theme }}</td>
                                 <td>{{ $redaction->score }}</td>
                                 <td>{{ $redaction->created_at }}</td>
-                                <td>{{ $redaction->status }}</td>
+                                <td>{{ __('translate.' . $redaction->status) }}</td>
                                 <td>
                                     <x-buttons.view route="redaction.view" :id="$redaction->id" />
                                 </td>

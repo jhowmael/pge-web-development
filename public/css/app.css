@@ -23,6 +23,24 @@ a{
     font-size: 15px;
 }
 
+
+.btn-link{
+    color: #007561;            /* Cor do texto */
+    text-decoration: none;      /* Remove o sublinhado */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Suaviza as transições */
+    font-weight: 600 !important;    /* Aplica um negrito leve */
+    font-size: 15px;
+}
+
+.btn-link:hover, 
+.btn-link.active {
+    color: #007561;            /* Cor do texto */
+}
+
+th{
+    color: #007561;            /* Cor do texto */
+}
+
 /* Estilo no hover */
 /* Efeito no hover */
 .nav-link:hover, 

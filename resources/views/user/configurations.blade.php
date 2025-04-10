@@ -30,9 +30,10 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="profile_picture" class="form-label">Foto de Perfil:</label>
+                            <strong>Foto de Perfil:</strong>
                             <input type="file" id="profile_picture" name="profile_picture" class="form-control">
                             @if($user->profile_picture)
+                            <br>
                             <p class="text-muted">Foto atual:</p>
                             <center>
                                 <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Foto de Perfil" class="img-thumbnail" style="width: 300px">
@@ -44,7 +45,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="form-label">Nome:</label>
+                            <strong>Nome:</strong>
                             <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}" class="form-control" required>
                             @error('name')
                             <p class="text-danger">{{ $message }}</p>
@@ -52,7 +53,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="form-label">Email:</label>
+                            <strong>Email:</strong>
                             <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" class="form-control" required>
                             @error('email')
                             <p class="text-danger">{{ $message }}</p>
@@ -60,7 +61,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="birthday" class="form-label">Data de Nascimento:</label>
+                            <strong>Data de Nascimento:</strong>
                             <input type="date" id="birthday" name="birthday" value="{{ old('birthday', $user->birthday) }}" class="form-control" required>
                             @error('birthday')
                             <p class="text-danger">{{ $message }}</p>

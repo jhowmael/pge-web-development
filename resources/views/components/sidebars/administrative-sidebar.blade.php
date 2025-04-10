@@ -30,11 +30,18 @@
 
                 @if(request()->routeIs('administrative.add-simulations'))
                 <a class="nav-link d-inline-block"
-                    href="{{ route('administrative.add-simulations') }}"
                     style="color: #007561; font-weight: bold; font-size: 0.9em; margin-left: 10px;">
                     Adicionar Simulado <i class="fa-solid fa-chevron-right"></i>
                 </a>
                 @endif
+
+                @if(request()->routeIs('administrative.view-simulations'))
+                <a class="nav-link d-inline-block"
+                    style="color: #007561; font-weight: bold; font-size: 0.9em; margin-left: 10px;">
+                    Visualizar Simulado <i class="fa-solid fa-chevron-right"></i>
+                </a>
+                @endif
+                
             </li>
 
             <li class="nav-item">

@@ -28,7 +28,7 @@ class SimulationController extends Controller
             $query->where('status', 'like', '%' . $request->status . '%');
         }
 
-        $simulations = $query->paginate(3); // 10 é o número de itens por página, ajuste conforme necessário
+        $simulations = $query->paginate(3);
 
         return view('simulation.index', compact('simulations'));
     }

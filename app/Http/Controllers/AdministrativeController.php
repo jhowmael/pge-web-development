@@ -133,7 +133,7 @@ class AdministrativeController extends Controller
             $query->where('status', 'like', '%' . $request->status . '%');
         }
 
-        $simulations = $query->get();
+        $simulations = $query->paginate(9);
 
         return view('administrative.filter-simulations', compact('simulations'));
     }

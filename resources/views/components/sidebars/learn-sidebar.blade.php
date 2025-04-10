@@ -33,17 +33,31 @@
                     href="{{ route('redaction.index') }}">
                     Histórico de redações
                     @if(request()->routeIs('redaction.index'))
-                    <i class="fa-solid fa-chevron-right"></i>
+                        <i class="fa-solid fa-chevron-right"></i>
                     @endif
                 </a>
+                <!-- Verifica se a rota redaction.view está ativa -->
+                @if(request()->routeIs('redaction.view'))
+                    <a class="nav-link d-inline-block"
+                        style="color: #007561; font-weight: bold; font-size: 0.9em; margin-left: 10px;">
+                        Visualizar Redação <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                @endif
             </li>
-
+            
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('userSimulation.index') ? 'active' : '' }}"
                     href="{{ route('userSimulation.index') }}">
                     Histórico de simulado
                     @if(request()->routeIs('userSimulation.index'))
                     <i class="fa-solid fa-chevron-right"></i>
+                    @endif
+
+                    @if(request()->routeIs('userSimulation.view'))
+                        <a class="nav-link d-inline-block"
+                            style="color: #007561; font-weight: bold; font-size: 0.9em; margin-left: 10px;">
+                            Visualizar Simulado <i class="fa-solid fa-chevron-right"></i>
+                        </a>
                     @endif
                 </a>
             </li>

@@ -31,10 +31,10 @@
                                 <td>{{ $userSimulation->total_score }}</td>
                                 <td>{{ $userSimulation->created_at }}</td>
                                 <td>{{ $userSimulation->status }}</td>
+                                <td> {{ __('translate.' . $userSimulation->status) }}</td>
                                 <td>
                                     <x-buttons.view route="userSimulation.view" :id="$userSimulation->id" />
                                 </td>
-
                             </tr>
                             @endforeach
                         </tbody>
