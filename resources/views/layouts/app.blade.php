@@ -105,9 +105,9 @@
                             @endphp
                             <br>
                             <h8 style="color: {{ $color }}; font-weight: 600;">
-                            Pontuação total: {{ auth()->user()->total_points }}
+                                Pontuação total: {{ auth()->user()->total_points }}
                             </h8>
-            
+
                         </div>
                         <center>
                             <div class="mt-0"> <!-- Reduzi a margem inferior -->
@@ -140,13 +140,13 @@
                                     href="{{ route('learn') }}">
                                     <i class="fa-solid fa-graduation-cap"></i> Aprendizado
                                 </a>
-                            </li>                
+                            </li>
                         </ul>
 
                         <hr style="border: 0; height: 2px; background-color: #007561">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                            
+
                                 <a class="nav-link {{ request()->routeIs('administrative.dashboard') ||
                                     request()->routeIs('administrative.dashboard-simulations') ||
                                     request()->routeIs('administrative.dashboard-users') || 
@@ -155,7 +155,7 @@
                                     href="{{ route('administrative.dashboard') }}">
                                     <i class="fa-solid fa-sliders"></i> Administrativo
                                 </a>
-                            
+
                             </li>
                         </ul>
                     </div>

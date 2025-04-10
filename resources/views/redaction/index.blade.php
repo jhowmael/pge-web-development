@@ -19,7 +19,7 @@
                             <tr style="text-align: center">
                                 <th scope="col">Edição</th>
                                 <th scope="col">Tema</th>
-                                <th scope="col">Potuação</th>
+                                <th scope="col">Pontuação</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Visualizar</th>

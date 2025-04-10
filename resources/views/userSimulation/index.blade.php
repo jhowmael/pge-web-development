@@ -18,7 +18,7 @@
                         <thead>
                             <tr style="text-align: center">
                                 <th scope="col">Edição</th>
-                                <th scope="col">Potuação</th>
+                                <th scope="col">Pontuação</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Visualizar</th>
@@ -30,7 +30,6 @@
                                 <td>{{ $userSimulation->simulation->name }}</td>
                                 <td>{{ $userSimulation->total_score }}</td>
                                 <td>{{ $userSimulation->created_at }}</td>
-                                <td>{{ $userSimulation->status }}</td>
                                 <td> {{ __('translate.' . $userSimulation->status) }}</td>
                                 <td>
                                     <x-buttons.view route="userSimulation.view" :id="$userSimulation->id" />

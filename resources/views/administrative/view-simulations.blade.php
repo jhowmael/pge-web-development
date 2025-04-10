@@ -19,7 +19,7 @@
                         <strong>Nome:</strong> {{ $simulation->name }}
                     </div>
                     <div class="mb-3">
-                        <strong>Tipo / Modelo:</strong> {{ $simulation->type }}
+                        <strong>Tipo / Modelo:</strong> {{ __('translate.' . $simulation->type) }}
                     </div>
                     <div class="mb-3">
                         <strong>Ano:</strong> {{ $simulation->year }}
@@ -46,7 +46,8 @@
                         <strong>Descrição:</strong> {{ $simulation->description ?? 'Sem descrição disponível.' }}
                     </div>
                     <div class="mb-3">
-                        <strong>Status:</strong> {{ $simulation->status }}
+                        <strong>Status:</strong> {{ __('translate.' . $simulation->status) }}
+
                     </div>
                     <!-- Botões de ação -->
                     <div class="text-center">
@@ -76,12 +77,12 @@
                                     {{$question->number}}
                                 </td>
                                 <td>
-                                    {{$question->theme}}
+                                    {{ __('translate.' . $question->theme) }}
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
                                         <x-buttons.view route="administrative.view-questions" :id="$question->id" />
-                                        <x-buttons.edit route="administrative.edit-questions" :id="$simulation->id" />
+                                        <x-buttons.edit route="administrative.edit-questions" :id="$question->id" />
                                     </div>
                                 </td>
                             </tr>
@@ -91,7 +92,9 @@
 
                     <!-- Adicione a paginação aqui -->
                     <x-buttons.pagination :entities="$questions" />
-
+                    <center>
+                        <x-buttons.back route="administrative.dashboard-simulations" />
+                    </center>
                 </div>
             </div>
             <br>

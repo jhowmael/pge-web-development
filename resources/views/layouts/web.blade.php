@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/web.css') }}">
     <!-- Esse style é temporaário troca de acordo com o ngrok -->
     <link rel="stylesheet" href="https://9b81-2804-46dc-420-32aa-e408-6f3f-4682-ca9c.ngrok-free.app/css/web.css">
-    <!-- Navbar -->
+    <!---->
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/821b65200f.js" crossorigin="anonymous"></script>
 </head>

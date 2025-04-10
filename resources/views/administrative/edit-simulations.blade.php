@@ -5,29 +5,10 @@
 <div class="main-content">
     <div class="row">
         <div class="col-md-3">
-            <div class="card mb-4">
-                <div class="card-header text-center">
-                    <h4><i class="fa-solid fa-sliders"></i>Administrativo</h4>
-                </div>
-                <div class="card-body">
-                    <p>Editar detalhes do simulado selecionado.</p>
-
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative.dashboard') }}">Dashboard <i class="fa-solid fa-chevron-right"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('administrative.dashboard-simulations') }}"> Dashboard Simulados <i class="fa-solid fa-chevron-right"></i> Editar Simulado</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('administrative.dashboard-users') }}"> Dashboard Usuários <i class="fa-solid fa-chevron-right"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <x-sidebars.administrative-sidebar />
         </div>
 
-        <div class="col-md-7">
+        <div class="col-md-9">
             <div class="card mb-12" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); border-radius: 12px;">
                 <div class="card-header text-center">
                     <h4>Editar Simulado</h4>
@@ -35,63 +16,44 @@
                 <div class="card-body">
                     <form action="{{ route('administrative.update-simulations', $simulation->id) }}" method="POST">
                         @csrf
-                        <!-- Tipo -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>Tipo / Modelo:</strong></label>
+                            <strong>Tipo / Modelo:</strong>
                             <input type="text" class="form-control" name="type" value="{{ old('type', $simulation->type) }}" required>
                         </div>
-
-                        <!-- Ano -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>Ano:</strong></label>
+                            <strong>Ano:</strong>
                             <input type="number" class="form-control" name="year" value="{{ old('year', $simulation->year) }}" required>
                         </div>
-
-                        <!-- Edição -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>Edição:</strong></label>
+                            <strong>Edição:</strong>
                             <input placeholder="Campo opcional" type="text" class="form-control" name="edition" value="{{ old('edition', $simulation->edition) }}">
                         </div>
-
-                        <!-- Mínimo em Minutos -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>Mínimo em Minutos:</strong></label>
+                            <strong>Mínimo em Minutos:</strong>
                             <input type="number" class="form-control" name="minimum_minute" value="{{ old('minimum_minute', $simulation->minimum_minute) }}" required>
                         </div>
-
-                        <!-- Duração Total -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>Duração Total:</strong></label>
+                            <strong>Duração Total:</strong>
                             <input type="number" class="form-control" name="total_duration" value="{{ old('total_duration', $simulation->total_duration) }}" required>
                         </div>
-
-                        <!-- Quantidade de Questões -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>Quantidade de Questões:</strong></label>
+                            <strong>Quantidade de Questões:</strong>
                             <input type="number" class="form-control" name="quantity_questions" value="{{ old('quantity_questions', $simulation->quantity_questions) }}" required>
                         </div>
-
-                        <!-- Tema da Redação -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>Tema da Redação:</strong></label>
+                            <strong>Tema da Redação:</strong>
                             <input type="text" class="form-control" name="redaction_theme" value="{{ old('redaction_theme', $simulation->redaction_theme) }}" required>
                         </div>
-
-                        <!-- Total de Pontos -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>Total de Pontos:</strong></label>
+                            <strong>Total de Pontos:</strong>
                             <input type="number" class="form-control" name="total_points" value="{{ old('total_points', $simulation->total_points) }}" required>
                         </div>
-
-                        <!-- Descrição -->
                         <div class="mb-3">
-                            <label class="form-label"><strong>Descrição:</strong></label>
+                            <strong>Descrição:</strong>
                             <textarea class="form-control" name="description">{{ old('description', $simulation->description) }}</textarea>
                         </div>
-
-                        <!-- Botão de Enviar -->
                         <div class="text-center">
-                            <button type="submit" class="btn btn-success">Editar Simulado</button>
+                            <x-buttons.submit text="Editar Simulado" />
                         </div>
                     </form>
                 </div>
