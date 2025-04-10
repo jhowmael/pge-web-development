@@ -50,9 +50,11 @@ class AccessController extends Controller
 
     protected function validator(array $data)
     {
+        $data['phone'] = preg_replace('/\D/', '', $data['phone']);
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:18', 'unique:users'],
+            'phone' => ['required', 'string', 'unique:users', 'max:11'],
             'birthday' => ['required', 'date'],
             'profile_picture' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -82,7 +84,7 @@ class AccessController extends Controller
             'type' => config('users.autoTypeRegister'), 
             'name' => $data['name'],
             'email' => $data['email'],
-            'phone' => $data['phone'],
+            'phone' => preg_replace('/\D/', '', $data['phone']),
             'birthday' => $data['birthday'],
             'password' => Hash::make($data['password']),
             'status' => config('users.autoStatusRegister'),

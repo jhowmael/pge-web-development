@@ -21,29 +21,47 @@ class UserController extends Controller
     {
         \Log::info('Updating profile...');
 
+        // Validação dos dados de entrada
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . Auth::id(),
+            'phone' => [
+                'required',
+                'string',
+                'unique:users,phone,' . Auth::id(),
+                'regex:/^\(\d{2}\)\s\d{5}-\d{4}$/', // Valida o formato (XX) XXXXX-XXXX
+            ],
             'birthday' => 'required|date',
             'profile_picture' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
+        // Recupera o usuário autenticado
         $user = Auth::user();
+
+        // Atribui os dados do formulário ao usuário
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+
+        // Remove a máscara do telefone antes de salvar
+        $user->phone = preg_replace('/\D/', '', $request->input('phone')); // Remove todos os caracteres não numéricos
+
         $user->birthday = $request->input('birthday');
 
+        // Verifica se existe uma nova foto de perfil e salva
         if ($request->hasFile('profile_picture')) {
             $path = $request->file('profile_picture')->store('profile_pictures', 'public');
             $user->profile_picture = $path;
         }
 
+        // Salva o usuário no banco de dados
         $user->save();
 
         \Log::info('Profile updated successfully.');
 
+        // Redireciona com mensagem de sucesso
         return redirect()->route('user.configurations')->with('success', 'Perfil atualizado com sucesso!');
     }
+
 
     public function editPassword()
     {
