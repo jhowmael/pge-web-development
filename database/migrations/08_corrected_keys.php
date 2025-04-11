@@ -30,6 +30,8 @@ return new class extends Migration
         });
 
         Schema::table('user_simulations', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('simulation_id')->constrained('simulations')->onDelete('cascade');
             $table->foreignId('redaction_id')->constrained('redactions')->onDelete('cascade');
         });
 
@@ -75,6 +77,12 @@ return new class extends Migration
         });
 
         Schema::table('user_simulations', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
+            
+            $table->dropForeign(['simulation_id']);
+            $table->dropColumn('simulation_id');
+
             $table->dropForeign(['redaction_id']);
             $table->dropColumn('redaction_id');
         });
