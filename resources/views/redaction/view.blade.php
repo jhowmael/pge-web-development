@@ -28,6 +28,21 @@
                         <strong>Pontuação Obtida: </strong> {{ $redaction->score }}
                     </div>
                     <div class="mb-3">
+                        <strong>Clareza: </strong> {{ $redaction->clarity_score }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Ortografia: </strong> {{ $redaction->spelling_score }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Argumentação: </strong> {{ $redaction->argumentation_score }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Estrutura: </strong> {{ $redaction->structure_score }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Coesão: </strong> {{ $redaction->cohesion_score }}
+                    </div>
+                    <div class="mb-3">
                         <strong>Status: </strong> {{ __('translate.' . $redaction->status) }}
                     </div>
                     <div class="mb-3">

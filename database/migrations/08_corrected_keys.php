@@ -32,7 +32,7 @@ return new class extends Migration
         Schema::table('user_simulations', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('simulation_id')->constrained('simulations')->onDelete('cascade');
-            $table->foreignId('redaction_id')->constrained('redactions')->onDelete('cascade');
+            $table->foreignId('redaction_id')->nullable()->constrained('redactions')->onDelete('cascade');
         });
 
         Schema::table('user_question_responses', function (Blueprint $table) {

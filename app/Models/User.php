@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\UserSimulation;
+use App\Models\Redaction;
 
 class User extends Authenticatable
 {
@@ -40,94 +42,127 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::saving(function ($model) {
-            $model->updateSimulationScores($model);
-            //$model->updateRedactionScores($model);
+            $model->updateSimulationScoresFromLastSimulations($model);
+            $model->updateRedactionScoresFromLastRedactions($model);
             $model->updateTotalPoints($model);
             //$model->updatePremium($model);
         });
     }
 
     
-    public function updateSimulationScores($entity)
+    public function updateSimulationScoresFromLastSimulations()
     {
-        if($entity->simulation_languages_codes_technologies_score != $entity->updateLanguagesCodesTechnologiesScore($entity)){
+        $lastSimulations = UserSimulation::where('user_id', $this->id)
+            ->where('status', 'finished')
+            ->orderBy('created_at', 'desc')
+            ->limit(10)
+            ->get();
             
-        }   
-
-        if($entity->simulation_human_sciences_technologies_score != $entity->updateHumanSciencesTechnologiesScore($entity)){
-            
-        }   
-
-        if($entity->simulation_natural_sciences_technologies_score != $entity->updateNaturalSciencesTechnologiesScore($entity)){
-            
-        }   
-
-        if($entity->simulation_mathematics_technologies_score != $entity->updateMathematicsTechnologiesScore($entity)){
-            
-        }   
-    }
+        if ($lastSimulations->isEmpty()) {
+            return;
+        }
     
-    public function updateLanguagesCodesTechnologiesScore($entity)
-    { 
-    }
+        // Calcula as médias de cada área
+        $avgLanguages = $lastSimulations->avg('languages_codes_technologies');
+        $avgHuman = $lastSimulations->avg('human_sciences_technologies');
+        $avgNatural = $lastSimulations->avg('natural_sciences_technologies');
+        $avgMath = $lastSimulations->avg('mathematics_technologies');
     
-    public function updateHumanSciencesTechnologiesScore($entity)
-    { 
-    }
+        // Atualiza o usuário se for diferente (ou você pode colocar esses valores em outra tabela também)
+        $updated = false;
     
-    public function updateNaturalSciencesTechnologiesScore($entity)
-    { 
-    }
+        if ($this->simulation_languages_codes_technologies_score != $avgLanguages) {
+            $this->simulation_languages_codes_technologies_score = $avgLanguages;
+            $updated = true;
+        }
     
-    public function updateMathematicsTechnologiesScore($entity)
-    { 
+        if ($this->simulation_human_sciences_technologies_score != $avgHuman) {
+            $this->simulation_human_sciences_technologies_score = $avgHuman;
+            $updated = true;
+        }
+    
+        if ($this->simulation_natural_sciences_technologies_score != $avgNatural) {
+            $this->simulation_natural_sciences_technologies_score = $avgNatural;
+            $updated = true;
+        }
+    
+        if ($this->simulation_mathematics_technologies_score != $avgMath) {
+            $this->simulation_mathematics_technologies_score = $avgMath;
+            $updated = true;
+        }
+    
+        if ($updated) {
+            $this->save(); // salva o usuário com as novas médias
+        }
     }
 
-    public function updateRedactionScores($entity)
+    public function updateRedactionScoresFromLastRedactions()
     {
-        if($entity->redaction_clarity_score != $entity->updateRedactionClarityScore($entity)){
-            
-        }   
-
-        if($entity->redaction_spelling_score != $entity->updateRedactionSpellingScore($entity)){
-            
-        }   
-
-        if($entity->redaction_argumentation_score != $entity->updateRedactionArgumentationScore($entity)){
-            
-        }   
-
-        if($entity->redaction_structure_score != $entity->updateRedactionStructureScore($entity)){
-            
-        }   
-
-        if($entity->redaction_cohesion_score != $entity->updateRedactionCohesionScore($entity)){
-            
-        }  
+        $lastRedactions = Redaction::where('user_id', $this->id)
+            ->whereNotNull('clarity_score')
+            ->whereNotNull('spelling_score')
+            ->whereNotNull('argumentation_score')
+            ->whereNotNull('structure_score')
+            ->whereNotNull('cohesion_score')
+            ->orderBy('created_at', 'desc')
+            ->limit(10)
+            ->get();
+    
+        if ($lastRedactions->isEmpty()) {
+            return;
+        }
+    
+        // Calcula médias
+        $avgClarity = $lastRedactions->avg('clarity_score');
+        $avgSpelling = $lastRedactions->avg('spelling_score');
+        $avgArgumentation = $lastRedactions->avg('argumentation_score');
+        $avgStructure = $lastRedactions->avg('structure_score');
+        $avgCohesion = $lastRedactions->avg('cohesion_score');
+    
+        $updated = false;
+    
+        if ($this->redaction_clarity_score != $avgClarity) {
+            $this->redaction_clarity_score = $avgClarity;
+            $updated = true;
+        }
+    
+        if ($this->redaction_spelling_score != $avgSpelling) {
+            $this->redaction_spelling_score = $avgSpelling;
+            $updated = true;
+        }
+    
+        if ($this->redaction_argumentation_score != $avgArgumentation) {
+            $this->redaction_argumentation_score = $avgArgumentation;
+            $updated = true;
+        }
+    
+        if ($this->redaction_structure_score != $avgStructure) {
+            $this->redaction_structure_score = $avgStructure;
+            $updated = true;
+        }
+    
+        if ($this->redaction_cohesion_score != $avgCohesion) {
+            $this->redaction_cohesion_score = $avgCohesion;
+            $updated = true;
+        }
+    
+        if ($updated) {
+            $this->save();
+        }
     }
+    
+    public function updateTotalPoints()
+    {
+        $finishedCount = \App\Models\UserSimulation::where('user_id', $this->id)
+            ->where('status', 'finished')
+            ->count();
 
-    public function updateRedactionClarityScore($entity)
-    { 
-    }
+        $totalPoints = $finishedCount * 10;
 
-    public function updateRedactionSpellingScore($entity)
-    { 
-    }
-
-    public function updateRedactionArgumentationScore($entity)
-    { 
-    }
-
-    public function updateRedactionStructureScore($entity)
-    { 
-    }
-
-    public function updateRedactionCohesionScore($entity)
-    { 
-    }
-
-    public function updateTotalPoints($entity)
-    { 
+        if ($this->total_points !== $totalPoints) {
+            $this->total_points = $totalPoints;
+            $this->save();
+        }
     }
 
     public function updatePremium($entity)

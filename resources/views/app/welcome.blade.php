@@ -126,7 +126,7 @@
             scales: {
                 r: {
                     beginAtZero: true,
-                    max: 100
+                    max: 1000
                 }
             }
         }

@@ -13,11 +13,11 @@ return new class extends Migration
             $table->string('type', 16);
             $table->string('theme', 255);
             $table->text('introduction');
-            $table->decimal('clarity_score', 5, 2)->nullable()->default(0.00);
-            $table->decimal('spelling_score', 5, 2)->nullable()->default(0.00);
-            $table->decimal('argumentation_score', 5, 2)->nullable()->default(0.00);
-            $table->decimal('structure_score', 5, 2)->nullable()->default(0.00);
-            $table->decimal('cohesion_score', 5, 2)->nullable()->default(0.00);
+            $table->decimal('clarity_score', 6, 2)->nullable()->default(0.00);
+            $table->decimal('spelling_score', 6, 2)->nullable()->default(0.00);
+            $table->decimal('argumentation_score', 6, 2)->nullable()->default(0.00);
+            $table->decimal('structure_score', 6, 2)->nullable()->default(0.00);
+            $table->decimal('cohesion_score', 6, 2)->nullable()->default(0.00);
             $table->integer('total_points')->nullable();
             $table->integer('score')->nullable();
             $table->text('text')->nullable();

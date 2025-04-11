@@ -6,6 +6,7 @@ use App\Models\Simulation;
 use App\Models\UserSimulation;
 use App\Models\UserQuestionResponse;
 use App\Models\Question;
+use App\Models\User;
 use App\Models\Redaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -90,11 +91,14 @@ class UserSimulationController extends Controller
     public function finish($userSimulationId)
     {
         $userSimulation = UserSimulation::findOrFail($userSimulationId);
+        $user = User::findOrFail($userSimulation->user_id);
+
         $this->authorize('finish', $userSimulation);
 
         if (empty($userSimulation->finished)) {
             $userSimulation->finished = Carbon::now()->format('Y-m-d H:i:s');
             $userSimulation->save();
+            $user->save();
         }
 
         $redaction = Redaction::where('user_simulation_id', $userSimulation->id)->first();
