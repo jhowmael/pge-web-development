@@ -63,62 +63,74 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-// Dados fictícios para o gráfico de barras
-var labels = ['Linguagens', 'Ciências Humanas', 'Ciências da Natureza', 'Matemática'];
-var scores = [80, 75, 90, 85];
+    // Dados fictícios para o gráfico de barras
+    var labels = ['Linguagens', 'Ciências Humanas', 'Ciências da Natureza', 'Matemática'];
 
-var ctx = document.getElementById('scoreChart').getContext('2d');
-var scoreChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Pontuação por Matéria',
-            data: scores,
-            backgroundColor: 'rgba(22, 136, 212, 0.5)',
-            borderColor: 'rgb(0, 0, 0)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            y: {
-                beginAtZero: true
+    var scores = [
+        {{ $user->simulation_languages_codes_technologies_score }},
+        {{ $user->simulation_human_sciences_technologies_score }},
+        {{ $user->simulation_natural_sciences_technologies_score }},
+        {{ $user->simulation_mathematics_technologies_score }}
+    ];
+
+    var ctx = document.getElementById('scoreChart').getContext('2d');
+    var scoreChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Pontuação por Matéria',
+                data: scores,
+                backgroundColor: 'rgba(22, 136, 212, 0.5)',
+                borderColor: 'rgb(0, 0, 0)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
-});
+    });
 
-// Dados fictícios para o gráfico Radar de Redação
-var radarLabels = ['Clareza', 'Argumentação', 'Coesão', 'Estrutura', 'Ortografia'];
-var radarScores = [80, 70, 90, 85, 75];
+    // Dados fictícios para o gráfico Radar de Redação
+    var radarLabels = ['Clareza', 'Argumentação', 'Coesão', 'Estrutura', 'Ortografia'];
+    var radarScores = [
+        {{ $user->redaction_clarity_score }},
+        {{ $user->redaction_spelling_score }},
+        {{ $user->redaction_argumentation_score }},
+        {{ $user->redaction_structure_score }},
+        {{ $user->redaction_cohesion_score }}
+    ];
 
-var radarCtx = document.getElementById('radarChart').getContext('2d');
-var radarChart = new Chart(radarCtx, {
-    type: 'radar',
-    data: {
-        labels: radarLabels,
-        datasets: [{
-            label: 'Desempenho em Redação',
-            data: radarScores,
-            backgroundColor: 'rgba(36, 180, 36, 0.3)',
-            borderColor: 'rgb(0, 0, 0)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            r: {
-                beginAtZero: true,
-                max: 100
+    var radarCtx = document.getElementById('radarChart').getContext('2d');
+    var radarChart = new Chart(radarCtx, {
+        type: 'radar',
+        data: {
+            labels: radarLabels,
+            datasets: [{
+                label: 'Desempenho em Redação',
+                data: radarScores,
+                backgroundColor: 'rgba(36, 180, 36, 0.3)',
+                borderColor: 'rgb(0, 0, 0)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    max: 100
+                }
             }
         }
-    }
-});
+    });
 </script>
 
 

@@ -6,16 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('simulation_id')->constrained('simulations')->onDelete('cascade');
             $table->integer('number');
             $table->string('correct_alternative', 1)->nullable();
             $table->string('theme', 255)->nullable();
@@ -37,11 +31,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('questions');
