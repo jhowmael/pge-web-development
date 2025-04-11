@@ -348,3 +348,40 @@ textarea.input-lg {
 .bg-red {
     background-color: #dc3545 !important; /* Vermelho */
 }
+.faq-item {
+        cursor: pointer;
+        transition: background 0.3s, box-shadow 0.3s;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
+    }
+    .faq-item:hover {
+        background: #f8e58d;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Sombra mais forte no hover */
+    }
+    .faq-arrow {
+        transition: transform 0.3s ease;
+    }
+.faq-item[aria-expanded="true"] .faq-arrow {
+    transform: rotate(180deg);
+}
+.faq-header.collapsed .faq-arrow {
+    transform: rotate(0deg);
+}
+.faq-header:not(.collapsed) .faq-arrow {
+    transform: rotate(180deg);
+}.faq-header:not(.collapsed) .faq-arrow {
+    transform: rotate(180deg);
+}
+/* Remove a sombra da FAQ */
+.faq-item.no-shadow {
+    box-shadow: none !important;
+}
+
+/* Garante o efeito da seta girando */
+.faq-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.faq-header:not(.collapsed) .faq-arrow {
+    transform: rotate(180deg);
+}
