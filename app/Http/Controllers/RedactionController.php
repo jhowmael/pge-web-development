@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Redaction;
 use App\Models\UserSimulation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
@@ -59,6 +60,8 @@ class RedactionController extends Controller
             ->where('redaction_id', $redaction->id)
             ->first();
 
+        $user = User::where('id', auth()->id())->first();
+
         $cacheKey = 'user_redaction_limit_' . auth()->id();
         $currentCount = cache()->get($cacheKey, 0);
         $limit = 20;
@@ -85,6 +88,7 @@ class RedactionController extends Controller
 
             $redaction->save();
             $userSimulation->save();
+            $user->save();
         }
 
         return redirect()->route('userSimulation.view', [

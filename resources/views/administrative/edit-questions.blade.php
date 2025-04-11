@@ -54,7 +54,7 @@
                                     <strong>Disciplina</strong>
                                     <select class="form-select" id="theme" name="theme" required>
                                         @foreach (config('questions.themes') as $key => $value)
-                                            <option value="{{ $key }}">{{ $value }}</option>
+                                            <option value="{{ $key }}" {{ old('theme', $question->theme) == $key ? 'selected' : '' }}>{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -83,17 +83,17 @@
                                     <strong>Alternativa Correta</strong>
                                     <select class="form-select" name="correct_alternative" required>
                                         @foreach (config('questions.correct_alternatives') as $key => $value)
-                                            <option value="{{ $key }}">{{ $value }}</option>
+                                            <option value="{{ $key }}" {{ old('correct_alternative', $question->correct_alternative) == $key ? 'selected' : '' }}>{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
-                                {{-- ALTERNATIVAS COM IMAGENS AO LADO --}}
+                                {{-- Alternativas com imagens --}}
                                 @foreach (['a','b','c','d','e'] as $letter)
                                     <div class="row mb-3">
                                         <div class="col-md-7">
                                             <strong>Alternativa {{ strtoupper($letter) }}:</strong>
-                                            <input type="text" class="form-control" name="alternative_{{ $letter }}" value="{{ old("alternative_$letter", $simulation["alternative_$letter"]) }}" required>
+                                            <input type="text" class="form-control" name="alternative_{{ $letter }}" value="{{ old("alternative_$letter", $question["alternative_$letter"]) }}" required>
                                         </div>
                                         <div class="col-md-5">
                                             <strong>Imagem da Alternativa {{ strtoupper($letter) }}</strong>
@@ -112,7 +112,7 @@
                                 {{-- Resolução --}}
                                 <div class="mb-3">
                                     <strong>Resolução:</strong>
-                                    <textarea class="form-control" name="resolution" rows="5" required>{{ old('resolution', $simulation->resolution) }}</textarea>
+                                    <textarea class="form-control" name="resolution" rows="5" required>{{ old('resolution', $question->resolution) }}</textarea>
                                 </div>
 
                                 {{-- Botão de envio --}}
@@ -122,6 +122,7 @@
                             </form>
                         </div>
                     </div>
+
                 </div>
             </div>
             <br>
