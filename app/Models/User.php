@@ -42,6 +42,7 @@ class User extends Authenticatable
         static::saving(function ($model) {
             $model->updateSimulationScores($model);
             //$model->updateRedactionScores($model);
+            $model->updateTotalPoints($model);
             //$model->updatePremium($model);
         });
     }
@@ -125,6 +126,9 @@ class User extends Authenticatable
     { 
     }
 
+    public function updateTotalPoints($entity)
+    { 
+    }
 
     public function updatePremium($entity)
     { 
