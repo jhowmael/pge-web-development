@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -22,21 +17,26 @@ return new class extends Migration
             $table->string('password', 255);
             $table->string('phone', 16)->nullable();
             $table->string('profile_picture')->nullable();
-            $table->boolean('premium')->default(0);
-            $table->rememberToken();
+            $table->boolean('premium')->default(false);
+            $table->decimal('simulation_languages_codes_technologies_score', 5, 2)->nullable()->default(0.00);
+            $table->decimal('simulation_human_sciences_technologies_score', 5, 2)->nullable()->default(0.00);
+            $table->decimal('simulation_natural_sciences_technologies_score', 5, 2)->nullable()->default(0.00);
+            $table->decimal('simulation_mathematics_technologies_score', 5, 2)->nullable()->default(0.00);
+            $table->decimal('redaction_clarity_score', 5, 2)->nullable()->default(0.00);
+            $table->decimal('redaction_spelling_score', 5, 2)->nullable()->default(0.00);
+            $table->decimal('redaction_argumentation_score', 5, 2)->nullable()->default(0.00);
+            $table->decimal('redaction_structure_score', 5, 2)->nullable()->default(0.00);
+            $table->decimal('redaction_cohesion_score', 5, 2)->nullable()->default(0.00);
+            $table->integer('total_points', 5, 2)->nullable()->default(0.00);
             $table->string('status', 16);
             $table->dateTime('registered');
             $table->date('birthday')->nullable();
             $table->dateTime('deleted')->nullable();
-            $table->timestamps(); 
+            $table->rememberToken(); 
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('users');

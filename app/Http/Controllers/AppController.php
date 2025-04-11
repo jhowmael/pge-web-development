@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AppController extends Controller
 {
     public function welcome()
     {
-        return view('app.welcome');
+
+        $user = Auth::user();
+
+        return view('app.welcome', compact('user'));
     }
 
     public function learn()

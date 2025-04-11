@@ -50,22 +50,48 @@ class AccessController extends Controller
 
     protected function validator(array $data)
     {
+        $data['phone'] = preg_replace('/\D/', '', $data['phone']);
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'unique:users', 'max:11'],
+            'birthday' => ['required', 'date'],
+            'profile_picture' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
     protected function create(array $data)
-    {   
-        return User::create([
+    {
+        $defaultImagePath = public_path('images/studant-default.png');  
+        $profilePicturePath = 'profile_pictures/studant-default.png'; 
+    
+        if (isset($data['profile_picture']) && $data['profile_picture']) {
+            $path = $data['profile_picture']->store('profile_pictures', 'public');
+        } else {
+            if (!file_exists(public_path('storage/' . $profilePicturePath))) {
+                if (file_exists($defaultImagePath)) {
+                    copy($defaultImagePath, public_path('storage/' . $profilePicturePath));
+                } else {
+                    throw new \Exception("Imagem padrão não encontrada em $defaultImagePath");
+                }
+            }
+            $path = $profilePicturePath;
+        }
+    
+        $user = User::create([
             'type' => config('users.autoTypeRegister'), 
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => preg_replace('/\D/', '', $data['phone']),
+            'birthday' => $data['birthday'],
             'password' => Hash::make($data['password']),
             'status' => config('users.autoStatusRegister'),
             'registered' => now(),
+            'profile_picture' => $path, 
         ]);
+    
+        return $user; 
     }
 }

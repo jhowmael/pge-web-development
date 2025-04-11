@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Simulation;
+use App\Models\User;
 use App\Models\Question;
 
 class AdministrativeController extends Controller
@@ -36,6 +37,7 @@ class AdministrativeController extends Controller
             'total_duration' => 'required|integer',
             'quantity_questions' => 'required|integer',
             'redaction_theme' => 'required|string',
+            'redaction_introduction' => 'required|string',
             'total_points' => 'required|integer',
             'description' => 'nullable|string',
         ]);
@@ -132,24 +134,49 @@ class AdministrativeController extends Controller
             $query->where('status', 'like', '%' . $request->status . '%');
         }
 
-        $simulations = $query->get();
+        $simulations = $query->paginate(9);
 
         return view('administrative.filter-simulations', compact('simulations'));
     }
 
     public function dashboardUsers()
     {
-        return view('administrative.dashboard-users');
+
+        $users = User::orderBy('updated_at', 'desc')->paginate(10);
+
+        return view('administrative.dashboard-users', compact('users'));
     }
 
-    public function editUsers()
+    public function filterUsers(Request $request)
     {
-        return view('administrative.edit-users');
+        $query = User::query();
+
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->filled('email')) {
+            $query->where('email', 'like', '%' . $request->email . '%');
+        }
+
+        if ($request->filled('phone')) {
+            $query->where('phone', 'like', '%' . $request->phone . '%');
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', 'like', '%' . $request->status . '%');
+        }
+
+        $users = $query->paginate(10);
+
+        return view('administrative.filter-users', compact('users'));
     }
 
-    public function viewUsers()
+    public function viewUsers($id)
     {
-        return view('administrative.view-users');
+        $user = User::where('id', $id)->first();
+
+        return view('administrative.view-users', compact('user'));    
     }
 
     public function disableUsers()

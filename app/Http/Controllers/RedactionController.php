@@ -17,7 +17,7 @@ class RedactionController extends Controller
         $redactions = Redaction::where('user_id', $userId)
             ->with('simulation')  // Carrega a relação `simulation`
             ->orderBy('created_at', 'desc')
-            ->paginate(20);
+            ->paginate(10);
 
         return view('redaction.index', compact('redactions'));
     }
@@ -26,6 +26,8 @@ class RedactionController extends Controller
     {
         $redaction = Redaction::find($id);
 
+        $this->authorize('view', $redaction);
+
         return view('redaction.view', compact('redaction'));
     }
 
@@ -33,37 +35,58 @@ class RedactionController extends Controller
     {
         $redaction = Redaction::findOrFail($redactionId);
 
+        $this->authorize('inProgress', $redaction);
+
         return view('redaction.in-progress', compact('redaction'));
     }
 
     public function finish(Request $request, $redactionId)
     {
+        $validated = $request->validate([
+            'text' => 'required|string|min:100|max:5000', 
+        ]);
+    
         $redaction = Redaction::findOrFail($redactionId);
+    
+        $this->authorize('finish', $redaction);
+    
+        $limit = 20; 
+        $expiry = now()->addDay(); 
+    
+        $cacheKey = 'user_redaction_limit_' . auth()->id(); 
+        $currentCount = cache()->get($cacheKey, 0); 
 
+        if ($currentCount >= $limit) {
+            return response()->json([
+                'success' => false,
+                'message' => "Você atingiu o limite de 20 redações por dia. Tente novamente amanhã."
+            ], 429); 
+        }
+    
+        cache()->put($cacheKey, $currentCount + 1, $expiry);
+    
         if ($request->has('text')) {
-            $redaction->text = $request->input('text');
-
+            $redaction->text = strip_tags($request->input('text'));
+    
             if (empty($redaction->corrected)) {
                 $redaction->corrected = Carbon::now()->format('Y-m-d H:i:s');
             }
-
+    
             $redaction->correction = $this->getCorrectRedaction($redaction->text, $redaction->theme);
             $redaction->score = $this->getScoreRedaction($redaction->text, $redaction->theme);
-
+    
             $redaction->save();
         }
-
+    
         return redirect()->route('userSimulation.view', [
             'id' => $redaction->user_simulation_id,
         ]);
     }
-
+    
     public function getCorrectRedaction($redactionText, $redactioTheme)
     {
-
-        $apiKey = 'AIzaSyCIYnVCPoo-lL2LfvhmeRDpaLAOE5blPgk';
+        $apiKey = env('GEMINI_API_KEY');
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$apiKey";
-
         $payload = [
             'contents' => [
                 [
@@ -100,8 +123,7 @@ class RedactionController extends Controller
 
     public function getScoreRedaction($redactionText, $redactioTheme)
     {
-
-        $apiKey = 'AIzaSyCIYnVCPoo-lL2LfvhmeRDpaLAOE5blPgk';
+        $apiKey = env('GEMINI_API_KEY');
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$apiKey";
 
         $payload = [

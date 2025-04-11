@@ -1,32 +1,79 @@
-h2, h6, hr{
-    color: #6f42c1; /* Cor do texto roxa */
+body {
+    font-family: 'Open Sans', sans-serif;
 }
 
-.navbar-brand {
-    margin-left: 20px; /* Adjust the value to your desired margin */
+.bg-light-yellow {
+    background-color: #f1ecb4;
+    /* Cor amarela personalizada (exemplo de dourado) */
+}
+
+body {
+    background-color: #e2f0fd;
+}
+
+a{
+    font-size: 9px;
 }
 
 .nav-link {
-    color: #6f42c1; /* Cor do texto dos links */
+    color: black;               /* Cor normal do texto */
+    text-decoration: none;      /* Remove o sublinhado */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Suaviza as transições */
+    font-weight: 600 !important;    /* Aplica um negrito leve */
+    font-size: 15px;
 }
 
-.nav-link:hover {
-    color: #6598ad; /* Cor que aparece quando o mouse passa por cima */
+
+.btn-link{
+    color: #007561;            /* Cor do texto */
+    text-decoration: none;      /* Remove o sublinhado */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Suaviza as transições */
+    font-weight: 600 !important;    /* Aplica um negrito leve */
+    font-size: 15px;
 }
 
-.active {
-    color: #428aa3; /* Cor do texto dos links */
+.btn-link:hover, 
+.btn-link.active {
+    color: #007561;            /* Cor do texto */
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
+th{
+    color: #007561;            /* Cor do texto */
 }
-.content {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+
+/* Estilo no hover */
+/* Efeito no hover */
+.nav-link:hover, 
+.nav-link.active {
+    color: #007561;            /* Cor do texto */
+    background-color: #f0f0f0; /* Cor de fundo */
+    text-decoration: none;      /* Remove sublinhado */
 }
-.flex-grow-1 {
-    flex: 1;
+
+.scale-icon {
+    transition: transform 0.3s ease;
+}
+
+.btn:hover .scale-icon {
+    transform: scale(1.2); /* Aumenta o ícone em 20% */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ffd700 !important;
+    border-color: #000000 !important;
+}
+
+.pagination .page-link {
+    color: black; /* Cor do texto da paginação */
+    border-color: rgb(0, 0, 0); /* Cor da borda da paginação */
+}
+
+.pagination .page-link:hover {
+    background-color: #f7f3de; /* Cor de fundo ao passar o mouse */
+    color: black;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc; /* Cor dos itens desabilitados */
+    background-color: #f8f9fa;
 }

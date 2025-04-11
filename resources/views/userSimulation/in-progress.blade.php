@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="simulation" style="max-width: 800px; margin: auto; padding: 20px;">
+    <div id="simulation" style="max-width: 800px; margin: auto; padding: 20px;">
         <center>
             <h1 id="simulation-name" style="font-size: 2.5em; color: #449d5b; font-weight: bold;"></h1>
             <h3 id="simulation-duration" style="font-size: 1.2em; color: #777;"></h3>
