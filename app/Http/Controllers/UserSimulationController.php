@@ -16,9 +16,8 @@ class UserSimulationController extends Controller
     public function index(Request $request)
     {
         $userId = auth()->id();
-
         $userSimulations = UserSimulation::where('user_id', $userId)
-            ->with('simulation')  // Carrega a relação `simulation`
+            ->with('simulation')
             ->orderBy('created_at', 'desc')
             ->paginate(20);
 
@@ -28,6 +27,7 @@ class UserSimulationController extends Controller
     public function view($userSimulationId)
     {
         $userSimulation = UserSimulation::findOrFail($userSimulationId);
+        $this->authorize('view', $userSimulation);
         $redaction = Redaction::findOrFail($userSimulation->redaction_id);
 
         return view('userSimulation.view', compact('userSimulation', 'redaction'));
@@ -35,11 +35,9 @@ class UserSimulationController extends Controller
 
     public function inProgress($simulationId, $userSimulationId)
     {
-
         $simulation = Simulation::find($simulationId);
         $userSimulation = UserSimulation::find($userSimulationId);
-
-
+        $this->authorize('inProgress', $userSimulation);
         $questions = Question::where('simulation_id', $simulationId)->get();
 
         foreach ($questions as $question) {
@@ -73,7 +71,6 @@ class UserSimulationController extends Controller
         ]);
 
         $question = Question::findOrFail($questionId);
-
         $userQuestionResponse = UserQuestionResponse::updateOrCreate(
             [
                 'user_simulation_id' => $simulationId,
@@ -93,6 +90,7 @@ class UserSimulationController extends Controller
     public function finish($userSimulationId)
     {
         $userSimulation = UserSimulation::findOrFail($userSimulationId);
+        $this->authorize('finish', $userSimulation);
 
         if (empty($userSimulation->finished)) {
             $userSimulation->finished = Carbon::now()->format('Y-m-d H:i:s');

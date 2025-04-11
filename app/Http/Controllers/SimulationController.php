@@ -14,7 +14,7 @@ class SimulationController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Simulation::query();
+        $query = Simulation::where('status', 'enabled');
 
         if ($request->filled('year')) {
             $query->where('year', $request->year);
@@ -24,11 +24,7 @@ class SimulationController extends Controller
             $query->where('type', 'like', '%' . $request->type . '%');
         }
 
-        if ($request->filled('status')) {
-            $query->where('status', 'like', '%' . $request->status . '%');
-        }
-
-        $simulations = $query->paginate(3);
+        $simulations = $query->paginate(9);
 
         return view('simulation.index', compact('simulations'));
     }

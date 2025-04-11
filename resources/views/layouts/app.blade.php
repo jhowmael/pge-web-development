@@ -144,20 +144,21 @@
                         </ul>
 
                         <hr style="border: 0; height: 2px; background-color: #007561">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
+                        @if(auth()->user() && auth()->user()->type === 'administrative')
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
 
-                                <a class="nav-link {{ request()->routeIs('administrative.dashboard') ||
-                                    request()->routeIs('administrative.dashboard-simulations') ||
-                                    request()->routeIs('administrative.dashboard-users') || 
-                                    request()->routeIs('administrative.add-simulations')
-                                    ? 'active' : '' }}"
-                                    href="{{ route('administrative.dashboard') }}">
-                                    <i class="fa-solid fa-sliders"></i> Administrativo
-                                </a>
-
-                            </li>
-                        </ul>
+                                    <a class="nav-link {{ request()->routeIs('administrative.dashboard') ||
+                                        request()->routeIs('administrative.dashboard-simulations') ||
+                                        request()->routeIs('administrative.dashboard-users') || 
+                                        request()->routeIs('administrative.add-simulations')
+                                        ? 'active' : '' }}"
+                                        href="{{ route('administrative.dashboard') }}">
+                                        <i class="fa-solid fa-sliders"></i> Administrativo
+                                    </a>
+                                </li>
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>
