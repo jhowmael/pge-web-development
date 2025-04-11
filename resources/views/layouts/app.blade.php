@@ -31,9 +31,18 @@
                         </ul>
 
                         <ul class="navbar-nav"> <!-- Navbar itens à direita -->
+                            @php
+                            $user = auth()->user();
+                            @endphp
+                            @if($user->premium === 1)
+                            <li class="nav-item">
+                                <a class="btn btn-light me-2 btn-outline-dark fw-bold" href="{{ route('welcome') }}">Área do Estudante</a>
+                            </li>
+                            @else
                             <li class="nav-item">
                                 <a class="btn btn-warning me-2 btn-outline-dark fw-bold" href="{{ route('plans') }}">Seja Premium</a>
                             </li>
+                            @endif
                             @guest
                             <li class="nav-item">
                                 <a class="btn btn-light me-2 btn-outline-dark fw-bold" href="{{ route('login') }}">Login</a>
@@ -54,7 +63,9 @@
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <!-- Opção Área do Estudante -->
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('welcome') }}">Área do Estudante</a>
+                                        <form id="logout-form" action="{{ route('plans') }}" method="GET" class="d-inline">
+                                            <button type="submit" class="dropdown-item">Minha assinatura</button>
+                                        </form>
                                     </li>
                                     <!-- Opção Logout -->
                                     <li>
@@ -145,19 +156,19 @@
 
                         <hr style="border: 0; height: 2px; background-color: #007561">
                         @if(auth()->user() && auth()->user()->type === 'administrative')
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
 
-                                    <a class="nav-link {{ request()->routeIs('administrative.dashboard') ||
+                                <a class="nav-link {{ request()->routeIs('administrative.dashboard') ||
                                         request()->routeIs('administrative.dashboard-simulations') ||
                                         request()->routeIs('administrative.dashboard-users') || 
                                         request()->routeIs('administrative.add-simulations')
                                         ? 'active' : '' }}"
-                                        href="{{ route('administrative.dashboard') }}">
-                                        <i class="fa-solid fa-sliders"></i> Administrativo
-                                    </a>
-                                </li>
-                            </ul>
+                                    href="{{ route('administrative.dashboard') }}">
+                                    <i class="fa-solid fa-sliders"></i> Administrativo
+                                </a>
+                            </li>
+                        </ul>
                         @endif
                     </div>
                 </div>

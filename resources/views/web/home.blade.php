@@ -5,7 +5,7 @@
 <div class="row align-items-center">
     <!-- Coluna de Texto -->
     <div class="text-center mt-5 mb-1">
-        <h3 class="text-dark">Seja bem-vindo ao AproveME!</h3> <!-- Texto de boas-vindas -->
+        <h3 class="fw-bold">Seja bem-vindo ao AproveME!</h3> <!-- Texto de boas-vindas -->
         <p class="lead text-muted">Estamos aqui para ajudá-lo a alcançar o sucesso nos vestibulares com um plano de estudo personalizado e apoio especializado.</p>
     </div>
 
