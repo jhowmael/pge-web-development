@@ -31,8 +31,8 @@
                 <br>
             </div>
 
-            <div class="col-md-7 right-panel bg-white" style="padding: 25px;">
-                <h3 class="text-center text-warning fw-bold">Crie sua conta</h3>
+            <div class="col-md-7 right-panel bg-white" style="padding: 45px;">
+                <h3 class="text-center fw-bold">Crie sua conta</h3>
                 <p class="text-center text-muted">Preencha os dados abaixo para se cadastrar</p>
 
                 <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
@@ -123,8 +123,9 @@
                         <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
                             <i class="fa fa-eye" id="eyeIconConfirm"></i> </button>
                     </div>
-
-                    <button type="submit" class="btn btn-yellow mt-3">CADASTRAR</button>
+                    <center>
+                        <button type="submit" class="btn-custom d-flex justify-content-center">CADASTRAR</button>
+                    </center>
                 </form>
             </div>
         </div>

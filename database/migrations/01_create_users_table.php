@@ -27,7 +27,7 @@ return new class extends Migration
             $table->decimal('redaction_argumentation_score', 5, 2)->nullable()->default(0.00);
             $table->decimal('redaction_structure_score', 5, 2)->nullable()->default(0.00);
             $table->decimal('redaction_cohesion_score', 5, 2)->nullable()->default(0.00);
-            $table->integer('total_points', 5, 2)->nullable()->default(0.00);
+            $table->decimal('total_points', 5, 2)->nullable()->default(0.00);
             $table->string('status', 16);
             $table->dateTime('registered');
             $table->date('birthday')->nullable();

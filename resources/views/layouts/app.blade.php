@@ -32,7 +32,7 @@
 
                         <ul class="navbar-nav"> <!-- Navbar itens à direita -->
                             <li class="nav-item">
-                                <a class="btn btn-warning me-2 btn-outline-dark fw-bold" href="{{ route('login') }}">Seja Premium</a>
+                                <a class="btn btn-warning me-2 btn-outline-dark fw-bold" href="{{ route('plans') }}">Seja Premium</a>
                             </li>
                             @guest
                             <li class="nav-item">

@@ -27,7 +27,7 @@
 
             <!-- Painel Direito -->
             <div class="col-md-7 right-panel" style="padding: 98px;">
-                <h3 class="text-center text-warning fw-bold">Entre em sua conta</h3>
+                <h3 class="text-center fw-bold">Entre em sua conta</h3>
                 <p class="text-center text-muted">Preencha seus dados</p>
 
                 <form action="{{ route('login') }}" method="POST">
@@ -70,12 +70,11 @@
                             }
                         });
                     </script>
-                    
-                    <div class="text-end">
+                    <center>
                         <a href="{{ route('forgot-password') }}" class="text-muted">Esqueci minha senha</a>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-yellow mt-3">ENTRAR</button>
+
+                        <button type="submit" class="btn-custom d-flex justify-content-center">ENTRAR</button>
+                    </center>
                 </form>
             </div>
         </div>
