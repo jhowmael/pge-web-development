@@ -31,7 +31,10 @@
                                 <td class="text-center">{{ $userSimulation->total_score }}</td>
                                 <td class="text-center">{{ $userSimulation->created_at }}</td>
                                 <td class="text-center"> {{ __('translate.' . $userSimulation->status) }}</td>
-                                <td class="text-center">
+                                <td class="d-flex justify-content-center gap-2">
+                                    @if($userSimulation->status === 'started')
+                                        <x-buttons.keep route="userSimulation.in-progress" :parameters="['simulationId' => $userSimulation->simulation_id, 'userSimulationId' => $userSimulation->id]" />
+                                    @endif
                                     <x-buttons.view route="userSimulation.view" :id="$userSimulation->id" />
                                 </td>
                             </tr>

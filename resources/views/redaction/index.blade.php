@@ -33,7 +33,10 @@
                                 <td class="text-center">{{ $redaction->score }}</td>
                                 <td class="text-center">{{ $redaction->created_at }}</td>
                                 <td class="text-center">{{ __('translate.' . $redaction->status) }}</td>
-                                <td class="text-center">
+                                <td class="d-flex justify-content-center gap-2">
+                                    @if($redaction->status === 'in-progress')
+                                        <x-buttons.keep route="redaction.in-progress" :parameters="['redactionId' => $redaction->id]" />
+                                    @endif
                                     <x-buttons.view route="redaction.view" :id="$redaction->id" />
                                 </td>
                             </tr>
