@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('phone', 16)->nullable();
             $table->string('profile_picture')->nullable();
             $table->boolean('premium')->default(false);
+            $table->string('premium_type')->default(false, 16);
+            $table->integer('premium_expired_days')->default(false);
             $table->decimal('simulation_languages_codes_technologies_score', 6, 2)->nullable()->default(0.00);
             $table->decimal('simulation_human_sciences_technologies_score', 6, 2)->nullable()->default(0.00);
             $table->decimal('simulation_natural_sciences_technologies_score', 6, 2)->nullable()->default(0.00);

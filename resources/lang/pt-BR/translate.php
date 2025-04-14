@@ -13,6 +13,10 @@ return [
     'natural_sciences_technologies' => 'Ciências da Natureza e suas Tecnologias',
     'mathematics_technologies' => 'Matemática e suas Tecnologias',	
 
+    'monthly' => 'Mensal',	
+    'semi_annual' => 'Semestral',	
+    'current_plan ' => 'Plano Atual',	
+
     'enem' => 'ENEM',
         'fuvest' => 'FUVEST',
         'unicamp' => 'UNICAMP',

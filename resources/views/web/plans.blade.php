@@ -2,11 +2,49 @@
 
 @section('content')
 <div class="container py-5">
+    <!-- Card de Plano Atual -->
+    <div class="row g-4 text-center mb-4 justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4 premium-card" style="
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+                border: 2px solid gold;
+                background: linear-gradient(to right, #fffbe6, #fff3cd);
+            ">
+                <div class="p-3 rounded">
+                    <h5 class="fw-bold" style="font-size: 1.6em;">
+                        <i class="fas fa-crown text-warning me-2"></i> Plano Atual
+                    </h5>
+
+                    @if(auth()->user()->premium)
+                        <h6 class="fw-bold text-dark">
+                            {{ __('translate.' . auth()->user()->premium_type) }} 
+                            - 
+                            @if(auth()->user()->premium_type === 'monthly')
+                                R$ 29,90 <span class="fs-6">/mês</span>
+                            @elseif(auth()->user()->premium_type === 'semi_annual')
+                                R$ 149,90 <span class="fs-6">/6 meses</span>
+                            @endif
+                        </h6>
+                        <p class="mt-2 text-dark">
+                            Dias restantes: 
+                            <strong>{{ auth()->user()->premium_expired_days }} dias</strong>
+                        </p>
+                        <span class="badge bg-success">Ativo</span>
+                    @else
+                        <p>Você não tem um plano ativo.</p>
+                        <span class="badge bg-danger">Inativo</span>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards de planos disponíveis -->
     <div class="row g-4 text-center">
         <div class="col-md-4">
-            <div class="card p-3 hover-effect" style="height: 100%; min-height: 350px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)">
+            <div class="card p-3 hover-effect" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)">
                 <div class="p-3 rounded">
-                    <h5 class="fw-bold">Mensal</h5>
+                    <h5 class="fw-bold">{{ __('translate.monthly') }}</h5>
                     <h2 class="p-3 rounded" id="price-monthly">R$ 29,90 <span class="fs-6">/mês</span></h2>
                 </div>
                 <ul class="list-unstyled mt-3">
@@ -17,13 +55,16 @@
                     <li class="text-start"><i class="fas fa-check-circle text-success"></i> Guia de estudos</li>
                     <li class="text-start"><i class="fas fa-check-circle text-success"></i> Suporte 24h</li>
                 </ul>
-                <a href="#" class="btn-custom d-flex justify-content-center">ASSINAR</a>
+                <form action="{{ route('signMonthly') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-yellow" id="btn-monthly">ASSINAR JÁ</button>
+                </form>            
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card p-3 hover-effect" style="height: 100%; min-height: 350px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)">
+            <div class="card p-3 hover-effect" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)">
                 <div class="p-3 rounded">
-                    <h5 class="fw-bold">Semestral</h5>
+                    <h5 class="fw-bold">{{ __('translate.semi_annual') }}</h5>
                     <h2 class="p-3 rounded" id="price-semester">R$ 149,90 <span class="fs-6">/6 meses</span></h2>
                 </div>
                 <ul class="list-unstyled mt-3">
@@ -34,7 +75,10 @@
                     <li class="text-start"><i class="fas fa-check-circle text-success"></i> Guia de estudos</li>
                     <li class="text-start"><i class="fas fa-check-circle text-success"></i> Suporte 24h</li>
                 </ul>
-                <a href="#" class="btn-custom d-flex justify-content-center">ASSINAR</a>
+                <form action="{{ route('signSemiAnnual') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-yellow" id="btn-monthly">ASSINAR JÁ</button>
+                </form>      
             </div>
         </div>
     </div>

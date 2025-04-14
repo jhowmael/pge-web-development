@@ -20,6 +20,8 @@ class User extends Authenticatable
         'phone',
         'profile_picture',
         'premium',
+        'premium_type',
+        'premium_expired_days',
         'remember_token',
         'status',
         'registered',

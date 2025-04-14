@@ -24,6 +24,30 @@ class WebController extends Controller
         return view('web.plans');
     }
 
+    public function signMonthly(Request $request)
+    {
+        $user = auth()->user(); 
+
+        $user->premium_expired_days = 30; 
+        $user->premium = 1; 
+        $user->premium_type = 'monthly'; 
+        $user->save();
+
+        return redirect()->back()->with('success', 'Assinatura mensal ativa!');
+    }
+
+    public function signSemiAnnual(Request $request)
+    {
+        $user = auth()->user(); 
+
+        $user->premium_expired_days = 180; 
+        $user->premium = 1; 
+        $user->premium_type = 'semi_annual'; 
+        $user->save();
+
+        return redirect()->back()->with('success', 'Assinatura semestral ativa!');
+    }
+
     public function showContactForm()
     {
         return view('web.contact');
