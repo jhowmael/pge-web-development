@@ -46,7 +46,7 @@ class AdministrativeController extends Controller
         $validatedData['status'] = config('simulations.autoStatusRegister');
 
         $simulation = Simulation::create($validatedData);
-        for($i = 1; $i <= $simulation->quantity_questions; $i++){
+        for ($i = 1; $i <= $simulation->quantity_questions; $i++) {
             $questionData = array(
                 'simulation_id' => $simulation->id,
                 'number' => $i,
@@ -176,7 +176,7 @@ class AdministrativeController extends Controller
     {
         $user = User::where('id', $id)->first();
 
-        return view('administrative.view-users', compact('user'));    
+        return view('administrative.view-users', compact('user'));
     }
 
     public function disableUsers()
@@ -199,7 +199,7 @@ class AdministrativeController extends Controller
 
         return view('administrative.edit-questions', compact('question', 'simulation'));
     }
-    
+
     public function updateQuestions(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -219,42 +219,27 @@ class AdministrativeController extends Controller
             'alternative_e_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'resolution' => 'required|string',
         ]);
-    
+
         $question = Question::findOrFail($id);
-    
-        // Salvar a imagem, se existir
+
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('', 'public');
+            $path = $request->file('image')->store('questions', 'public');
             $validatedData['image'] = $path;
         }
 
-        if ($request->hasFile('alternative_a_image')) {
-            $path = $request->file('alternative_a_image')->store('', 'public');
-            $validatedData['alternative_a_image'] = $path;
-        }
+        $alternatives = ['a', 'b', 'c', 'd', 'e'];
 
-        if ($request->hasFile('alternative_b_image')) {
-            $path = $request->file('alternative_b_image')->store('', 'public');
-            $validatedData['alternative_b_image'] = $path;
-        }
-
-        if ($request->hasFile('alternative_c_image')) {
-            $path = $request->file('alternative_c_image')->store('', 'public');
-            $validatedData['alternative_c_image'] = $path;
-        }
-
-        if ($request->hasFile('alternative_d_image')) {
-            $path = $request->file('alternative_d_image')->store('', 'public');
-            $validatedData['alternative_d_image'] = $path;
-        }
-
-        if ($request->hasFile('alternative_e_image')) {
-            $path = $request->file('alternative_d_image')->store('', 'public');
-            $validatedData['alternative_e_image'] = $path;
+        foreach ($alternatives as $alt) {
+            $inputName = "alternative_{$alt}_image";
+            if ($request->hasFile($inputName)) {
+                $path = $request->file($inputName)->store("alternatives", 'public');
+                $validatedData[$inputName] = $path;
+            }
         }
 
         $question->update($validatedData);
-    
-        return redirect()->route('administrative.view-simulations', [$question->simulation_id])->with('success', 'Questão atualizado com sucesso!');
+
+        return redirect()->route('administrative.view-simulations', [$question->simulation_id])
+            ->with('success', 'Questão atualizada com sucesso!');
     }
 }
