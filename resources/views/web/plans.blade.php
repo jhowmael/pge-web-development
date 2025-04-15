@@ -3,6 +3,7 @@
 @section('content')
 <div class="container py-5">
     <!-- Card de Plano Atual -->
+    @if(auth()->user())
     <div class="row g-4 text-center mb-4 justify-content-center">
         <div class="col-md-8">
             <div class="card p-4 premium-card" style="
@@ -16,28 +17,29 @@
                     </h5>
 
                     @if(auth()->user()->premium)
-                        <h6 class="fw-bold text-dark">
-                            {{ __('translate.' . auth()->user()->premium_type) }} 
-                            - 
-                            @if(auth()->user()->premium_type === 'monthly')
-                                R$ 29,90 <span class="fs-6">/mês</span>
-                            @elseif(auth()->user()->premium_type === 'semi_annual')
-                                R$ 149,90 <span class="fs-6">/6 meses</span>
-                            @endif
-                        </h6>
-                        <p class="mt-2 text-dark">
-                            Dias restantes: 
-                            <strong>{{ auth()->user()->premium_expired_days }} dias</strong>
-                        </p>
-                        <span class="badge bg-success">Ativo</span>
+                    <h6 class="fw-bold text-dark">
+                        {{ __('translate.' . auth()->user()->premium_type) }}
+                        -
+                        @if(auth()->user()->premium_type === 'monthly')
+                        R$ 29,90 <span class="fs-6">/mês</span>
+                        @elseif(auth()->user()->premium_type === 'semi_annual')
+                        R$ 149,90 <span class="fs-6">/6 meses</span>
+                        @endif
+                    </h6>
+                    <p class="mt-2 text-dark">
+                        Dias restantes:
+                        <strong>{{ auth()->user()->premium_expired_days }} dias</strong>
+                    </p>
+                    <span class="badge bg-success">Ativo</span>
                     @else
-                        <p>Você não tem um plano ativo.</p>
-                        <span class="badge bg-danger">Inativo</span>
+                    <p>Você não tem um plano ativo.</p>
+                    <span class="badge bg-danger">Inativo</span>
                     @endif
                 </div>
             </div>
         </div>
     </div>
+    @endif
 
     <!-- Cards de planos disponíveis -->
     <div class="row g-4 text-center">
@@ -58,7 +60,7 @@
                 <form action="{{ route('signMonthly') }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-yellow" id="btn-monthly">ASSINAR JÁ</button>
-                </form>            
+                </form>
             </div>
         </div>
         <div class="col-md-4">
@@ -78,7 +80,7 @@
                 <form action="{{ route('signSemiAnnual') }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-yellow" id="btn-monthly">ASSINAR JÁ</button>
-                </form>      
+                </form>
             </div>
         </div>
     </div>

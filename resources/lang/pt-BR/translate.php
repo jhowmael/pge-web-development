@@ -56,6 +56,6 @@ return [
         'ufpel' => 'UFPel',
 
         'student' => 'Estudante',
-        'administrative' => 'Adiministrativo'
+        'admin' => 'Adiministrativo'
 
 ];

@@ -6,10 +6,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\UserSimulation;
 use App\Models\Redaction;
+use Illuminate\Database\Eloquent\Factories\HasFactory; // Adicione essa linha
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasFactory; // Adicione o trait aqui
 
     protected $fillable = [
         'type',

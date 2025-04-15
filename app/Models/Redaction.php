@@ -36,7 +36,6 @@ class Redaction extends Model
     {
         static::saving(function ($model) {
             $model->status = $model->getStatus($model);
-
             $userSimulation = UserSimulation::find($model->user_simulation_id);
             $userSimulation->save();
         });

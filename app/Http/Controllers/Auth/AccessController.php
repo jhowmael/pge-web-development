@@ -48,7 +48,7 @@ class AccessController extends Controller
         return view('web.home');
     }
 
-    protected function validator(array $data)
+    public function validator(array $data)
     {
         $data['phone'] = preg_replace('/\D/', '', $data['phone']);
 

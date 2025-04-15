@@ -77,7 +77,7 @@ Route::post('/userSimulations/{userSimulation}/questions/{question}/response', [
 
 Route::prefix('redaction')->middleware(['auth', 'is.premium'])->group(function () {
     Route::get('/', [RedactionController::class, 'index'])->name('redaction.index');
-    Route::get('/view{id}', [RedactionController::class, 'view'])->name('redaction.view');
+    Route::get('/view/{id}', [RedactionController::class, 'view'])->name('redaction.view');
     Route::get('/in-progress/{redactionId}', [RedactionController::class, 'inProgress'])->name('redaction.in-progress');
     Route::post('/finish/{redactionId}', [RedactionController::class, 'finish'])
     ->middleware(['auth', 'throttle:10,1,auth:id']) // Limite de 10 requisições por 1 minuto por usuário
