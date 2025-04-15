@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-md-6">
-        <div class="bg-light p-5 rounded-5 shadow-lg position-relative overflow-hidden d-inline-block">
+        <div class="bg-light p-5 rounded-5 shadow-lg position-relative overflow-hidden d-inline-block hover-effect">
             <h2 class="display-4 text-dark mb-3 fw-bold text-nowrap">Seu futuro começa aqui</h2>
             <p class="lead text-muted mb-4">
                 Realize seu sonho de sucesso nos vestibulares com um plano de estudo eficaz e apoio especializado.
@@ -45,7 +45,7 @@
                 <div class="card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title home-card-text">Metodologia Eficaz</h5>
                     <p class="card-text text-muted text-center flex-grow-1">
-                        Nossa metodologia personalizada ajuda cada aluno a alcançar seu melhor desempenho, focando nas suas necessidades individuais.
+                        Nossa metodologia personalizada ajuda cada aluno a alcançar seu melhor desempenho, com foco em suas necessidades individuais, garantindo uma jornada de aprendizado única.
                     </p>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title home-card-text">Inteligência Artificial para Redação</h5>
                     <p class="card-text text-muted text-center flex-grow-1">
-                        Obtenha análises detalhadas de suas redações em tempo real com a ajuda de nossa tecnologia de Inteligência Artificial, identificando pontos fortes e áreas de melhoria para garantir sua melhor performance nos vestibulares.
+                        Utilize nossa tecnologia de Inteligência Artificial para receber análises detalhadas de suas redações, identificando pontos fortes e áreas a melhorar para maximizar seu desempenho nos vestibulares.
                     </p>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 <div class="card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title home-card-text">Material Exclusivo</h5>
                     <p class="card-text text-muted text-center flex-grow-1">
-                        Acesso a materiais de estudo exclusivos e atualizados para garantir o melhor conteúdo para a sua preparação.
+                        Tenha acesso a materiais de estudo atualizados e exclusivos, desenvolvidos para fornecer conteúdo de qualidade e garantir o melhor suporte para a sua preparação.
                     </p>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <div class="card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title home-card-text">Simulados Realistas</h5>
                     <p class="card-text text-muted text-center flex-grow-1">
-                        Realize simulados com questões semelhantes às dos vestibulares para se preparar de forma eficiente.
+                        Realize simulados com questões semelhantes às dos vestibulares, permitindo que você se prepare de forma mais eficiente para enfrentar o desafio real.
                     </p>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                 <div class="card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title home-card-text">Análise Pessoal</h5>
                     <p class="card-text text-muted text-center flex-grow-1">
-                        Receba uma avaliação personalizada do seu desempenho. Nossa equipe de especialistas irá identificar suas fortalezas e áreas a melhorar, garantindo que você tenha um plano de estudo adaptado às suas necessidades.
+                        Receba uma avaliação detalhada do seu desempenho com a ajuda de especialistas, garantindo um plano de estudo adaptado às suas necessidades específicas.
                     </p>
                 </div>
             </div>
@@ -103,14 +103,13 @@
                 <div class="card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title home-card-text">Mentoria Personalizada</h5>
                     <p class="card-text text-muted text-center flex-grow-1">
-                        Nossa equipe de mentores acompanha seu progresso e oferece orientações para melhorar o seu desempenho.
+                        Conte com o apoio de mentores especializados, que acompanham seu progresso e fornecem orientações contínuas para melhorar seu desempenho de maneira constante.
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <br>
 <div class="container py-5">

@@ -19,6 +19,11 @@ class WebController extends Controller
         return view('web.help');
     }
 
+    public function blog()
+    {
+        return view('web.blog');
+    }
+
     public function plans()
     {
         return view('web.plans');
