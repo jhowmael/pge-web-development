@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/web.css') }}">
     <!-- Esse style é temporaário troca de acordo com o ngrok -->
-    <link rel="stylesheet" href="https://9b81-2804-46dc-420-32aa-e408-6f3f-4682-ca9c.ngrok-free.app/css/web.css">
+    <link rel="stylesheet" href="https://fec8-2804-46dc-420-32aa-478a-ff07-629f-b786.ngrok-free.app/css/web.css">
     <!---->
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/821b65200f.js" crossorigin="anonymous"></script>
@@ -17,36 +17,32 @@
 <body style="height: 100%; margin: 0;">
     <div class="content d-flex flex-column" style="min-height: 100vh;">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-light-yellow text-dark shadow navbar-padding">
+        <nav class="navbar navbar-expand-lg bg-light-yellow text-dark shadow" style="padding-top: 5px; padding-bottom: 5px;">
             <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto justify-content-center d-flex align-items-center"> <!-- Navbar itens à esquerda -->
-                        <li class="nav-item me-1">
-                            <a class="navbar-brand" href="{{ route('home') }}">
-                                <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" style="height: 40px;">
-                            </a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Quem somos</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold {{ request()->routeIs('plans') ? 'active' : '' }}" href="{{ route('plans') }}">Planos</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contato</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold {{ request()->routeIs('help') ? 'active' : '' }}" href="{{ route('help') }}">Ajuda</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold {{ request()->routeIs('blog') ? 'active' : '' }}" href="{{ route('blog') }}">Notícias</a>
-                        </li>
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" style="height: 40px;" class="img-fluid">
+                </a>
+
+                <!-- Botão hamburguer (visível no mobile) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Tudo dentro do collapse -->
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <!-- Itens da esquerda -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Quem somos</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold {{ request()->routeIs('plans') ? 'active' : '' }}" href="{{ route('plans') }}">Planos</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contato</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold {{ request()->routeIs('help') ? 'active' : '' }}" href="{{ route('help') }}">Ajuda</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold {{ request()->routeIs('blog') ? 'active' : '' }}" href="{{ route('blog') }}">Notícias</a></li>
                     </ul>
 
-                    <ul class="navbar-nav "> <!-- Navbar itens à direita -->
-                        @php
-                        $user = auth()->user();
-                        @endphp
+                    <!-- Itens da direita (botões) -->
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        @php $user = auth()->user(); @endphp
 
                         @if($user)
                         @if($user->premium === 1)
@@ -64,7 +60,6 @@
                         </li>
                         @endif
 
-
                         @guest
                         <li class="nav-item">
                             <a class="btn btn-light me-2 btn-outline-dark fw-bold" href="{{ route('login') }}">Login</a>
@@ -75,23 +70,20 @@
                         @else
                         <li class="nav-item dropdown">
                             <a class="nav-link fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <!-- Imagem do Usuário -->
                                 @if(auth()->user()->profile_picture)
                                 <img src="{{ asset('storage/' . auth()->user()->profile_picture) }}" alt="Foto de Perfil" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 8px;">
                                 @endif
                                 {{ explode(' ', auth()->user()->name)[0] }}
-                                <i class="fas fa-chevron-down"></i> <!-- Ícone de seta para baixo -->
+                                <i class="fas fa-chevron-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <!-- Opção Área do Estudante -->
                                 <li>
-                                    <form id="logout-form" action="{{ route('plans') }}" method="GET" class="d-inline">
+                                    <form action="{{ route('plans') }}" method="GET" class="d-inline">
                                         <button type="submit" class="dropdown-item">Minha assinatura</button>
                                     </form>
                                 </li>
-                                <!-- Opção Logout -->
                                 <li>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                         @csrf
                                         <button type="submit" class="dropdown-item">Logout</button>
                                     </form>
@@ -103,8 +95,6 @@
                 </div>
             </div>
         </nav>
-
-
         <!-- Conteúdo Principal -->
         <div class="flex-grow-1">
             <div class="container">

@@ -17,8 +17,8 @@ Route::post('/contact', [WebController::class, 'submitContactForm'])->name('cont
 Route::get('/help', [WebController::class, 'help'])->name('help');
 Route::get('/blog', [WebController::class, 'blog'])->name('blog');
 Route::get('/plans', [WebController::class, 'plans'])->name('plans');
-Route::post('/signMonthly', [WebController::class, 'signMonthly'])->name('signMonthly');
-Route::post('/signSemiAnnual', [WebController::class, 'signSemiAnnual'])->name('signSemiAnnual');
+Route::post('/signMonthly', [WebController::class, 'signMonthly'])->middleware(['auth'])->name('signMonthly');
+Route::post('/signSemiAnnual', [WebController::class, 'signSemiAnnual'])->middleware(['auth'])->name('signSemiAnnual');
 
 Route::get('/login', [AccessController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AccessController::class, 'login']);
