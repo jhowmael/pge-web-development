@@ -4,14 +4,14 @@
 
 <div class="container">
     <div class="text-center mt-5">
-        <h3 class="fw-bold" data-aos="fade-up" data-aos-delay="30">Seja bem-vindo ao AproveME!</h3>
-        <p class="lead text-muted" data-aos="fade-up" data-aos-delay="30">Estamos aqui para ajudá-lo a alcançar o sucesso nos vestibulares com um plano de estudo personalizado e apoio especializado.</p>
+        <h3 class="fw-bold" data-aos="fade-right" data-aos-delay="30">Seja bem-vindo ao AproveME!</h3>
+        <p class="lead text-muted" data-aos="fade-right" data-aos-delay="30">Estamos aqui para ajudá-lo a alcançar o sucesso nos vestibulares com um plano de estudo personalizado e apoio especializado.</p>
     </div>
 
-    <div class="row align-items-center flex-column-reverse flex-md-row" data-aos="fade-up" data-aos-delay="30">
+    <div class="row align-items-center flex-column-reverse flex-md-row">
         <!-- Coluna de Texto -->
         <div class="col-md-6 text-center text-md-start">
-            <div class="bg-light p-4 rounded-4 shadow-lg position-relative overflow-hidden hover-effect">
+            <div class="bg-light p-4 rounded-4 shadow-lg position-relative overflow-hidden hover-effect" data-aos="fade-up" data-aos-delay="30">
                 <h2 class="display-5 text-dark mb-3 fw-bold">Seu futuro começa aqui</h2>
                 <p class="lead text-muted mb-4">
                     Realize seu sonho de sucesso nos vestibulares com um plano de estudo eficaz e apoio especializado.
@@ -36,7 +36,7 @@
         <img src="{{ asset('images/estudante-mulher.png') }}" 
      alt="Imagem de estudos" 
      class="img-fluid rounded" 
-     style="max-width: 300px; opacity: 0; transition: opacity 1s ease-in-out;" 
+     style="max-width: 300px; opacity: 0; transition: opacity 1.2s ease-in-out;" 
      onload="this.style.opacity=1;">
         </div>
     </div>

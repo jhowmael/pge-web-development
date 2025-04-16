@@ -3,13 +3,13 @@
 @section('content')
 <div class="row justify-content-center mt-5">
     <div class="col-lg-10 col-md-12"> <!-- Mantendo largura aumentada -->
-        <div class="card" style="height: 100%; min-height: 350px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)"> <!-- Garante que o card use toda a largura disponível -->
+        <div class="card" style="height: 100%; min-height: 350px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)" data-aos="fade-up" data-aos-delay="30"> <!-- Garante que o card use toda a largura disponível -->
             <br>
-            <div class="text-center" data-aos="fade-up" data-aos-delay="30">
+            <div class="text-center" data-aos="fade-right" data-aos-delay="30">
                 <h3 class="fw-bold">Contato</h3>
             </div>
             <div class="card-body p-4">
-                <form action="{{ route('contact.submit') }}" method="POST" class="w-100">
+                <form action="{{ route('contact.submit') }}" method="POST" class="w-100" data-aos="fade-right" data-aos-delay="30">
                     @csrf
                     <div class="mb-3">
 

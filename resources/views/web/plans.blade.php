@@ -45,17 +45,17 @@
     <div class="row g-4 text-center" data-aos="fade-up" data-aos-delay="30">
         <div class="col-md-4">
             <div class="card p-3 hover-effect" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)">
-                <div class="p-3 rounded">
+                <div class="p-3 rounded" data-aos="fade-right" data-aos-delay="30">
                     <h5 class="fw-bold">{{ __('translate.monthly') }}</h5>
                     <h2 class="p-3 rounded" id="price-monthly">R$ 29,90 <span class="fs-6">/mês</span></h2>
                 </div>
                 <ul class="list-unstyled mt-3">
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Banco de questões 100% atualizado</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Revisões de redações sem limite</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Análise de Desempenho</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Sem anúncios</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Guia de estudos</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Suporte 24h</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Banco de questões 100% atualizado</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Revisões de redações sem limite</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Análise de Desempenho</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Sem anúncios</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Guia de estudos</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Suporte 24h</li>
                 </ul>
                 <form action="{{ route('signMonthly') }}" method="POST">
                     @csrf
@@ -65,17 +65,17 @@
         </div>
         <div class="col-md-4">
             <div class="card p-3 hover-effect" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)">
-                <div class="p-3 rounded">
+                <div class="p-3 rounded" data-aos="fade-right" data-aos-delay="30">
                     <h5 class="fw-bold">{{ __('translate.semi_annual') }}</h5>
                     <h2 class="p-3 rounded" id="price-semester">R$ 149,90 <span class="fs-6">/6 meses</span></h2>
                 </div>
                 <ul class="list-unstyled mt-3">
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Banco de questões 100% atualizado</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Revisões de redações sem limite</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Análise de Desempenho</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Sem anúncios</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Guia de estudos</li>
-                    <li class="text-start"><i class="fas fa-check-circle text-success"></i> Suporte 24h</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Banco de questões 100% atualizado</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Revisões de redações sem limite</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Análise de Desempenho</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Sem anúncios</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Guia de estudos</li>
+                    <li class="text-start" data-aos="fade-right" data-aos-delay="30"><i class="fas fa-check-circle text-success"></i> Suporte 24h</li>
                 </ul>
                 <form action="{{ route('signSemiAnnual') }}" method="POST">
                     @csrf
