@@ -7,8 +7,9 @@
     <title>APROVAME</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/web.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <!-- Esse style é temporaário troca de acordo com o ngrok -->
-    <link rel="stylesheet" href="https://fec8-2804-46dc-420-32aa-478a-ff07-629f-b786.ngrok-free.app/css/web.css">
+    <link rel="stylesheet" href="https://6346-2804-46dc-420-32aa-478a-ff07-629f-b786.ngrok-free.app/css/web.css">
     <!---->
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/821b65200f.js" crossorigin="anonymous"></script>
@@ -122,6 +123,23 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Inicializa o AOS
+    </script>
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar'); // Seleciona a navbar
+            // Se o scroll for maior que 50px, a navbar ganha fundo claro e sombra
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-light', 'shadow-sm'); // Torna opaca
+                navbar.classList.remove('bg-transparent'); // Remove o fundo transparente
+            } else {
+                navbar.classList.remove('bg-light', 'shadow-sm'); // Remove o fundo claro e sombra
+                navbar.classList.add('bg-transparent'); // Torna transparente
+            }
+        });
+    </script>
 </body>
 
 </html>

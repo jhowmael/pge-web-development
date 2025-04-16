@@ -8,7 +8,7 @@
     <title>APROVAME</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="https://fec8-2804-46dc-420-32aa-478a-ff07-629f-b786.ngrok-free.app/css/app.css">
+    <link rel="stylesheet" href="https://6346-2804-46dc-420-32aa-478a-ff07-629f-b786.ngrok-free.app/css/app.css">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/821b65200f.js" crossorigin="anonymous"></script>

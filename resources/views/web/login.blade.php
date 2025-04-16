@@ -8,7 +8,7 @@
         </div>
     @endif
 
-    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center" data-aos="fade-up" data-aos-delay="30">
         <div class="row w-100 mx-2 mx-md-5 shadow rounded overflow-hidden" style="max-width: 900px;">
 
             <!-- Painel Esquerdo -->

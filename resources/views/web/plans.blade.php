@@ -42,7 +42,7 @@
     @endif
 
     <!-- Cards de planos disponíveis -->
-    <div class="row g-4 text-center">
+    <div class="row g-4 text-center" data-aos="fade-up" data-aos-delay="30">
         <div class="col-md-4">
             <div class="card p-3 hover-effect" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)">
                 <div class="p-3 rounded">

@@ -4,11 +4,11 @@
 
 <div class="container">
     <div class="text-center mt-5">
-        <h3 class="fw-bold">Seja bem-vindo ao AproveME!</h3>
-        <p class="lead text-muted">Estamos aqui para ajudá-lo a alcançar o sucesso nos vestibulares com um plano de estudo personalizado e apoio especializado.</p>
+        <h3 class="fw-bold" data-aos="fade-up" data-aos-delay="30">Seja bem-vindo ao AproveME!</h3>
+        <p class="lead text-muted" data-aos="fade-up" data-aos-delay="30">Estamos aqui para ajudá-lo a alcançar o sucesso nos vestibulares com um plano de estudo personalizado e apoio especializado.</p>
     </div>
 
-    <div class="row align-items-center flex-column-reverse flex-md-row">
+    <div class="row align-items-center flex-column-reverse flex-md-row" data-aos="fade-up" data-aos-delay="30">
         <!-- Coluna de Texto -->
         <div class="col-md-6 text-center text-md-start">
             <div class="bg-light p-4 rounded-4 shadow-lg position-relative overflow-hidden hover-effect">
@@ -33,7 +33,11 @@
 
         <!-- Coluna de Imagem -->
         <div class="col-md-6 mb-4 mb-md-0 text-center">
-            <img src="{{ asset('images/estudante-mulher.png') }}" alt="Imagem de estudos" class="img-fluid rounded">
+        <img src="{{ asset('images/estudante-mulher.png') }}" 
+     alt="Imagem de estudos" 
+     class="img-fluid rounded" 
+     style="max-width: 300px; opacity: 0; transition: opacity 1s ease-in-out;" 
+     onload="this.style.opacity=1;">
         </div>
     </div>
 
@@ -49,7 +53,7 @@
             ['Análise Pessoal', 'Receba uma avaliação detalhada do seu desempenho...'],
             ['Mentoria Personalizada', 'Conte com o apoio de mentores especializados...']
             ] as $item)
-            <div class="col">
+            <div class="col" >
                 <div class="card shadow-sm border-0 rounded-3 h-100 hover-effect">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title home-card-text text-center">{{ $item[0] }}</h5>

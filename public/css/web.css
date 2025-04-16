@@ -280,12 +280,15 @@ body {
 }
 
 .hover-effect:hover {
-    transform: translateY(-10px); /* Eleva o card para cima */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra mais intensa no hover */
+    transform: translateY(-10px);
+    /* Eleva o card para cima */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Sombra mais intensa no hover */
 }
 
 .card {
-    border-radius: 12px; /* Bordas mais arredondadas */
+    border-radius: 12px;
+    /* Bordas mais arredondadas */
 }
 
 .home-card-text {
@@ -294,12 +297,16 @@ body {
 
 /* Garantir que todos os cards tenham a mesma altura */
 .card-body {
-    min-height: 200px; /* Altura mínima para os cards */
+    min-height: 200px;
+    /* Altura mínima para os cards */
     display: flex;
     flex-direction: column;
-    justify-content: center;  /* Alinha verticalmente o conteúdo */
-    align-items: center;      /* Alinha horizontalmente o conteúdo */
-    text-align: center;       /* Garante que o texto dentro do card também seja centralizado */
+    justify-content: center;
+    /* Alinha verticalmente o conteúdo */
+    align-items: center;
+    /* Alinha horizontalmente o conteúdo */
+    text-align: center;
+    /* Garante que o texto dentro do card também seja centralizado */
 }
 
 /* Centralizar o título e o texto dentro do card */
@@ -311,75 +318,104 @@ body {
 /* Ajustar a altura mínima para dispositivos menores */
 @media (max-width: 768px) {
     .card-body {
-        min-height: 250px; /* Reduzir altura dos cards em dispositivos menores */
+        min-height: 250px;
+        /* Reduzir altura dos cards em dispositivos menores */
     }
 }
 
 
 .transparent-icon {
-    opacity: 0.5; /* Ajuste a opacidade conforme necessário */
+    opacity: 0.5;
+    /* Ajuste a opacidade conforme necessário */
 }
 
 .custom-password-box {
-    border-radius: 0; /* Remove bordas arredondadas, deixando retangular */
-    height: 40px; /* Define uma altura para tornar a caixa mais retangular */
+    border-radius: 0;
+    /* Remove bordas arredondadas, deixando retangular */
+    height: 40px;
+    /* Define uma altura para tornar a caixa mais retangular */
 }
- 
+
 
 .transparent-icon {
-    opacity: 0.5; /* Ajuste a opacidade conforme necessário */
+    opacity: 0.5;
+    /* Ajuste a opacidade conforme necessário */
 }
 
 .custom-email-box {
-    border-radius: 0; /* Remove bordas arredondadas, deixando retangular */
-    height: 40px; /* Define uma altura para tornar a caixa mais retangular */
+    border-radius: 0;
+    /* Remove bordas arredondadas, deixando retangular */
+    height: 40px;
+    /* Define uma altura para tornar a caixa mais retangular */
 }
 
 .custom-rectangular-box {
-    border-radius: 0; /* Remove bordas arredondadas */
-    height: 40px; /* Mantém um tamanho consistente */
+    border-radius: 0;
+    /* Remove bordas arredondadas */
+    height: 40px;
+    /* Mantém um tamanho consistente */
 }
 
 .input-lg {
-    height: 55px; /* Aumenta a altura dos inputs */
-    font-size: 1.2rem; /* Aumenta o tamanho do texto dentro do campo */
+    height: 55px;
+    /* Aumenta a altura dos inputs */
+    font-size: 1.2rem;
+    /* Aumenta o tamanho do texto dentro do campo */
 }
 
 textarea.input-lg {
-    height: auto; /* Permite que o textarea cresça conforme o conteúdo */
+    height: auto;
+    /* Permite que o textarea cresça conforme o conteúdo */
 }
+
 .bg-blue {
-    background-color: #007bff !important; /* Azul */
+    background-color: #007bff !important;
+    /* Azul */
 }
+
 .bg-green {
-    background-color: #28a745 !important; /* Verde */
+    background-color: #28a745 !important;
+    /* Verde */
 }
+
 .bg-red {
-    background-color: #dc3545 !important; /* Vermelho */
+    background-color: #dc3545 !important;
+    /* Vermelho */
 }
+
 .faq-item {
-        cursor: pointer;
-        transition: background 0.3s, box-shadow 0.3s;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
-    }
-    .faq-item:hover {
-        background: #f8e58d;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Sombra mais forte no hover */
-    }
-    .faq-arrow {
-        transition: transform 0.3s ease;
-    }
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    /* Sombra mais intensa */
+}
+
+.faq-item:hover {
+    background: #f8e58d;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    /* Sombra mais forte no hover */
+}
+
+.faq-arrow {
+    transition: transform 0.3s ease;
+}
+
 .faq-item[aria-expanded="true"] .faq-arrow {
     transform: rotate(180deg);
 }
+
 .faq-header.collapsed .faq-arrow {
     transform: rotate(0deg);
 }
+
 .faq-header:not(.collapsed) .faq-arrow {
     transform: rotate(180deg);
-}.faq-header:not(.collapsed) .faq-arrow {
+}
+
+.faq-header:not(.collapsed) .faq-arrow {
     transform: rotate(180deg);
 }
+
 /* Remove a sombra da FAQ */
 .faq-item.no-shadow {
     box-shadow: none !important;
@@ -393,4 +429,19 @@ textarea.input-lg {
 
 .faq-header:not(.collapsed) .faq-arrow {
     transform: rotate(180deg);
+}
+
+.animate-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Aplica a animação de fade-in e deslocamento para a posição original */
+.animate-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.navbar {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }

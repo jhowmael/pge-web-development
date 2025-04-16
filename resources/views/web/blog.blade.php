@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="text-center mb-4">
+    <div class="text-center mb-4" data-aos="fade-up" data-aos-delay="30">
         <h2 class="fw-bold">Fique por dentro das novidades!</h2>
         <p class="lead text-muted">
             Acompanhe notícias, dicas e atualizações sobre vestibulares, ENEM e educação.

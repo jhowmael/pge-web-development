@@ -4,7 +4,7 @@
 <div class="container py-5">
     <div class="card p-4" style="min-height: 350px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5)">
 
-        <div class="row text-center mb-4">
+        <div class="row text-center mb-4" data-aos="fade-up" data-aos-delay="30">
             <div class="col-12">
                 <h3 class="fw-bold">Dúvidas Frequentes</h3>
             </div>
