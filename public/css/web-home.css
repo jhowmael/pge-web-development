@@ -145,7 +145,7 @@ body {
 }
 
 .testimonial-item {
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro com transparência */
     padding: 30px;
     border-radius: 12px;
     /* Bordas arredondadas */
@@ -246,7 +246,7 @@ body {
 
 /* Estilo dos Cards com fundo escuro e transparência */
 .card {
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro com transparência */
     color: #ffffff; /* Texto branco */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave no hover */
     border-radius: 12px; /* Bordas arredondadas já definidas */
@@ -255,7 +255,7 @@ body {
 /* Efeito de aumento e sombra no hover */
 .card:hover {
     transform: scale(1.05); /* Aumenta o card ao passar o mouse */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave */
 }
 
 /* Centralizar título no card */
@@ -462,17 +462,18 @@ body {
 }
 
 footer {
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro com transparência */
 }
 
 .hover-effect {
-    transition: all 0.3s ease;
-}
-
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  }
+  
 .hover-effect:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
 }
+  
 
   /* Estilos do Loader */
   #loader {
@@ -513,4 +514,11 @@ footer {
     100% {
         transform: translateY(-25px);
     }
+}
+
+.midle-backbround-image {
+    background-image: url('/images/estudante-apontando.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;       /* Faz a imagem cobrir toda a área */
+    background-position: center;  /* Centraliza a imagem */
 }

@@ -145,7 +145,7 @@ body {
 }
 
 .testimonial-item {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     /* Fundo escuro com transparência */
     padding: 30px;
     border-radius: 12px;
@@ -247,7 +247,7 @@ body {
 
 /* Estilo dos Cards com fundo escuro e transparência */
 .card {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     /* Fundo escuro com transparência */
     color: #ffffff;
     /* Texto branco */
@@ -502,7 +502,7 @@ body {
 }
 
 footer {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     /* Fundo escuro com transparência */
 }
 

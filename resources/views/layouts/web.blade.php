@@ -43,22 +43,13 @@
 
                 <!-- Menu -->
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold" href="{{ route('home') }}">Quem somos</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold" href="{{ route('plans') }}">Planos</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold" href="{{ route('contact') }}">Contato</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold" href="{{ route('help') }}">Ajuda</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a class="nav-link fw-semibold" href="{{ route('blog') }}">Notícias</a>
-                        </li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold" href="{{ route('home') }}">Início</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold" href="{{ route('about') }}">Sobre nós</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold" href="{{ route('plans') }}">Planos</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold" href="{{ route('contact') }}">Contato</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold" href="{{ route('help') }}">Ajuda</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fw-semibold" href="{{ route('blog') }}">Notícias</a></li>
                     </ul>
 
                     <!-- Ações (lado direito) -->

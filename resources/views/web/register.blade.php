@@ -11,13 +11,13 @@
     @endif
 
     <div class="container d-flex align-items-center justify-content-center min-vh-100">
-        <div class="row shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 900px;" data-aos="fade-up" data-aos-delay="100">
+        <div class="row shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 900px; background-color: rgba(0, 0, 0, 0.4)" data-aos="fade-up" data-aos-delay="100">
 
             <!-- Painel Esquerdo -->
             <div class="col-md-5 d-flex flex-column justify-content-center align-items-center p-5 text-center">
                 <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" class="img-fluid mb-4" style="max-width: 220px;">
                 <h4 class="fw-bold text-dark">Já tem cadastro?</h4>
-                <p class="mb-3 text-muted">Faça login para acessar sua conta</p>
+                <p class="fw-bold text-white">Faça login para acessar sua conta</p>
                 <a href="{{ route('login') }}" class="btn btn-outline-dark btn-warning btn-lg px-4 py-2 rounded-pill shadow-sm">Fazer Login</a>
             </div>
 
@@ -31,7 +31,6 @@
 
                     <!-- Nome -->
                     <div class="mb-3 text-start">
-                        <label class="form-label text-dark">Nome Completo</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-user"></i></span>
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nome Completo">
@@ -40,7 +39,6 @@
 
                     <!-- Email -->
                     <div class="mb-3 text-start">
-                        <label class="form-label text-dark">E-mail</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                             <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-mail">
@@ -49,7 +47,6 @@
 
                     <!-- Telefone -->
                     <div class="mb-3 text-start">
-                        <label class="form-label text-dark">Telefone</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-phone"></i></span>
                             <input type="text" id="phone" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="(00) 00000-0000" maxlength="15">
@@ -58,7 +55,6 @@
 
                     <!-- Data de nascimento -->
                     <div class="mb-3 text-start">
-                        <label class="form-label text-dark">Data de Nascimento</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-cake-candles"></i></span>
                             <input type="date" class="form-control" name="birthday" value="{{ old('birthday') }}">
@@ -67,7 +63,6 @@
 
                     <!-- Foto de perfil -->
                     <div class="mb-3 text-start">
-                        <label class="form-label text-dark">Foto de Perfil</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-camera-retro"></i></span>
                             <input type="file" class="form-control" name="profile_picture">
@@ -76,7 +71,6 @@
 
                     <!-- Senha -->
                     <div class="mb-3 text-start">
-                        <label class="form-label text-dark">Senha</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             <input type="password" class="form-control" id="passwordField" name="password" placeholder="Senha">
@@ -88,7 +82,6 @@
 
                     <!-- Confirmar Senha -->
                     <div class="mb-4 text-start">
-                        <label class="form-label text-dark">Confirmar Senha</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             <input type="password" class="form-control" id="confirmPasswordField" name="password_confirmation" placeholder="Confirmar Senha">

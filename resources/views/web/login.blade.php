@@ -11,13 +11,13 @@
     @endif
 
     <div class="container d-flex align-items-center justify-content-center min-vh-100">
-        <div class="row shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 900px;" data-aos="fade-up" data-aos-delay="100">
+    <div class="row shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 900px; background-color: rgba(0, 0, 0, 0.4);" data-aos="fade-up" data-aos-delay="100">
 
             <!-- Painel Esquerdo -->
             <div class="col-md-5 d-flex flex-column justify-content-center align-items-center p-5 text-center">
                 <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" class="img-fluid mb-4" style="max-width: 220px;">
                 <h4 class="fw-bold text-dark">Novo por aqui?</h4>
-                <p class="mb-3 text-muted">Crie uma conta agora mesmo e comece sua jornada.</p>
+                <p class="fw-bold text-white">Crie uma conta agora mesmo e comece sua jornada.</p>
                 <a href="{{ route('register') }}" class="btn btn-outline-dark btn-warning btn-lg px-4 py-2 rounded-pill shadow-sm">Cadastrar</a>
             </div>
 
@@ -31,7 +31,6 @@
 
                     <!-- Campo de email -->
                     <div class="mb-4 text-start">
-                        <label for="email" class="form-label text-dark">E-mail</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                             <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@email.com" value="{{ old('email') }}">
@@ -40,7 +39,6 @@
 
                     <!-- Campo de senha -->
                     <div class="mb-4 text-start">
-                        <label for="passwordField" class="form-label text-dark">Senha</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             <input type="password" class="form-control" name="password" id="passwordField" placeholder="Sua senha">
@@ -50,7 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="text-end mb-3">
+                    <div class="text-end mb-3 text-center">
                         <a href="{{ route('forgot-password') }}" class="text-muted small">Esqueceu sua senha?</a>
                     </div>
 

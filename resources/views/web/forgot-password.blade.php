@@ -1,54 +1,57 @@
 @extends('layouts.web')
 
 @section('content')
+<div class="container py-5">
 
-    <br>
-    <br>
-    <br>
     @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Erro:</strong> {{ $errors->first() }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+    <div class="alert alert-danger alert-dismissible fade show mt-3 mx-auto" style="max-width: 600px;" role="alert">
+        <strong>Erro:</strong> {{ $errors->first() }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     @endif
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="login-container row">
+
+    <div class="container d-flex align-items-center justify-content-center min-vh-100">
+        <div class="row shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 900px; background-color: rgba(0, 0, 0, 0.4);" data-aos="fade-up" data-aos-delay="100">
 
             <!-- Painel Esquerdo -->
-            <div class="col-md-5 left-panel d-flex flex-column justify-content-start text-start" style="padding: 90px;">
-                <img src="http://localhost/pge-web-development/public/images/logo-aprovame.png" alt="Logo Aproveme" class="img-fluid">
-                <br>
-                <h3>
-                    <p><strong>Lembrou sua senha?</strong></p>
-                </h3>
-                <p><strong>Volte ao login para acessar sua conta.</strong></p>
-                <a href="{{ route('login') }}" class="btn-custom d-flex justify-content-center">FAZER LOGIN</a>
+            <div class="col-md-5 d-flex flex-column justify-content-center align-items-center p-5 text-center">
+                <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" class="img-fluid mb-4" style="max-width: 220px;">
+                <h4 class="fw-bold text-dark">Lembrou sua senha?</h4>
+                <p class="fw-bold text-white">Volte ao login e acesse sua conta.</p>
+                <a href="{{ route('login') }}" class="btn btn-outline-dark btn-warning btn-lg px-4 py-2 rounded-pill shadow-sm">Fazer Login</a>
             </div>
 
             <!-- Painel Direito -->
-            <div class="col-md-7 right-panel bg-white" style="padding: 87px;">
-                <h3 class="text-center text-warning fw-bold">Recuperação de Senha</h3>
-                <p class="text-center text-muted">Preencha o e-mail associado à sua conta para recuperar sua senha.</p>
+            <div class="col-md-7 bg-white p-5 text-center">
+                <h3 class="fw-bold mb-1 text-dark">Recuperação de Senha</h3>
+                <p class="text-muted mb-4">Digite o e-mail associado à sua conta. Enviaremos instruções para redefinir sua senha.</p>
 
                 <form action="#" method="POST">
                     @csrf
 
                     <!-- Campo de E-mail -->
-                    <div class="input-group mb-4">
-                        <span class="input-group-text">
-                            <i class="fa fa-envelope transparent-icon"></i> <!-- Ícone de envelope -->
-                        </span>
-                        <input type="email" class="form-control custom-email-box" name="email" placeholder="Digite seu E-mail" value="{{ old('email') }}" required>
+                    <div class="mb-4 text-start">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" name="email" placeholder="Digite seu e-mail" value="{{ old('email') }}" required>
+                        </div>
                     </div>
 
-                    <!-- Botão de Recuperar Senha -->
-                    <button type="submit" class="btn btn-yellow mt-3">ENVIAR INSTRUÇÕES</button>
+                    <!-- Botão de Enviar -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-outline-dark btn-warning btn-lg px-4 py-2 rounded-pill shadow-sm">Enviar Instruções</button>
+                    </div>
                 </form>
 
                 <div class="text-center mt-3">
-                    <p class="text-muted">Lembrou sua senha? <a href="{{ route('login') }}" class="text-warning">Faça login</a></p>
+                    <p class="text-muted">Lembrou sua senha? <a href="{{ route('login') }}" class="text-warning">Fazer login</a></p>
                 </div>
             </div>
+
         </div>
     </div>
+</div>
+
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 @endsection
