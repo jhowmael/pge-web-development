@@ -2,86 +2,112 @@
 
 @section('content')
 
-    <br><br><br>
-
+<div class="container py-5">
     @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show mt-3 mx-auto" style="max-width: 600px;" role="alert">
             <strong>Erro:</strong> {{ $errors->first() }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
-    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center" data-aos="fade-up" data-aos-delay="30">
-        <div class="row w-100 mx-2 mx-md-5 shadow rounded overflow-hidden" style="max-width: 900px;">
+    <div class="container d-flex align-items-center justify-content-center min-vh-100">
+        <div class="row shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 900px;" data-aos="fade-up" data-aos-delay="100">
 
             <!-- Painel Esquerdo -->
-            <div class="col-12 col-md-5 d-flex flex-column justify-content-center align-items-center text-center p-4 p-md-5" style="background-color: lightyellow;">
-                <br><br><br><br><br><br><br>
-                <img src="http://localhost/pge-web-development/public/images/logo-aprovame.png" alt="Logo Aprovame" class="img-fluid mb-4" style="max-width: 250px;">
-                <h3><strong>Já tem cadastro?</strong></h3>
-                <p><strong>Faça login para acessar sua conta.</strong></p>
-                <a href="{{ route('login') }}" class="btn-custom d-flex justify-content-center mt-2">FAZER LOGIN</a>
-                <br><br><br><br><br><br><br>
+            <div class="col-md-5 d-flex flex-column justify-content-center align-items-center p-5 text-center">
+                <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" class="img-fluid mb-4" style="max-width: 220px;">
+                <h4 class="fw-bold text-dark">Já tem cadastro?</h4>
+                <p class="mb-3 text-muted">Faça login para acessar sua conta</p>
+                <a href="{{ route('login') }}" class="btn btn-outline-dark btn-warning btn-lg px-4 py-2 rounded-pill shadow-sm">Fazer Login</a>
             </div>
 
             <!-- Painel Direito -->
-            <div class="col-12 col-md-7 p-4 p-md-5 bg-white">
-                <h3 class="text-center fw-bold">Crie sua conta</h3>
-                <p class="text-center text-muted">Preencha os dados abaixo para se cadastrar</p>
+            <div class="col-md-7 bg-white p-5 text-center">
+                <h3 class="fw-bold mb-1 text-dark">Crie sua conta</h3>
+                <p class="text-muted mb-4">Preencha os dados abaixo</p>
 
                 <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="input-group mb-4">
-                        <span class="input-group-text"><i class="fa fa-user transparent-icon"></i></span>
-                        <input type="text" class="form-control" name="name" placeholder="Nome Completo" value="{{ old('name') }}">
+                    <!-- Nome -->
+                    <div class="mb-3 text-start">
+                        <label class="form-label text-dark">Nome Completo</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nome Completo">
+                        </div>
                     </div>
 
-                    <div class="input-group mb-4">
-                        <span class="input-group-text"><i class="fa fa-envelope transparent-icon"></i></span>
-                        <input type="email" class="form-control" name="email" placeholder="E-mail" value="{{ old('email') }}">
+                    <!-- Email -->
+                    <div class="mb-3 text-start">
+                        <label class="form-label text-dark">E-mail</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-mail">
+                        </div>
                     </div>
 
-                    <div class="input-group mb-4">
-                        <span class="input-group-text"><i class="fa fa-phone transparent-icon"></i></span>
-                        <input type="text" id="phone" class="form-control" name="phone" placeholder="Telefone" value="{{ old('phone') }}" maxlength="15">
+                    <!-- Telefone -->
+                    <div class="mb-3 text-start">
+                        <label class="form-label text-dark">Telefone</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            <input type="text" id="phone" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="(00) 00000-0000" maxlength="15">
+                        </div>
                     </div>
 
-                    <div class="input-group mb-4">
-                        <span class="input-group-text"><i class="fa fa-cake-candles transparent-icon"></i></span>
-                        <input type="date" class="form-control" name="birthday" placeholder="Data de nascimento" value="{{ old('birthday') }}">
+                    <!-- Data de nascimento -->
+                    <div class="mb-3 text-start">
+                        <label class="form-label text-dark">Data de Nascimento</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-cake-candles"></i></span>
+                            <input type="date" class="form-control" name="birthday" value="{{ old('birthday') }}">
+                        </div>
                     </div>
 
-                    <div class="input-group mb-4">
-                        <span class="input-group-text"><i class="fa fa-camera-retro transparent-icon"></i></span>
-                        <input type="file" class="form-control" name="profile_picture">
+                    <!-- Foto de perfil -->
+                    <div class="mb-3 text-start">
+                        <label class="form-label text-dark">Foto de Perfil</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-camera-retro"></i></span>
+                            <input type="file" class="form-control" name="profile_picture">
+                        </div>
                     </div>
 
-                    <div class="input-group mb-4">
-                        <span class="input-group-text"><i class="fa fa-lock transparent-icon"></i></span>
-                        <input type="password" id="passwordField" class="form-control" name="password" placeholder="Senha">
-                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                            <i class="fa fa-eye" id="eyeIcon"></i>
-                        </button>
+                    <!-- Senha -->
+                    <div class="mb-3 text-start">
+                        <label class="form-label text-dark">Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" id="passwordField" name="password" placeholder="Senha">
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <i class="fa fa-eye" id="eyeIcon"></i>
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="input-group mb-4">
-                        <span class="input-group-text"><i class="fa fa-lock transparent-icon"></i></span>
-                        <input type="password" id="confirmPasswordField" class="form-control" name="password_confirmation" placeholder="Confirmar Senha">
-                        <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
-                            <i class="fa fa-eye" id="eyeIconConfirm"></i>
-                        </button>
+                    <!-- Confirmar Senha -->
+                    <div class="mb-4 text-start">
+                        <label class="form-label text-dark">Confirmar Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" id="confirmPasswordField" name="password_confirmation" placeholder="Confirmar Senha">
+                            <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                <i class="fa fa-eye" id="eyeIconConfirm"></i>
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn-custom">CADASTRAR</button>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-outline-dark btn-warning btn-lg px-4 py-2 rounded-pill shadow-sm">Cadastrar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <br><br><br>
-    <!-- Font Awesome para ícones -->
+</div>
+
+    <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 
     <script>

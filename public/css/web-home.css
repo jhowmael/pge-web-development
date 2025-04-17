@@ -145,8 +145,7 @@ body {
 }
 
 .testimonial-item {
-    background-color: rgba(0, 0, 0, 0.6);
-    /* Fundo escuro com transparência */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
     padding: 30px;
     border-radius: 12px;
     /* Bordas arredondadas */
@@ -247,63 +246,49 @@ body {
 
 /* Estilo dos Cards com fundo escuro e transparência */
 .card {
-    background-color: rgba(0, 0, 0, 0.6);
-    /* Fundo escuro com transparência */
-    color: #ffffff;
-    /* Texto branco */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Transição suave no hover */
-    border-radius: 12px;
-    /* Bordas arredondadas já definidas */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
+    color: #ffffff; /* Texto branco */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave no hover */
+    border-radius: 12px; /* Bordas arredondadas já definidas */
 }
 
 /* Efeito de aumento e sombra no hover */
 .card:hover {
-    transform: scale(1.05);
-    /* Aumenta o card ao passar o mouse */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    /* Sombra suave */
+    transform: scale(1.05); /* Aumenta o card ao passar o mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
 }
 
 /* Centralizar título no card */
 .card-title {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #ffffff;
-    /* Título em branco */
+    color: #ffffff; /* Título em branco */
 }
 
 /* Ajustar o texto dentro do card */
 .card-text {
-    color: #ffffff;
-    /* Texto do conteúdo em cinza claro */
+    color: #ffffff; /* Texto do conteúdo em cinza claro */
 }
 
 /* Garantir que todos os cards tenham a mesma altura */
 .card-body {
-    min-height: 200px;
-    /* Altura mínima para os cards */
+    min-height: 200px; /* Altura mínima para os cards */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* Alinha verticalmente o conteúdo */
-    align-items: center;
-    /* Alinha horizontalmente o conteúdo */
-    text-align: center;
-    /* Garante que o texto dentro do card seja centralizado */
+    justify-content: center; /* Alinha verticalmente o conteúdo */
+    align-items: center; /* Alinha horizontalmente o conteúdo */
+    text-align: center; /* Garante que o texto dentro do card seja centralizado */
 }
 
 /* Centralizar o título e o texto dentro do card */
 .home-card-text {
-    color: #ffffff;
-    /* Esta cor será mantida caso queira modificar, mas agora o texto principal será branco */
+    color: #ffffff; /* Esta cor será mantida caso queira modificar, mas agora o texto principal será branco */
 }
 
 /* Ajustar a altura mínima para dispositivos menores */
 @media (max-width: 768px) {
     .card-body {
-        min-height: 250px;
-        /* Reduzir altura dos cards em dispositivos menores */
+        min-height: 250px; /* Reduzir altura dos cards em dispositivos menores */
     }
 }
 
@@ -343,30 +328,9 @@ body {
 
 .input-lg {
     height: 55px;
-    /* Aumenta a altura dos inputs */
     font-size: 1.2rem;
-    /* Aumenta o tamanho do texto dentro do campo */
 }
 
-textarea.input-lg {
-    height: auto;
-    /* Permite que o textarea cresça conforme o conteúdo */
-}
-
-.bg-blue {
-    background-color: #007bff !important;
-    /* Azul */
-}
-
-.bg-green {
-    background-color: #28a745 !important;
-    /* Verde */
-}
-
-.bg-red {
-    background-color: #dc3545 !important;
-    /* Vermelho */
-}
 
 .faq-item {
     cursor: pointer;
@@ -432,14 +396,11 @@ body {
     background-image: url('/images/background-web.jpeg');
     background-size: cover;
 }
-
 .side-top {
     background-image: url('/images/jovem-estudante.jpeg');
     background-repeat: no-repeat;
-    background-size: cover;
-    /* Faz a imagem cobrir toda a área */
-    background-position: center;
-    /* Centraliza a imagem */
+    background-size: cover;       /* Faz a imagem cobrir toda a área */
+    background-position: center;  /* Centraliza a imagem */
 }
 
 .navbar-custom {
@@ -451,7 +412,7 @@ body {
 .navbar-custom .nav-link,
 .navbar-custom .navbar-brand,
 .navbar-custom .dropdown-toggle {
-    color: rgb(0, 0, 0);
+    color: white;
 }
 
 .navbar-scrolled {
@@ -462,8 +423,7 @@ body {
 .navbar-scrolled .nav-link,
 .navbar-scrolled .navbar-brand,
 .navbar-scrolled .dropdown-toggle {
-    color: #000000 !important;
-    /* verde */
+    color: #000000 !important; /* verde */
 }
 
 .navbar-custom .nav-link {
@@ -502,12 +462,20 @@ body {
 }
 
 footer {
-    background-color: rgba(0, 0, 0, 0.6);
-    /* Fundo escuro com transparência */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
 }
 
-/* Estilos do Loader */
-#loader {
+.hover-effect {
+    transition: all 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+  /* Estilos do Loader */
+  #loader {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -542,7 +510,6 @@ footer {
     0% {
         transform: translateY(0);
     }
-
     100% {
         transform: translateY(-25px);
     }

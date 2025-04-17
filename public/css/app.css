@@ -7,10 +7,6 @@ body {
     /* Cor amarela personalizada (exemplo de dourado) */
 }
 
-body {
-    background-color: #e2f0fd;
-}
-
 a{
     font-size: 9px;
 }
@@ -76,4 +72,26 @@ th{
 .pagination .page-item.disabled .page-link {
     color: #ccc; /* Cor dos itens desabilitados */
     background-color: #f8f9fa;
+}
+body {
+    background: linear-gradient(to top, #6b77a7, rgb(200, 209, 250));
+}
+
+.nav-item .btn:hover {
+    color: #0c8a3e;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro com transparência */
+}
+.sidebar-collapsed {
+    width: 70px !important;
+}
+
+.sidebar-collapsed .sidebar-text {
+    display: none !important;
+}
+
+.sidebar-collapsed .sidebar-logo {
+    margin-left: 0;
 }
