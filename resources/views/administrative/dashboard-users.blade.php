@@ -35,7 +35,7 @@
 
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th class="text-center">Id</th>

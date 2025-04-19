@@ -10,7 +10,7 @@
     </div>
     @endif
 
-    <div class="container d-flex align-items-center justify-content-center min-vh-100">
+    <div class="container d-flex align-items-center justify-content-center">
         <div class="row shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 900px; background-color: rgba(0, 0, 0, 0.4);" data-aos="fade-up" data-aos-delay="100">
 
             <!-- Painel Esquerdo -->

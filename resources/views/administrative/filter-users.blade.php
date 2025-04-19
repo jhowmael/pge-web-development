@@ -39,7 +39,7 @@
 
                     <h5 class="mt-4">Resultados da Busca:</h5>
                     <div class="row">
-                        <table class="table table-hover">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th class="text-center">Id</th>

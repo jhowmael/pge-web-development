@@ -35,7 +35,7 @@ a{
 }
 
 th{
-    color: #007561;            /* Cor do texto */
+    color: #007561 !important;            /* Cor do texto */
 }
 
 /* Estilo no hover */

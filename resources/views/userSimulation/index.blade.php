@@ -14,7 +14,7 @@
                     <h4>Histórico de simulados</h4>
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table">
                         <thead>
                             <tr style="text-align: center">
                                 <th class="text-center">Edição</th>

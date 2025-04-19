@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <hr>
-                    <table class="table table-hover">
+                    <table class="table">
                         <thead>
                             <tr style="text-align: center">
                                 <th class="text-center">Numero</th>
