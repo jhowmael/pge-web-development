@@ -12,17 +12,93 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/821b65200f.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* Cor do fundo no modo escuro */
+        body.dark-mode {
+            background-color: #121212 !important;
+            /* Fundo escuro */
+            color: #f0f0f0;
+        }
+
+        /* Ajustes da navbar e fundo */
+        body.dark-mode .navbar,
+        body.dark-mode .bg-light {
+            background-color: #1f1f1f !important;
+            color: #f0f0f0;
+        }
+
+        /* Cor dos links no modo escuro */
+        body.dark-mode .nav-link {
+            color: #f0f0f0 !important;
+        }
+
+        /* Hover dos links no modo escuro */
+        body.dark-mode .nav-link:hover {
+            color: #00d6a3 !important;
+            background-color: transparent;
+        }
+
+        body.dark-mode td,
+        th {
+            color: white;
+        }
+
+        body.dark-mode .nav-link.active {
+            color: #00d6a3 !important;
+            background-color: transparent;
+        }
+
+        /* Rodapé */
+        body.dark-mode footer {
+            background-color: #1f1f1f !important;
+        }
+
+        /* Cards no modo escuro */
+        body.dark-mode .card {
+            background-color: #2c2c2c;
+            border-color: #444;
+        }
+
+        body.dark-mode .card-body {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .card-header {
+            background-color: #1f1f1f;
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .card-footer {
+            background-color: #1f1f1f;
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .card-title {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .card-text {
+            color: #b0b0b0;
+        }
+
+        /* Ícones de troca de tema */
+        body.dark-mode .fa-moon,
+        body.dark-mode .fa-sun {
+            color: #f0f0f0;
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Navbar Bootstrap -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-4 py-0" style="min-height: 48px;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('home') }}" style="margin-left: 35px;">
-            <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" style="height: 40px;">
-        </a>
-
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('home') }}" style="margin-left: 35px;">
+                <img src="{{ asset('images/logo-aprovame.png') }}" alt="Logo Aprovame" style="height: 40px;">
+            </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +108,6 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
                 <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
                     @auth
-                    <!-- Ícones de mensagem e notificação -->
                     <li class="nav-item me-3">
                         <a class="nav-link position-relative" href="#">
                             <i class="fa-regular fa-envelope fa-lg"></i>
@@ -43,7 +118,14 @@
                             <i class="fa-regular fa-bell fa-lg"></i>
                         </a>
                     </li>
-                    <!-- Assinatura e logout -->
+
+                    <!-- Ícone de troca de tema posicionado na mesma linha que os outros ícones -->
+                    <li class="nav-item me-3">
+                        <a id="toggle-theme" class="nav-link position-relative" href="#">
+                            <i id="theme-icon" class="fa-solid fa-moon fa-lg"></i>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
                             @csrf
@@ -52,7 +134,6 @@
                             </button>
                         </form>
                     </li>
-
                     @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -69,7 +150,7 @@
             @auth
             <div class="d-flex flex-column align-items-center mb-4">
                 @if(auth()->user()->profile_picture)
-                <img src="{{ asset('storage/' . auth()->user()->profile_picture) }}"
+                <img src="{{ asset('storage/' . auth()->user()->profile_picture) }} "
                     class="rounded-circle"
                     style="width: 120px; height: 120px; object-fit: cover; box-shadow: 0 0 10px rgba(0, 117, 97, 0.4);">
                 @endif
@@ -93,6 +174,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('learn') }}"><i
                             class="fa-solid fa-graduation-cap"></i> Aprendizado</a></li>
                 @if(auth()->user() && auth()->user()->type === 'admin')
+                <hr style="border: 0; height: 2px; background-color: #007561">
                 <li class="nav-item"><a class="nav-link" href="{{ route('administrative.dashboard') }}"><i
                             class="fa-solid fa-sliders"></i> Administrativo</a></li>
                 @endif
@@ -142,6 +224,30 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('toggle-theme');
+            const themeIcon = document.getElementById('theme-icon');
+
+            // Aplica o tema salvo
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+
+                const isDark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+                themeIcon.classList.toggle('fa-moon', !isDark);
+                themeIcon.classList.toggle('fa-sun', isDark);
+            });
+        });
+    </script>
 </body>
 
 </html>

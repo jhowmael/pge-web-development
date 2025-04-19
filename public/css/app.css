@@ -1,5 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
+    background-color: #bcf3b9;
 }
 
 .bg-light-yellow {
@@ -72,9 +73,6 @@ th{
 .pagination .page-item.disabled .page-link {
     color: #ccc; /* Cor dos itens desabilitados */
     background-color: #f8f9fa;
-}
-body {
-    background: linear-gradient(to top, #5A7169, #B8D6CA);
 }
 
 .nav-item .btn:hover {
