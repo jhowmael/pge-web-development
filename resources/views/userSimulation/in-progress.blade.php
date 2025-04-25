@@ -2,28 +2,33 @@
 
 @section('content')
 
-<div id="simulation" style="max-width: 800px; margin: auto; padding: 20px;">
-    <center>
-        <h1 id="simulation-name" style="font-size: 2.5em; color: #449d5b; font-weight: bold;"></h1>
-        <h3 id="simulation-duration" style="font-size: 1.2em; color: #777;"></h3>
-        <h3 id="timer" style="font-size: 1.5em; color: #d9534f; font-weight: bold;"></h3>
-    </center>
+<div id="simulation" class="container py-4">
+    <div class="text-center mb-4">
+        <h1 id="simulation-name" class="display-4 text-success fw-bold"></h1>
+        <h3 id="simulation-duration" class="h5 text-secondary"></h3>
+        <h3 id="timer" class="h4 text-danger fw-bold"></h3>
+    </div>
 
-    <div id="question-container" style="padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+    <div id="question-container" class="p-4 bg-light rounded shadow-sm mt-4">
         <!-- Questão será carregada aqui -->
     </div>
 
-    <div style="text-align: center; margin-top: 20px;">
-        <button id="prev-question" disabled style="background-color: #f8f9fa; border: 1px solid #ccc; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1.1em;">
+    <!-- Barra de Progresso -->
+    <div class="progress mt-4">
+        <div id="progress" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <p id="progress-text" class="text-center mt-2">Questões respondidas: 0/0</p>
+
+    <div class="text-center mt-4">
+        <button id="prev-question" disabled class="btn btn-outline-secondary btn-lg">
             Anterior
         </button>
-        <button id="next-question" style="background-color: #449d5b; color: white; border: 1px solid #449d5b; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1.1em; margin-left: 10px;">
+        <button id="next-question" class="btn btn-success btn-lg ms-2">
             Próxima
         </button>
-        <form action="{{ route('userSimulation.finish', $userSimulation->id) }}" method="POST" style="display: inline;">
+        <form action="{{ route('userSimulation.finish', $userSimulation->id) }}" method="POST" class="d-inline">
             @csrf
-            <button type="submit"
-                    style="background-color: rgb(119, 0, 231); color: white; border: 1px solid #449d5b; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 1.1em; margin-left: 10px;">
+            <button type="submit" class="btn btn-primary btn-lg ms-2">
                 Finalizar
             </button>
         </form>
@@ -31,17 +36,17 @@
 </div>
 
 <!-- Caixa de confirmação -->
-<div id="confirmation-box" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; text-align: center; padding-top: 100px;">
-    <div style="background-color: #fff; padding: 20px; border-radius: 8px; width: 400px; margin: auto;">
-        <h3 style="color: #444;">Você tem certeza?</h3>
-        <p style="font-size: 1.1em; color: #555;">Deseja confirmar sua resposta?</p>
-        <button id="confirm-yes" style="background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 1.1em; margin-right: 10px;">Sim</button>
-        <button id="confirm-no" style="background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 1.1em;">Não</button>
+<div id="confirmation-box" class="d-none position-fixed top-0 start-0 end-0 bottom-0 bg-dark bg-opacity-50 z-3 text-center pt-5 d-flex justify-content-center align-items-center">
+    <div class="bg-white p-4 rounded w-100" style="max-width: 400px; margin: auto;">
+        <h3 class="text-dark">Você tem certeza?</h3>
+        <p class="fs-5 text-secondary">Deseja confirmar sua resposta?</p>
+        <button id="confirm-yes" class="btn btn-success btn-lg me-2">Sim</button>
+        <button id="confirm-no" class="btn btn-danger btn-lg">Não</button>
     </div>
 </div>
 
 <!-- Mensagem de sucesso -->
-<div id="success-message" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(108, 117, 125, 0.6); color: white; padding: 15px 30px; border-radius: 4px; font-size: 1.2em; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999;">
+<div id="success-message" class="d-none position-fixed top-0 start-50 translate-middle-x bg-secondary bg-opacity-75 text-white px-4 py-3 rounded shadow fs-5 mt-3 z-3">
     Resposta confirmada com sucesso!
 </div>
 
@@ -50,6 +55,7 @@
     let currentQuestion = 1;
     const simulationId = <?= $simulation->id ?>;
     const userSimulationId = <?= $userSimulation->id ?>;
+    const totalQuestions = <?= $simulation->quantity_questions ?>;
     const totalDuration = <?= $simulation->total_duration ?>;
     let remainingTime = totalDuration * 60;
 
@@ -62,6 +68,14 @@
 
     function updateTimer() {
         $('#timer').text(formatTime(remainingTime));
+
+        // Alterando a cor e tamanho do timer quando o tempo está curto
+        if (remainingTime <= 60) {
+            $('#timer').addClass('urgent');
+        } else {
+            $('#timer').removeClass('urgent');
+        }
+
         if (remainingTime > 0) {
             remainingTime--;
         } else {
@@ -83,9 +97,9 @@
     }
 
     function renderAlternative(letter, text, imagePath) {
-        const imageTag = imagePath ? `<br><img src="/storage/${imagePath}" alt="Imagem alternativa ${letter.toUpperCase()}" style="max-height: 150px; margin-top: 5px;">` : '';
+        const imageTag = imagePath ? `<br><img src="/storage/${imagePath}" alt="Imagem alternativa ${letter.toUpperCase()}" class="img-fluid mt-2" style="max-height: 150px;">` : '';
         return `
-            <label style="display: block; margin-bottom: 15px;">
+            <label class="d-block mb-3">
                 <input type="radio" name="response" value="${letter}" ${text.response === letter ? 'checked' : ''}>
                 ${text}
                 ${imageTag}
@@ -104,19 +118,17 @@
                 const question = data.question;
                 const userResponse = question.user_question_response?.response || '';
 
-                const imageHtml = question.image ?
-                    `<img src="/storage/${question.image}" alt="Imagem da Questão" class="img-thumbnail" style="max-width: 100%; height: auto; margin-top: 20px;">` :
-                    '';
+                const imageHtml = question.image ? 
+                    `<img src="/storage/${question.image}" alt="Imagem da Questão" class="img-thumbnail mt-3">` : '';
 
                 $('#question-container').html(`
-                    <center>
-                        <h2 style="font-size: 1.8em; color: #444;">Questão ${question.number} - ${getThemeText(question.theme)}</h2>
-                    </center>
+                    <div class="text-center">
+                        <h2> Questão ${question.number} - ${getThemeText(question.theme)}</h2>
+                    </div>
+                    <p>${question.enunciation}</p>
+                    <div class="text-center">${imageHtml}</div>
 
-                    <p style="font-size: 1.2em; color: #555;">${question.enunciation}</p>
-                    <center>${imageHtml}</center>
-
-                    <form id="response-form" style="margin-top: 20px; text-align: left;">
+                    <form id="response-form" class="mt-4 text-start">
                         ${renderAlternative('a', question.alternative_a, question.alternative_a_image)}
                         ${renderAlternative('b', question.alternative_b, question.alternative_b_image)}
                         ${renderAlternative('c', question.alternative_c, question.alternative_c_image)}
@@ -126,11 +138,29 @@
                 `);
 
                 $('#prev-question').prop('disabled', question.number === 1);
+
+                updateProgressBar();
             },
             error: function() {
                 alert('Não foi possível carregar a questão.');
             }
         });
+    }
+
+    function updateProgressBar() {
+        const progressPercentage = (currentQuestion / totalQuestions) * 100;
+        $('#progress').css('width', `${progressPercentage}%`).attr('aria-valuenow', progressPercentage);
+
+        // Alterando a cor da barra de progresso
+        if (progressPercentage < 50) {
+            $('#progress').removeClass('bg-success').addClass('bg-danger');
+        } else if (progressPercentage < 80) {
+            $('#progress').removeClass('bg-danger').addClass('bg-warning');
+        } else {
+            $('#progress').removeClass('bg-warning').addClass('bg-success');
+        }
+
+        $('#progress-text').text(`Questões respondidas: ${currentQuestion}/${totalQuestions}`);
     }
 
     $(document).ready(function() {
@@ -149,7 +179,7 @@
         });
 
         $(document).on('change', '#response-form input[name="response"]', function() {
-            $('#confirmation-box').show();
+            $('#confirmation-box').removeClass('d-none');
         });
 
         $('#confirm-yes').click(function() {
@@ -167,8 +197,9 @@
                     response: response,
                 },
                 success: function() {
-                    $('#confirmation-box').hide();
+                    $('#confirmation-box').addClass('d-none');
                     $('#success-message').fadeIn(500).delay(1500).fadeOut(500);
+                    updateProgressBar(); // Atualiza a barra de progresso após a resposta
                 },
                 error: function() {
                     alert('Erro ao salvar a resposta!');
@@ -177,7 +208,7 @@
         });
 
         $('#confirm-no').click(function() {
-            $('#confirmation-box').hide();
+            $('#confirmation-box').addClass('d-none');
         });
     });
 </script>

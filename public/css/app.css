@@ -3,11 +3,6 @@ body {
     background-color: #bcf3b9;
 }
 
-.bg-light-yellow {
-    background-color: #f1ecb4;
-    /* Cor amarela personalizada (exemplo de dourado) */
-}
-
 a{
     font-size: 9px;
 }
@@ -92,4 +87,31 @@ footer {
 
 .sidebar-collapsed .sidebar-logo {
     margin-left: 0;
+}
+
+/* Barra de Progresso */
+.progress {
+    height: 20px;
+    border-radius: 10px;
+    background-color: #e9ecef; /* Cor de fundo da barra */
+    margin-top: 20px;
+}
+
+.progress-bar {
+    transition: width 0.5s ease;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Barra de progresso - cores */
+.bg-danger {
+    background-color: #dc3545 !important; /* Vermelho para progresso baixo */
+}
+
+.bg-warning {
+    background-color: #ffc107 !important; /* Amarelo para progresso médio */
+}
+
+.bg-success {
+    background-color: #28a745 !important; /* Verde para progresso alto */
 }
