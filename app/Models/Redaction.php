@@ -25,6 +25,7 @@ class Redaction extends Model
         'introduction',
         'total_points',
         'score',
+        'title',
         'text',
         'image',
         'correction',

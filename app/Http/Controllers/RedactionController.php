@@ -43,6 +43,7 @@ class RedactionController extends Controller
     {
         $validated = $request->validate([
             'text' => 'required|string|min:100|max:5000',
+            'title' => 'required|string|min:1|max:100',
         ]);
 
         $redaction = Redaction::findOrFail($redactionId);
@@ -69,6 +70,10 @@ class RedactionController extends Controller
 
         cache()->put($cacheKey, $currentCount + 1, $expiry);
 
+        if ($request->has('title')) {
+            $redaction->title = strip_tags($request->input('title'));
+        }
+
         if ($request->has('text')) {
             $redaction->text = strip_tags($request->input('text'));
 
@@ -76,7 +81,7 @@ class RedactionController extends Controller
                 $redaction->corrected = Carbon::now()->format('Y-m-d H:i:s');
             }
 
-            $analysis = $this->analyzeRedaction($redaction->text, $redaction->theme);
+            $analysis = $this->analyzeRedaction($redaction->text, $redaction->theme, $redaction->title);
 
             $redaction->correction = $analysis['correction'];
             $redaction->score = $analysis['score'];
@@ -96,7 +101,7 @@ class RedactionController extends Controller
         ]);
     }
 
-    public function analyzeRedaction($text, $theme)
+    public function analyzeRedaction($text, $theme, $title)
     {
         $apiKey = env('GEMINI_API_KEY');
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$apiKey";
@@ -122,6 +127,7 @@ class RedactionController extends Controller
         coesão - 100
 
         Tema: $theme
+        Título: $title
         Texto: $text";
 
         $payload = [

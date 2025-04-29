@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('cohesion_score', 6, 2)->nullable()->default(0.00);
             $table->integer('total_points')->nullable();
             $table->integer('score')->nullable();
+            $table->string('title', 255)->nullable();
             $table->text('text')->nullable();
             $table->string('image', 255)->nullable();
             $table->text('correction')->nullable();

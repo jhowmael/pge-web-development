@@ -27,6 +27,15 @@
                     <div class="mb-3">
                         <strong>Edição:</strong> {{ $simulation->edition ?? 'N/A' }}
                     </div>
+
+                    <div class="mb-3">
+                        <strong>Livro:</strong> {{ __('translate.' . $simulation->book) ?? 'N/A' }}
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Linguagem:</strong> {{ __('translate.' . $simulation->lengague) ?? 'N/A' }}
+                    </div>
+
                     <div class="mb-3">
                         <strong>Mínimo em Minutos:</strong> {{ $simulation->minimum_minute }} min
                     </div>

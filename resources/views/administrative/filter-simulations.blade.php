@@ -15,21 +15,56 @@
                 </div>
                 <div class="card-body">
                     <form action="{{ route('administrative.filter-simulations') }}" method="GET">
-                        <div class="mb-3">
-                            <label for="type" class="form-label"><strong>Tipo / Modelo:</strong></label>
-                            <select class="form-select" class="form-control" name="type" value="{{ request('type') }}">
-                                <option></option>
-                                @foreach (config(key: 'simulations.types') as $key => $value)
-                                <option value="{{ $key }}">{{ $value }}</option>
-                                @endforeach
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="type" class="form-label"><strong>Tipo / Modelo:</strong></label>
+                                <select class="form-select" class="form-control" name="type" value="{{ request('type') }}">
+                                    <option></option>
+                                    @foreach (config(key: 'simulations.types') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="book" class="form-label"><strong>Livro</strong></label>
+                                <select class="form-select" class="form-control" name="book" value="{{ request('book') }}">
+                                    <option></option>
+                                    @foreach (config(key: 'simulations.books') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label"><strong>Ano:</strong></label>
-                            <input type="number" class="form-control" name="year" value="{{ request('year') }}">
+                        <div class="row">       
+                            <div class="col-md-6">
+                                <label for="lengague" class="form-label"><strong>Linguagem</strong></label>
+                                <select class="form-select" class="form-control" name="lengague" value="{{ request('lengague') }}">
+                                    <option></option>
+                                    @foreach (config(key: 'simulations.lengagues') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label"><strong>Ano:</strong></label>
+                                <input type="number" class="form-control" name="year" value="{{ request('year') }}">
+                            </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="status" class="form-label"><strong>Status</strong></label>
+                                <select class="form-select" class="form-control" name="status" value="{{ request('status') }}">
+                                    <option></option>
+                                    @foreach (config(key: 'simulations.status') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <br>
                         <div class="text-center">
                             <x-buttons.submit text="Filtrar" />
                         </div>
@@ -44,18 +79,21 @@
                                 onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.2)';">
 
                                 <!-- Card Header (com fundo verde claro) -->
-                                <div class="card-header text-center bg-warning text-dark" style="border-bottom: 2px solid #000; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                <div class="card-header text-center"
+                                    style="background-image: linear-gradient(to right, #ffffff, {{ $simulation->book }}); 
+                                        border-bottom: 2px solid #000; border-top-left-radius: 5px; border-top-right-radius: 5px;">
                                     <h5 class="card-title" style="font-size: 1.2rem; font-weight: bold;">{{ $simulation->name }}</h5>
                                 </div>
 
                                 <!-- Corpo do Card (com fundo branco) -->
-                                <div class="card-body" style="background-color: #fff; padding: 1.25rem;">
+                                <div class="card-body" style="background-color: #fff;">
                                     <p class="card-text text-center"><strong>Ano:</strong> {{ $simulation->year }}</p>
                                     <p class="card-text text-center"><strong>Duração Total:</strong> {{ $simulation->total_duration }}</p>
                                     <p class="card-text text-center"><strong>Questões:</strong> {{ $simulation->quantity_questions }}</p>
-
+                                    <p class="card-text text-center"><strong>Lingaguem:</strong> {{ __('translate.' . $simulation->lengague) }} </p>
+                                    <p class="card-text text-center"><strong>Livro:</strong> {{ __('translate.' . $simulation->book) }}</p>
                                     <!-- Botão Centralizado -->
-                                    <div class="mt-3 w-100 d-flex justify-content-center">
+                                    <div class="w-100 d-flex justify-content-center">
                                         <x-buttons.start route="simulation.start" :id="$simulation->id" />
                                     </div>
                                 </div>

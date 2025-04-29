@@ -41,6 +41,28 @@ return [
         'ufpel' => 'UFPel'
     ],
 
+    
+    'lengagues' => [
+        '' => '',
+        'spanish' => 'ESPANHOL',
+        'english' => 'INGLÊS',
+    ],
+
+    'books' => [
+        '' => '',
+        'blue' => 'AZUL',
+        'red' => 'VERMELHO',
+        'green' => 'VERDE',
+        'yellow' => 'AMARELO',
+        'black' => 'PRETO',
+        'white' => 'BRANCO',
+        'purple' => 'ROXO',
+        'orange' => 'LARANJA',
+        'pink' => 'ROSA',
+        'brown' => 'MARROM',
+        'gray' => 'CINZA',
+        'beige' => 'BEGE',
+    ],
 
     'status' => [
         'enabled' => 'HABILITADO',

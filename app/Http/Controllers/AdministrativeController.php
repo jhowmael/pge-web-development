@@ -33,6 +33,8 @@ class AdministrativeController extends Controller
             'type' => 'required|string',
             'year' => 'required|integer',
             'edition' => 'nullable|string',
+            'book' => 'nullable|string',
+            'lengague' => 'nullable|string',
             'minimum_minute' => 'required|integer',
             'total_duration' => 'required|integer',
             'quantity_questions' => 'required|integer',
@@ -40,18 +42,33 @@ class AdministrativeController extends Controller
             'redaction_introduction' => 'required|string',
             'total_points' => 'required|integer',
             'description' => 'nullable|string',
+            'primary_image_redaction' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'secondary_image_redaction' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
+
+        if ($request->hasFile('primary_image_redaction')) {
+            $filename = $request->file('primary_image_redaction')->hashName();
+            $request->file('primary_image_redaction')->storeAs('redactions', $filename, 'public');
+            $validatedData['primary_image_redaction'] = $filename;
+        }
+
+        if ($request->hasFile('secondary_image_redaction')) {
+            $filename = $request->file('secondary_image_redaction')->hashName();
+            $request->file('secondary_image_redaction')->storeAs('redactions', $filename, 'public');
+            $validatedData['secondary_image_redaction'] = $filename;
+        }
 
         $validatedData['name'] = config('simulations.types.' . $validatedData['type']) . ' - ' .  $validatedData['year'];
         $validatedData['status'] = config('simulations.autoStatusRegister');
 
         $simulation = Simulation::create($validatedData);
+
         for ($i = 1; $i <= $simulation->quantity_questions; $i++) {
-            $questionData = array(
+            $questionData = [
                 'simulation_id' => $simulation->id,
                 'number' => $i,
                 'status' => config('questions.autoStatusRegister')
-            );
+            ];
 
             Question::create($questionData);
         }
@@ -80,20 +97,40 @@ class AdministrativeController extends Controller
             'type' => 'required|string',
             'edition' => 'nullable|string',
             'year' => 'required|integer',
+            'book' => 'nullable|string',
+            'lengague' => 'nullable|string',
             'minimum_minute' => 'required|integer',
             'total_duration' => 'required|integer',
             'quantity_questions' => 'required|integer',
             'redaction_theme' => 'required|string',
+            'redaction_introduction' => 'required|string',
             'total_points' => 'required|integer',
             'description' => 'nullable|string',
+            'primary_image_redaction' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'secondary_image_redaction' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
-
-        $validatedData['name'] = config('simulations.types.' . $validatedData['type']) . ' - ' .  $validatedData['year'];
+    
         $simulation = Simulation::findOrFail($id);
-        $simulation->update($validatedData);
 
+        if ($request->hasFile('primary_image_redaction')) {
+            $filename = $request->file('primary_image_redaction')->hashName();
+            $request->file('primary_image_redaction')->storeAs('redactions', $filename, 'public');
+            $validatedData['primary_image_redaction'] = $filename;
+        }
+    
+        if ($request->hasFile('secondary_image_redaction')) {
+            $filename = $request->file('secondary_image_redaction')->hashName();
+            $request->file('secondary_image_redaction')->storeAs('redactions', $filename, 'public');
+            $validatedData['secondary_image_redaction'] = $filename;
+        }
+    
+        $validatedData['name'] = config('simulations.types.' . $validatedData['type']) . ' - ' . $validatedData['year'];
+    
+        $simulation->update($validatedData);
+    
         return redirect()->route('administrative.dashboard-simulations')->with('success', 'Simulado atualizado com sucesso!');
     }
+    
 
     public function disableSimulations($id)
     {
@@ -124,6 +161,14 @@ class AdministrativeController extends Controller
 
         if ($request->filled('year')) {
             $query->where('year', $request->year);
+        }
+
+        if ($request->filled('book')) {
+            $query->where('book', $request->book);
+        }
+
+        if ($request->filled('lengague')) {
+            $query->where('lengague', $request->lengague);
         }
 
         if ($request->filled('type')) {

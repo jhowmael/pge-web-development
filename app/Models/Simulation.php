@@ -20,21 +20,18 @@ class Simulation extends Model
         'type',
         'edition',
         'year',
+        'book',
+        'lengague',
         'minimum_minute',
         'total_duration',
         'quantity_questions',
         'redaction_theme',
+        'primary_image_redaction',
+        'secondary_image_redaction',
         'redaction_introduction',
         'total_points',
         'description',
         'status',
         'application_date',
     ];
-
-    // Se precisar definir relacionamentos, pode fazê-lo aqui
-    // Exemplo:
-    // public function users()
-    // {
-    //     return $this->belongsToMany(User::class);
-    // }
 }

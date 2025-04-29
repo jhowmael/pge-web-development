@@ -20,6 +20,14 @@ class SimulationController extends Controller
             $query->where('year', $request->year);
         }
 
+        if ($request->filled('book')) {
+            $query->where('book', $request->book);
+        }
+
+        if ($request->filled('lengague')) {
+            $query->where('lengague', $request->lengague);
+        }
+
         if ($request->filled('type')) {
             $query->where('type', 'like', '%' . $request->type . '%');
         }
