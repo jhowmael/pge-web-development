@@ -35,6 +35,7 @@ class UserSimulation extends Model
         'status',
         'started',
         'finished',
+        'disabled', 
         'created_at',
         'updated_at',
     ];
@@ -77,6 +78,10 @@ class UserSimulation extends Model
 
     public function updateStatus($entity)
     {
+        if (!empty($entity->disabled)) {
+            return 'disabled';
+        }
+
         if(empty($entity->started)){
             $entity->started = Carbon::now()->format('Y-m-d H:i:s');
         }

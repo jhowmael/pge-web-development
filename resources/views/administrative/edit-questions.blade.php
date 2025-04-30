@@ -59,10 +59,11 @@
                                     </select>
                                 </div>
 
-                                {{-- Enunciado --}}
+                                {{-- Enunciado com Quill --}}
                                 <div class="mb-3">
                                     <strong>Enunciado</strong>
-                                    <input type="text" class="form-control" name="enunciation" value="{{ old('enunciation', $question->enunciation) }}" required>
+                                    <div id="quill-enunciation" style="height: 150px;"></div>
+                                    <input type="hidden" name="enunciation" id="enunciation" value="{{ old('enunciation', $question->enunciation) }}" required>
                                 </div>
 
                                 {{-- Imagem geral da questão --}}
@@ -129,5 +130,39 @@
         </div>
     </div>
 </div>
+
+{{-- Quill.js CDN --}}
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+{{-- Script para inicializar o Quill no campo "Enunciado" --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const quillEnunciation = new Quill('#quill-enunciation', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    [{ list: 'ordered' }, { list: 'bullet' }],
+                    ['link']
+                ]
+            }
+        });
+
+        // Define o valor inicial
+        quillEnunciation.root.innerHTML = document.getElementById('enunciation').value;
+
+        // Sincroniza com o campo oculto
+        quillEnunciation.on('text-change', function () {
+            document.getElementById('enunciation').value = quillEnunciation.root.innerHTML;
+        });
+
+        // Garante que o conteúdo esteja atualizado ao enviar
+        document.querySelector('form').addEventListener('submit', function () {
+            document.getElementById('enunciation').value = quillEnunciation.root.innerHTML;
+        });
+    });
+</script>
 
 @endsection

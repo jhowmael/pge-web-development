@@ -17,13 +17,6 @@
                     <div class="text-center mb-4">
                         <p>Nesta seção, você pode pesquisar, editar, deletar ou adicionar um novo usuário.</p>
                     </div>
-
-                    @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    @endif
                 </div>
 
                 <div class="row justify-content-center mb-4">

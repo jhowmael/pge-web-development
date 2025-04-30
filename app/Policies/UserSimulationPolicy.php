@@ -25,4 +25,9 @@ class UserSimulationPolicy
     {
         return $user->id === $userSimulation->user_id && $userSimulation->status === 'started';
     }
+
+    public function disable(User $user, UserSimulation $userSimulation)
+    {
+        return $user->id === $userSimulation->user_id && $userSimulation->status === 'started';
+    }
 }

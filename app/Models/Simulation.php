@@ -32,6 +32,23 @@ class Simulation extends Model
         'total_points',
         'description',
         'status',
+        'disabled', 
         'application_date',
     ];
+
+    protected static function booted()
+    {
+        static::saving(function ($model) {
+            $model->status = $model->getStatus($model);
+        });
+    }
+
+    public function getStatus($entity)
+    {
+        if (!empty($entity->disabled)) {
+            return 'disabled';
+        }
+
+        return 'enabled';
+    }
 }

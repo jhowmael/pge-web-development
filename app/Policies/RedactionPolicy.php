@@ -24,4 +24,9 @@ class RedactionPolicy
     {
         return $user->id === $redaction->user_id && $redaction->status === 'in-progress';
     }
+
+    public function disable(User $user, Redaction $redaction)
+    {
+        return $user->id === $redaction->user_id && $redaction->status === 'in-progress';
+    }
 }

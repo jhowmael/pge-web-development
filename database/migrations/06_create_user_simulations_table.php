@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('total_points')->default(0);
             $table->dateTime('started')->nullable();
             $table->dateTime('finished')->nullable();
+            $table->dateTime('disabled')->nullable();
             $table->string('status', 16);
             $table->timestamps();
         });

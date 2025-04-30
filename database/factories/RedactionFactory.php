@@ -19,7 +19,7 @@ class RedactionFactory extends Factory
             'theme' => $this->faker->word,
             'type' => $this->faker->word,
             'introduction' => $this->faker->text,
-            'text' => $this->faker->text,
+            'redaction_text' => $this->faker->text,
             'status' => 'in-progess', // ou outro status
             // Adicione outros campos necessários para sua redação
         ];

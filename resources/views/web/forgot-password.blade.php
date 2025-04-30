@@ -2,14 +2,6 @@
 
 @section('content')
 <div class="container py-5">
-
-    @if ($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show mt-3 mx-auto" style="max-width: 600px;" role="alert">
-        <strong>Erro:</strong> {{ $errors->first() }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
-
     <div class="container d-flex align-items-center justify-content-center">
         <div class="row shadow-lg rounded-4 overflow-hidden w-100" style="max-width: 900px; background-color: rgba(0, 0, 0, 0.4);" data-aos="fade-up" data-aos-delay="100">
 

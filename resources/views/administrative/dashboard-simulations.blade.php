@@ -19,14 +19,6 @@
                     <div class="text-center mb-4">
                         <p>Nesta seção, você pode pesquisar, editar, desabilitar ou adicionar um novo simulado.</p>
                     </div>
-
-                    <!-- Mensagem de Sucesso -->
-                    @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    @endif
                 </div>
 
                 <!-- Botões de Ação -->

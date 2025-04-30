@@ -22,7 +22,7 @@
                         <strong>Tipo: </strong> {{ $redaction->type }}
                     </div>
                     <div class="mb-3">
-                        <strong>Introdução: </strong> {!! nl2br(e($redaction->introduction)) !!}
+                        <strong>Introdução: </strong> {!! $redaction->introduction !!}
                     </div>
                     <div class="mb-3">
                         <strong>Pontuação Obtida: </strong> {{ $redaction->score }}
@@ -60,6 +60,9 @@
                     </div>
                     @endif
 
+                    <div class="mb-3">
+                        <strong>Título da redação: </strong> {{ $redaction->title }}
+                    </div>
                     <!-- Texto da Redação -->
                     <div class="mb-3">
                         <strong>Texto da Redação: </strong>
@@ -68,7 +71,7 @@
                         </button>
                         
                         <div class="collapse" id="redactionText">
-                            <p>{!! nl2br(e($redaction->text)) !!}</p>
+                            <p>{!! $redaction->redaction_text !!}</p>
                         </div>
                     </div>
 

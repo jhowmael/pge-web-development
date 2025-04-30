@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <strong>Linguagem:</strong> {{ __('translate.' . $simulation->lengague) ?? 'N/A' }}
+                        <strong>Linguagem:</strong> {{ __('translate.' . $simulation->lengague)  ?? 'N/A' }}
                     </div>
 
                     <div class="mb-3">

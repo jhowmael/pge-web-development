@@ -21,11 +21,12 @@ return new class extends Migration
             $table->integer('total_points')->nullable();
             $table->integer('score')->nullable();
             $table->string('title', 255)->nullable();
-            $table->text('text')->nullable();
+            $table->text('redaction_text')->nullable();
             $table->string('image', 255)->nullable();
             $table->text('correction')->nullable();
             $table->string('status', 16);
             $table->dateTime('corrected')->nullable();
+            $table->dateTime('disabled')->nullable();
             $table->timestamps();
         });
     }

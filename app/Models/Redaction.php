@@ -26,10 +26,11 @@ class Redaction extends Model
         'total_points',
         'score',
         'title',
-        'text',
+        'redaction_text',
         'image',
         'correction',
         'created',
+        'disabled', 
         'status',
     ];
 
@@ -44,6 +45,10 @@ class Redaction extends Model
 
     public function getStatus($entity)
     {
+        if (!empty($entity->disabled)) {
+            return 'disabled';
+        }
+
         if (!empty($entity->corrected)) {
             return 'corrected';
         }

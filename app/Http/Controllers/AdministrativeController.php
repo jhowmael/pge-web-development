@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Simulation;
 use App\Models\User;
 use App\Models\Question;
+use Carbon\Carbon;
 
 class AdministrativeController extends Controller
 {
@@ -101,7 +102,7 @@ class AdministrativeController extends Controller
             'lengague' => 'nullable|string',
             'minimum_minute' => 'required|integer',
             'total_duration' => 'required|integer',
-            'quantity_questions' => 'required|integer',
+            'quantity_questions' => 'nullable|integer',
             'redaction_theme' => 'required|string',
             'redaction_introduction' => 'required|string',
             'total_points' => 'required|integer',
@@ -134,7 +135,7 @@ class AdministrativeController extends Controller
 
     public function disableSimulations($id)
     {
-        $validatedData['status'] = 'disabled';
+        $validatedData['disabled'] = Carbon::now()->format('Y-m-d H:i:s');
         $simulation = Simulation::findOrFail($id);
         $simulation->update($validatedData);
 

@@ -65,6 +65,7 @@ Route::prefix('administrative')->middleware(['auth', 'is.admin', 'is.premium'])-
 Route::prefix('simulation')->middleware(['auth', 'is.premium'])->group(function () {
     Route::get('/', [SimulationController::class, 'index'])->name('simulation.index');
     Route::get('/start/{id}', [SimulationController::class, 'start'])->name('simulation.start');
+
 });
 
 Route::prefix('userSimulation')->middleware(['auth', 'is.premium'])->group(function () {
@@ -72,6 +73,8 @@ Route::prefix('userSimulation')->middleware(['auth', 'is.premium'])->group(funct
     Route::get('/in-progress/{simulationId}/{userSimulationId}', [UserSimulationController::class, 'inProgress'])->name('userSimulation.in-progress');
     Route::post('/finish/{userSimulationId}', [UserSimulationController::class, 'finish'])->name('userSimulation.finish');
     Route::get('/view/{id}', [UserSimulationController::class, 'view'])->name('userSimulation.view');
+    Route::post('/disable{id}', [UserSimulationController::class, 'disable'])->name('userSimulation.disable');
+
 });
 
 Route::get('/userSimulations/{simulation}/questions/{questionNumber}', [UserSimulationController::class, 'getQuestion'])->middleware('auth', 'is.premium')->name('userSimulations.getQuestion');
@@ -84,6 +87,7 @@ Route::prefix('redaction')->middleware(['auth', 'is.premium'])->group(function (
     Route::post('/finish/{redactionId}', [RedactionController::class, 'finish'])
     ->middleware(['auth', 'throttle:10,1,auth:id']) // Limite de 10 requisições por 1 minuto por usuário
     ->name('redaction.finish');
+    Route::post('/disable{id}', [RedactionController::class, 'disable'])->name('redaction.disable');
 });
 
 

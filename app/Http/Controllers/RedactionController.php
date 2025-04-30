@@ -42,7 +42,7 @@ class RedactionController extends Controller
     public function finish(Request $request, $redactionId)
     {
         $validated = $request->validate([
-            'text' => 'required|string|min:100|max:5000',
+            'redaction_text' => 'required|string|min:100|max:5000',
             'title' => 'required|string|min:1|max:100',
         ]);
 
@@ -73,15 +73,12 @@ class RedactionController extends Controller
         if ($request->has('title')) {
             $redaction->title = strip_tags($request->input('title'));
         }
-
-        if ($request->has('text')) {
-            $redaction->text = strip_tags($request->input('text'));
-
+        if ($request->has('redaction_text')) {
+            $redaction->redaction_text = $request->input('redaction_text');
             if (empty($redaction->corrected)) {
                 $redaction->corrected = Carbon::now()->format('Y-m-d H:i:s');
             }
-
-            $analysis = $this->analyzeRedaction($redaction->text, $redaction->theme, $redaction->title);
+            $analysis = $this->analyzeRedaction($redaction->redaction_text, $redaction->theme, $redaction->title);
 
             $redaction->correction = $analysis['correction'];
             $redaction->score = $analysis['score'];
@@ -106,7 +103,8 @@ class RedactionController extends Controller
         $apiKey = env('GEMINI_API_KEY');
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$apiKey";
 
-        $prompt = "Corrija a seguinte redação com base em uma avaliação de vestibular.
+        $prompt = 
+        "Corrija a seguinte redação com base em uma avaliação de vestibular ignorando as tags de programação.
         1. Liste os erros e sugestões (sem reescrever o texto inteiro).
         2. Dê uma nota geral de 0 a 1000 (somente o número).
         3. Dê notas de 0 a 1000 para: ortografia, clareza, argumentação, estrutura, coesão.
@@ -204,5 +202,17 @@ class RedactionController extends Controller
         }
 
         return $scores;
+    }
+
+    public function disable($id)
+    {
+        $validatedData['disabled'] = Carbon::now()->format('Y-m-d H:i:s');
+        $redaction = Redaction::findOrFail($id);
+
+        $this->authorize('disable', $redaction);
+
+        $redaction->update($validatedData);
+
+        return redirect()->route('redaction.index')->with('success', 'Redação desabilitado com sucesso!');
     }
 }

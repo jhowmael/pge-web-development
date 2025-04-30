@@ -13,12 +13,6 @@
         <!-- Questão será carregada aqui -->
     </div>
 
-    <!-- Barra de Progresso -->
-    <div class="progress mt-4">
-        <div id="progress" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-    <p id="progress-text" class="text-center mt-2">Questões respondidas: 0/0</p>
-
     <div class="text-center mt-4">
         <button id="prev-question" disabled class="btn btn-outline-secondary btn-lg">
             Anterior
@@ -139,28 +133,11 @@
 
                 $('#prev-question').prop('disabled', question.number === 1);
 
-                updateProgressBar();
             },
             error: function() {
                 alert('Não foi possível carregar a questão.');
             }
         });
-    }
-
-    function updateProgressBar() {
-        const progressPercentage = (currentQuestion / totalQuestions) * 100;
-        $('#progress').css('width', `${progressPercentage}%`).attr('aria-valuenow', progressPercentage);
-
-        // Alterando a cor da barra de progresso
-        if (progressPercentage < 50) {
-            $('#progress').removeClass('bg-success').addClass('bg-danger');
-        } else if (progressPercentage < 80) {
-            $('#progress').removeClass('bg-danger').addClass('bg-warning');
-        } else {
-            $('#progress').removeClass('bg-warning').addClass('bg-success');
-        }
-
-        $('#progress-text').text(`Questões respondidas: ${currentQuestion}/${totalQuestions}`);
     }
 
     $(document).ready(function() {
@@ -199,7 +176,6 @@
                 success: function() {
                     $('#confirmation-box').addClass('d-none');
                     $('#success-message').fadeIn(500).delay(1500).fadeOut(500);
-                    updateProgressBar(); // Atualiza a barra de progresso após a resposta
                 },
                 error: function() {
                     alert('Erro ao salvar a resposta!');

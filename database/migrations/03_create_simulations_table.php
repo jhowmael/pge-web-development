@@ -30,6 +30,7 @@ return new class extends Migration
             $table->text('redaction_introduction');
             $table->integer('total_points');
             $table->text('description')->nullable();
+            $table->dateTime('disabled')->nullable();
             $table->string('status', 16);
             $table->timestamps();
         });

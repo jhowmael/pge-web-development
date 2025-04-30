@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <form action="{{ route('administrative.update-simulations', $simulation->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
+                        @method('POST')
 
                         <div class="row">
                             <div class="col-md-4">
@@ -80,8 +80,13 @@
 
                         <div class="row mt-3">
                             <div class="col-md-12">
-                                <label for="redaction_introduction" class="form-label">Texto Introdutório (Redação)</label>
-                                <textarea class="form-control" id="redaction_introduction" name="redaction_introduction" rows="3">{{ old('redaction_introduction', $simulation->redaction_introduction) }}</textarea>
+                                <label for="quill-editor" class="form-label">Texto Introdutório (Redação)</label>
+
+                                {{-- Editor visual --}}
+                                <div id="quill-editor" style="height: 200px;"></div>
+
+                                {{-- Campo oculto para envio --}}
+                                <input type="hidden" name="redaction_introduction" id="redaction_introduction" value="{{ old('redaction_introduction', $simulation->redaction_introduction) }}" required>
                             </div>
                         </div>
 
@@ -121,5 +126,40 @@
         </div>
     </div>
 </div>
+
+{{-- Quill.js CDN --}}
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+{{-- Inicialização e sincronização --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const quill = new Quill('#quill-editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    [{ list: 'ordered' }, { list: 'bullet' }],
+                    ['link']
+                ]
+            }
+        });
+
+        // Pega o valor salvo e insere no editor
+        const content = document.getElementById('redaction_introduction').value;
+        quill.root.innerHTML = content;
+
+        // Sincroniza mudanças com input hidden
+        quill.on('text-change', function () {
+            document.getElementById('redaction_introduction').value = quill.root.innerHTML;
+        });
+
+        // Garante que o conteúdo seja atualizado antes do submit
+        document.querySelector('form').addEventListener('submit', function () {
+            document.getElementById('redaction_introduction').value = quill.root.innerHTML;
+        });
+    });
+</script>
 
 @endsection

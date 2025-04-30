@@ -29,13 +29,16 @@
                             <tr style="text-align: center">
                                 <td class="text-center">{{ $userSimulation->simulation->name }}</td>
                                 <td class="text-center">{{ $userSimulation->total_score }}</td>
-                                <td class="text-center">{{ $userSimulation->created_at }}</td>
+                                <td class="text-center">{{ $userSimulation->created_at->format('d/m/Y H:i') }}</td>
                                 <td class="text-center"> {{ __('translate.' . $userSimulation->status) }}</td>
                                 <td class="d-flex justify-content-center gap-2">
                                     @if($userSimulation->status === 'started')
                                         <x-buttons.keep route="userSimulation.in-progress" :parameters="['simulationId' => $userSimulation->simulation_id, 'userSimulationId' => $userSimulation->id]" />
                                     @endif
                                     <x-buttons.view route="userSimulation.view" :id="$userSimulation->id" />
+                                    @if($userSimulation->status === 'started' && $userSimulation->status != 'disabled')
+                                    <x-buttons.disable route="userSimulation.disable" :id="$userSimulation->id" />
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

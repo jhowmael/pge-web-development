@@ -107,4 +107,16 @@ class UserSimulationController extends Controller
             'redactionId' => $redaction->id,
         ]);
     }
+
+    public function disable($id)
+    {
+        $validatedData['disabled'] = Carbon::now()->format('Y-m-d H:i:s');
+        $userSimulation = UserSimulation::findOrFail($id);
+
+        $this->authorize('disable', $userSimulation);
+        
+        $userSimulation->update($validatedData);
+
+        return redirect()->route('userSimulation.index')->with('success', 'Simulado desabilitado com sucesso!');
+    }
 }

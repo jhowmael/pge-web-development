@@ -67,7 +67,6 @@
             </div>
         </div>
     </nav>
-
     <!-- Sidebar -->
     <div class="d-flex">
         <div class="col-md-2 bg-light p-3" style="min-height: 100vh; box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);">
@@ -127,6 +126,26 @@
 
         <!-- Conteúdo principal -->
         <div class="col-md-10 col-12 px-4 py-4">
+            @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show mt-3 mx-auto" style="max-width: 600px;" role="alert">
+                    <strong>Erro:</strong>
+                    <ul class="mb-0">
+                        @foreach ($errors->getMessages() as $field => $messages)
+                            @foreach ($messages as $message)
+                                <li><strong>{{ ucfirst($field) }}:</strong> {{ $message }}</li>
+                            @endforeach
+                        @endforeach
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show mt-3 mx-auto" style="max-width: 600px;" role="alert">
+                    <strong>Sucesso:</strong> {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                </div>
+            @endif
             @yield('content')
         </div>
     </div>
